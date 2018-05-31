@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="https://changjiahong.github.io">
   <title>安卓设备通过USB接口实现与pc端的简单数据通信 | 破小孩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="安卓设备通过USB接口实现与pc端的简单数据通信最近突发奇想，想实现手机和电脑的交互，但考虑到网络限制，想要基于USB数据线实现与pc的通信，查阅很多资料，最终初步实现。以下某些思路来源于网络，大部分是自己写的，自我总结一番。实现思路： 通过adb命令转接端口 安卓客户端作为Server，监听socket请求 pc端为client，请求socket连接  PC端代码：123456789101112">
+  <meta name="description" content="安卓设备通过USB接口实现与pc端的简单数据通信最近突发奇想，想实现手机和电脑的交互，但考虑到网络限制，想要基于USB数据线实现与pc的通信，查阅很多资料，最终初步实现。以下某些思路来源于网络，大部分是自己写的，自我总结一番。">
 <meta name="keywords" content="PTY,java,kotlin,移动开发，程序猿">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安卓设备通过USB接口实现与pc端的简单数据通信">
 <meta property="og:url" content="https://changjiahong.github.io/2018/05/31/安卓设备通过USB接口实现与pc端的简单数据通信/index.html">
 <meta property="og:site_name" content="破小孩的博客">
-<meta property="og:description" content="安卓设备通过USB接口实现与pc端的简单数据通信最近突发奇想，想实现手机和电脑的交互，但考虑到网络限制，想要基于USB数据线实现与pc的通信，查阅很多资料，最终初步实现。以下某些思路来源于网络，大部分是自己写的，自我总结一番。实现思路： 通过adb命令转接端口 安卓客户端作为Server，监听socket请求 pc端为client，请求socket连接  PC端代码：123456789101112">
+<meta property="og:description" content="安卓设备通过USB接口实现与pc端的简单数据通信最近突发奇想，想实现手机和电脑的交互，但考虑到网络限制，想要基于USB数据线实现与pc的通信，查阅很多资料，最终初步实现。以下某些思路来源于网络，大部分是自己写的，自我总结一番。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://changjiahong.github.io/2018/05/31/img/安卓设备通过USB接口实现与pc端的简单数据通信/p1.jpg">
 <meta property="og:image" content="https://changjiahong.github.io/2018/05/31/img/安卓设备通过USB接口实现与pc端的简单数据通信/p2.png">
 <meta property="og:updated_time" content="2018-05-31T05:25:17.388Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安卓设备通过USB接口实现与pc端的简单数据通信">
-<meta name="twitter:description" content="安卓设备通过USB接口实现与pc端的简单数据通信最近突发奇想，想实现手机和电脑的交互，但考虑到网络限制，想要基于USB数据线实现与pc的通信，查阅很多资料，最终初步实现。以下某些思路来源于网络，大部分是自己写的，自我总结一番。实现思路： 通过adb命令转接端口 安卓客户端作为Server，监听socket请求 pc端为client，请求socket连接  PC端代码：123456789101112">
+<meta name="twitter:description" content="安卓设备通过USB接口实现与pc端的简单数据通信最近突发奇想，想实现手机和电脑的交互，但考虑到网络限制，想要基于USB数据线实现与pc的通信，查阅很多资料，最终初步实现。以下某些思路来源于网络，大部分是自己写的，自我总结一番。">
 <meta name="twitter:image" content="https://changjiahong.github.io/2018/05/31/img/安卓设备通过USB接口实现与pc端的简单数据通信/p1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="破小孩的博客" type="application/atom+xml">
@@ -174,7 +174,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="安卓设备通过USB接口实现与pc端的简单数据通信"><a href="#安卓设备通过USB接口实现与pc端的简单数据通信" class="headerlink" title="安卓设备通过USB接口实现与pc端的简单数据通信"></a>安卓设备通过USB接口实现与pc端的简单数据通信</h1><h6 id="最近突发奇想，想实现手机和电脑的交互，但考虑到网络限制，想要基于USB数据线实现与pc的通信，查阅很多资料，最终初步实现。以下某些思路来源于网络，大部分是自己写的，自我总结一番。"><a href="#最近突发奇想，想实现手机和电脑的交互，但考虑到网络限制，想要基于USB数据线实现与pc的通信，查阅很多资料，最终初步实现。以下某些思路来源于网络，大部分是自己写的，自我总结一番。" class="headerlink" title="最近突发奇想，想实现手机和电脑的交互，但考虑到网络限制，想要基于USB数据线实现与pc的通信，查阅很多资料，最终初步实现。以下某些思路来源于网络，大部分是自己写的，自我总结一番。"></a>最近突发奇想，想实现手机和电脑的交互，但考虑到网络限制，想要基于USB数据线实现与pc的通信，查阅很多资料，最终初步实现。以下某些思路来源于网络，大部分是自己写的，自我总结一番。</h6><h3 id="实现思路："><a href="#实现思路：" class="headerlink" title="实现思路："></a>实现思路：</h3><ul>
+        <h1 id="安卓设备通过USB接口实现与pc端的简单数据通信"><a href="#安卓设备通过USB接口实现与pc端的简单数据通信" class="headerlink" title="安卓设备通过USB接口实现与pc端的简单数据通信"></a>安卓设备通过USB接口实现与pc端的简单数据通信</h1><h6 id="最近突发奇想，想实现手机和电脑的交互，但考虑到网络限制，想要基于USB数据线实现与pc的通信，查阅很多资料，最终初步实现。以下某些思路来源于网络，大部分是自己写的，自我总结一番。"><a href="#最近突发奇想，想实现手机和电脑的交互，但考虑到网络限制，想要基于USB数据线实现与pc的通信，查阅很多资料，最终初步实现。以下某些思路来源于网络，大部分是自己写的，自我总结一番。" class="headerlink" title="最近突发奇想，想实现手机和电脑的交互，但考虑到网络限制，想要基于USB数据线实现与pc的通信，查阅很多资料，最终初步实现。以下某些思路来源于网络，大部分是自己写的，自我总结一番。"></a>最近突发奇想，想实现手机和电脑的交互，但考虑到网络限制，想要基于USB数据线实现与pc的通信，查阅很多资料，最终初步实现。以下某些思路来源于网络，大部分是自己写的，自我总结一番。</h6><a id="more"></a>
+<h3 id="实现思路："><a href="#实现思路：" class="headerlink" title="实现思路："></a>实现思路：</h3><ul>
 <li>通过adb命令转接端口</li>
 <li>安卓客户端作为Server，监听socket请求</li>
 <li>pc端为client，请求socket连接</li>
