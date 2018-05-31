@@ -6,19 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://changjiahong.github.io">
-  <title>Archives | 破小孩的博客</title>
+  <title>吃鸡第一弹——安卓投影到电脑客户端 | 破小孩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在校码农">
+  <meta name="description" content="一、安卓录屏并发送到pc实现原理：​    首先用参数MEDIA_-PROJECTION_SERVICE调 用Context.getSystemService()，得到MediaProjectionManager类别实例；其次，调用 createScreenCaptureIntent ()得到一个Intent；再次，使用startActivityForResult()启动屏幕捕捉； 最后，将结果返">
 <meta name="keywords" content="PTY,java,kotlin,移动开发，程序猿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="破小孩的博客">
-<meta property="og:url" content="https://changjiahong.github.io/archives/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="吃鸡第一弹——安卓投影到电脑客户端">
+<meta property="og:url" content="https://changjiahong.github.io/2018/05/31/# 吃鸡第一弹——安卓投影到电脑客户端/index.html">
 <meta property="og:site_name" content="破小孩的博客">
-<meta property="og:description" content="在校码农">
+<meta property="og:description" content="一、安卓录屏并发送到pc实现原理：​    首先用参数MEDIA_-PROJECTION_SERVICE调 用Context.getSystemService()，得到MediaProjectionManager类别实例；其次，调用 createScreenCaptureIntent ()得到一个Intent；再次，使用startActivityForResult()启动屏幕捕捉； 最后，将结果返">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="d:/CJH/Desktop/_4SW">
+<meta property="og:image" content="d:/CJH/Desktop/QQ截图20180410214333.png">
+<meta property="og:image" content="d:/CJH/Desktop/QQ截图20180410214731.png">
+<meta property="og:image" content="d:/CJH/Desktop/QQ截图20180410215007.png">
+<meta property="og:image" content="d:/CJH/Desktop/EOH">
+<meta property="og:updated_time" content="2018-04-10T14:02:35.478Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="破小孩的博客">
-<meta name="twitter:description" content="在校码农">
+<meta name="twitter:title" content="吃鸡第一弹——安卓投影到电脑客户端">
+<meta name="twitter:description" content="一、安卓录屏并发送到pc实现原理：​    首先用参数MEDIA_-PROJECTION_SERVICE调 用Context.getSystemService()，得到MediaProjectionManager类别实例；其次，调用 createScreenCaptureIntent ()得到一个Intent；再次，使用startActivityForResult()启动屏幕捕捉； 最后，将结果返">
+<meta name="twitter:image" content="d:/CJH/Desktop/_4SW">
   
     <link rel="alternative" href="/atom.xml" title="破小孩的博客" type="application/atom+xml">
   
@@ -150,130 +157,188 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-# 吃鸡第一弹——安卓投影到电脑客户端" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      吃鸡第一弹——安卓投影到电脑客户端
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/31/# 吃鸡第一弹——安卓投影到电脑客户端/" class="archive-article-date">
+
+        
+        <a href="/2018/05/31/# 吃鸡第一弹——安卓投影到电脑客户端/" class="archive-article-date">
   	<time datetime="2018-05-31T10:39:20.885Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/31/# 吃鸡第一弹——安卓投影到电脑客户端/">吃鸡第一弹——安卓投影到电脑客户端</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、安卓录屏并发送到pc"><a href="#一、安卓录屏并发送到pc" class="headerlink" title="一、安卓录屏并发送到pc"></a>一、安卓录屏并发送到pc</h2><h3 id="实现原理："><a href="#实现原理：" class="headerlink" title="实现原理："></a>实现原理：</h3><p>​    首先用参数MEDIA_-PROJECTION_SERVICE调 用Context.getSystemService()，得到MediaProjectionManager类别实例；其次，调用 createScreenCaptureIntent ()得到一个Intent；再次，使用startActivityForResult()启动屏幕捕捉； 最后，将结果返回到 getMediaProjection()上，获取捕捉数据。</p>
+<a id="more"></a>
+<h6 id="正文开始："><a href="#正文开始：" class="headerlink" title="正文开始："></a>正文开始：</h6><p>通过getSystemService()调用得到MediaProjectionManager类的实例，调用createScreenCaptureIntent ()得到一个Intent；再次，使用startActivityForResult()启动屏幕捕捉； 最后，将结果返回到 getMediaProjection()上，获取捕捉数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mMediaProjectionManager = (MediaProjectionManager)  getSystemService(Context.MEDIA_PROJECTION_SERVICE);</span><br><span class="line"></span><br><span class="line">Intent captureIntent = mMediaProjectionManager.createScreenCaptureIntent();</span><br><span class="line">// 启动，1是回调参数</span><br><span class="line">startActivityForResult(captureIntent,1);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 回调函数，获取数据</span><br><span class="line">protected void onActivityResult(int requestCode, int resultCode, Intent data) &#123;</span><br><span class="line">        super.onActivityResult(requestCode, resultCode, data);</span><br><span class="line">        // 如果返回值是1，且成功回调</span><br><span class="line">        if(requestCode == 1 &amp;&amp; resultCode == RESULT_OK)&#123;</span><br><span class="line">        	// 获取MediaProjection</span><br><span class="line">            mMediaProjection = mMediaProjectionManager.getMediaProjection(resultCode,data);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">		prepare();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">// 视频编码</span><br><span class="line">private void prepare()&#123;</span><br><span class="line">  // 耗时操作在线程进行</span><br><span class="line">        new Thread()&#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                super.run();</span><br><span class="line">                </span><br><span class="line">                MediaFormat format = MediaFormat.createVideoFormat(FORMAT, PHONE_WIDTH, PHONE_HEIGHT);//FORMAT = &quot;video/avc&quot;,H264的MIME类型，宽，高</span><br><span class="line">                format.setInteger(MediaFormat.KEY_COLOR_FORMAT, MediaCodecInfo.CodecCapabilities.COLOR_FormatSurface);//设置颜色格式</span><br><span class="line">                format.setInteger(MediaFormat.KEY_BIT_RATE, AccessConstants.BITRATE);//设置比特率</span><br><span class="line">                format.setInteger(MediaFormat.KEY_FRAME_RATE, AccessConstants.FPS);//设置帧率</span><br><span class="line">                format.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, 1);//设置关键帧</span><br><span class="line">                try &#123;</span><br><span class="line">                    mEncoder = MediaCodec.createEncoderByType(AccessConstants.FORMAT);//创建编码器</span><br><span class="line">                &#125; catch (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                mEncoder.configure(format, null, null, MediaCodec.CONFIGURE_FLAG_ENCODE);//四个参数，第一个是media格式，第二个是解码器播放的surfaceview，第三个是MediaCrypto，第四个是编码解码的标识</span><br><span class="line">                mSurface = mEncoder.createInputSurface();//我的输入源</span><br><span class="line">                Log.d(TAG, &quot;created input surface: &quot; + mSurface);</span><br><span class="line">                mEncoder.start();</span><br><span class="line">                // 实例化VirtualDisplay,这个类的主要作用是用来获取屏幕信息并保存在里。</span><br><span class="line">                mVirtualDisplay = mMediaProjection.createVirtualDisplay(TAG + &quot;-display&quot;,</span><br><span class="line">                        PHONE_WIDTH, PHONE_HEIGHT, DPI, DisplayManager.VIRTUAL_DISPLAY_FLAG_PUBLIC,</span><br><span class="line">                        mSurface, null, null);</span><br><span class="line"></span><br><span class="line">				mServerSocket = new ServerSocket(SERVER_HOST_PORT); </span><br><span class="line">                Log.i(TAG, &quot;socket已开启,等待连接&quot;);  </span><br><span class="line">                socket = mServerSocket.accept();</span><br><span class="line">                Log.i(TAG, &quot;socket连接成功&quot;);  </span><br><span class="line"></span><br><span class="line">				// 发送数据</span><br><span class="line">                senddata();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;.start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">// 解析发送数据流</span><br><span class="line">private void senddata()&#123;</span><br><span class="line">  		boolean mQuit = false;</span><br><span class="line">        MediaCodec.BufferInfo mBufferInfo = new MediaCodec.BufferInfo();</span><br><span class="line"></span><br><span class="line">        while (!mQuit &amp;&amp; mIsRun) &#123;  // </span><br><span class="line"></span><br><span class="line">            int index = mEncoder.dequeueOutputBuffer(mBufferInfo, 1000);</span><br><span class="line"></span><br><span class="line">            Log.i(TAG, &quot;dequeue output buffer index=&quot; + index);</span><br><span class="line">            if (index == MediaCodec.INFO_OUTPUT_FORMAT_CHANGED) &#123;</span><br><span class="line">                //resetOutputFormat();</span><br><span class="line"></span><br><span class="line">                MediaFormat newFormat = mEncoder.getOutputFormat();</span><br><span class="line">                ByteBuffer rawSps = newFormat.getByteBuffer(&quot;csd-0&quot;);</span><br><span class="line">                ByteBuffer rawPps = newFormat.getByteBuffer(&quot;csd-1&quot;);</span><br><span class="line"></span><br><span class="line">                byte[] rawSps_byte = new byte[rawSps.remaining()];</span><br><span class="line">                byte[] rawPps_byte = new byte[rawPps.remaining()];</span><br><span class="line"></span><br><span class="line">                //mServer.sendLength(intToBytes(rawSps_byte.length));</span><br><span class="line">                //mServer.sendSPSPPS(rawSps_byte);</span><br><span class="line"></span><br><span class="line">                //mServer.sendLength(intToBytes(rawPps_byte.length));</span><br><span class="line">                //mServer.sendSPSPPS(rawPps_byte);</span><br><span class="line"></span><br><span class="line">                Log.d(&quot;Main2&quot; ,&quot;rawSps = &quot;+rawSps);</span><br><span class="line">                Log.d(&quot;Main2&quot;,&quot;rawPps = &quot;+rawPps);</span><br><span class="line"></span><br><span class="line">            &#125; else if (index == MediaCodec.INFO_TRY_AGAIN_LATER) &#123;</span><br><span class="line">                Log.d(TAG, &quot;retrieving buffers time out!&quot;);</span><br><span class="line">                try &#123;</span><br><span class="line">                    // wait 10ms</span><br><span class="line">                    Thread.sleep(10);</span><br><span class="line">                &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; else if (index &gt;= 0) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                ByteBuffer encodedData = mEncoder.getOutputBuffer(index);</span><br><span class="line">                if (encodedData != null) &#123;</span><br><span class="line">                    encodedData.position(mBufferInfo.offset);</span><br><span class="line">                    encodedData.limit(mBufferInfo.offset + mBufferInfo.size);</span><br><span class="line">                    try</span><br><span class="line">                    &#123;</span><br><span class="line">                        int jj=encodedData.remaining();</span><br><span class="line">                        byte[] b=new byte[encodedData.remaining()];</span><br><span class="line">                        encodedData.get(b, 0, b.length);</span><br><span class="line">                        //saveH264DataToFile(b);</span><br><span class="line"></span><br><span class="line">                        // 发送数据</span><br><span class="line">                        OutputStream os = socket.getOutputStream();</span><br><span class="line">            			os.write(b, 0, b.length);</span><br><span class="line"></span><br><span class="line">                    &#125;</span><br><span class="line">                    catch(Exception e)&#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                mEncoder.releaseOutputBuffer(index, false);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// int转byte数组</span><br><span class="line">public byte[] intToBytes(int i) &#123;</span><br><span class="line">        byte[] bytes = new byte[4];</span><br><span class="line">        bytes[0] = (byte) (i &amp; 0xff);</span><br><span class="line">        bytes[1] = (byte) ((i &gt;&gt; 8) &amp; 0xff);</span><br><span class="line">        bytes[2] = (byte) ((i &gt;&gt; 16) &amp; 0xff);</span><br><span class="line">        bytes[3] = (byte) ((i &gt;&gt; 24) &amp; 0xff);</span><br><span class="line">        return bytes;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二、pc端播放器实现"><a href="#二、pc端播放器实现" class="headerlink" title="二、pc端播放器实现"></a>二、pc端播放器实现</h2><h3 id="pc端采用vlcj-java写简单的播放器"><a href="#pc端采用vlcj-java写简单的播放器" class="headerlink" title="pc端采用vlcj-java写简单的播放器"></a>pc端采用vlcj-java写简单的播放器</h3><h4 id="所谓鱼与熊掌不可兼得，java跨平台非常棒，但是随之而来的问题是对于媒体播放的操作非常麻烦，还好有一个开源项目vlcj可以实现。"><a href="#所谓鱼与熊掌不可兼得，java跨平台非常棒，但是随之而来的问题是对于媒体播放的操作非常麻烦，还好有一个开源项目vlcj可以实现。" class="headerlink" title="所谓鱼与熊掌不可兼得，java跨平台非常棒，但是随之而来的问题是对于媒体播放的操作非常麻烦，还好有一个开源项目vlcj可以实现。"></a>所谓鱼与熊掌不可兼得，java跨平台非常棒，但是随之而来的问题是对于媒体播放的操作非常麻烦，还好有一个开源项目vlcj可以实现。</h4><h4 id="1-环境配置"><a href="#1-环境配置" class="headerlink" title="1.环境配置"></a>1.环境配置</h4><ol>
+<li><p>下载vlc <a href="http://www.videolan.org/" target="_blank" rel="noopener">点击下载</a>  下载后安装</p>
+</li>
+<li><p>下载vlcj <a href="http://capricasoftware.co.uk/#/projects/vlcj" target="_blank" rel="noopener">点击下载</a>  下载后解压，将其目录下的jna-4.1.0.jar、jna-platform-4.1.0.jar、vlcj-3.10.1.jar（不同版本后缀数字可能会不同）三个文件复制到对应的java工程目录（新建 libs文件夹）下；</p>
+</li>
+</ol>
+<p>我下载的最新版</p>
+<p><img src="D:\CJH\Desktop\_4SW" alt="_4SW)~(SYQRO`8R3BEW2WR">~(SYQRO`]8R3BEW2WR.png)</p>
+<ol start="3">
+<li>下载slf4j <a href="https://www.slf4j.org/" target="_blank" rel="noopener">点击下载</a>   解压后将其以下文件复制到对应的工程目录libs目录下</li>
+</ol>
+<p><img src="D:\CJH\Desktop\QQ截图20180410214333.png" alt="QQ截图20180410214333"></p>
+<ol start="4">
+<li>将vlc安装目录下的libvlc.dll、libvlccore.dll 两个文件以及plugins问佳佳复制到对应的java工程目录下；</li>
+</ol>
+<p><img src="D:\CJH\Desktop\QQ截图20180410214731.png" alt="QQ截图20180410214731"></p>
+<p>最后项目文件目录如下：</p>
+<p><img src="D:\CJH\Desktop\QQ截图20180410215007.png" alt="QQ截图20180410215007"></p>
+<h5 id="写一个简单的视频播放功能"><a href="#写一个简单的视频播放功能" class="headerlink" title="写一个简单的视频播放功能"></a>写一个简单的视频播放功能</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">	private static EmbeddedMediaPlayerComponent mediaPlayerComponent;  </span><br><span class="line">	 </span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// 查找vlc     </span><br><span class="line">		new NativeDiscovery().discover();</span><br><span class="line"></span><br><span class="line">        JFrame frame = new JFrame(&quot;vlcj Tutorial&quot;);  </span><br><span class="line">        </span><br><span class="line">        mediaPlayerComponent = new EmbeddedMediaPlayerComponent()&#123;</span><br><span class="line">        	@Override</span><br><span class="line">        	protected String[] onGetMediaPlayerFactoryArgs() &#123;</span><br><span class="line">        		// TODO 自动生成的方法存根</span><br><span class="line">        		return new String[] &#123; &quot;--video-title=vlcj video output&quot;, &quot;--no-snapshot-preview&quot;, &quot;--quiet-synchro&quot;,</span><br><span class="line">    					&quot;--sub-filter=logo:marq&quot;, &quot;--intf=dummy&quot;, &quot;--network-caching=1000&quot;, &quot;--file-caching=10&quot;,</span><br><span class="line">    					&quot;--live-caching=10&quot;, &quot;--clock-jitter=10&quot;,</span><br><span class="line">    					&quot;--tcp-caching=10&quot;,</span><br><span class="line">//    					&quot;--h264-fps=5&quot;,</span><br><span class="line">    					&quot;--clock-synchro=1&quot;,//时钟同步</span><br><span class="line">//    					&quot;--mosaic-delay=0&quot;</span><br><span class="line">//    					&quot;--sout-ts-shaping=0&quot;, &quot;--sout-ts-dts-delay=0&quot;, </span><br><span class="line">//    					&quot;--sout-ts-pcr=0&quot;, &quot;--sout-ts-use-key-frames&quot;</span><br><span class="line">    					&#125;;</span><br><span class="line">        	&#125;</span><br><span class="line">        &#125;;  </span><br><span class="line"></span><br><span class="line">        frame.setContentPane(mediaPlayerComponent);  </span><br><span class="line"></span><br><span class="line">        frame.setLocation(100, 100);  </span><br><span class="line">        frame.setSize(600, 400);  </span><br><span class="line">        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  </span><br><span class="line">        frame.setVisible(true);  </span><br><span class="line">        </span><br><span class="line">     // 这句adb命令可以不用.执行下面两句也可以实现转发.只是为了避免重复开启service所以在转发端口前先stop一下	</span><br><span class="line">     try &#123;</span><br><span class="line">		Runtime.getRuntime().exec(&quot;adb shell am broadcast -a NotifyServiceStop&quot;);</span><br><span class="line">		//转发的关键代码</span><br><span class="line">	    Runtime.getRuntime().exec(&quot;adb forward tcp:5000 tcp:12580&quot;);</span><br><span class="line">	    Runtime.getRuntime().exec(&quot;adb shell am broadcast -a NotifyServiceStart&quot;);</span><br><span class="line">	&#125; catch (IOException e) &#123;</span><br><span class="line">		// TODO 自动生成的 catch 块</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">  </span><br><span class="line">        String mrl = &quot;tcp://127.0.0.1:5000&quot;;</span><br><span class="line">        mediaPlayerComponent.getMediaPlayer().playMedia(mrl,new String[] &#123; &quot;:demux=h264&quot; &#125;);// </span><br><span class="line">        // 从socket连接获取视频流</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="实现效果："><a href="#实现效果：" class="headerlink" title="实现效果："></a>实现效果：</h5><p><img src="D:\CJH\Desktop\EOH" alt="EOH)2)1LMRNB(W(MRJ@)61A">2)1LMRNB(W(MRJ@)61A.png)</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://changjiahong.github.io/2018/05/31/# 吃鸡第一弹——安卓投影到电脑客户端/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/31/安卓设备通过USB接口实现与pc端的简单数据通信/" class="archive-article-date">
-  	<time datetime="2018-05-31T05:22:26.759Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/31/安卓设备通过USB接口实现与pc端的简单数据通信/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">安卓设备通过USB接口实现与pc端的简单数据通信</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/31/安卓设备通过USB接口实现与pc端的简单数据通信/">安卓设备通过USB接口实现与pc端的简单数据通信</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/31/人脸识别的SDK来自虹软的人脸识别SDK，开源免费/" class="archive-article-date">
-  	<time datetime="2018-05-31T05:11:06.031Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/31/人脸识别的SDK来自虹软的人脸识别SDK，开源免费/">人脸识别Demo</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/31/hello-world/" class="archive-article-date">
-  	<time datetime="2018-05-30T16:34:09.073Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/31/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -296,8 +361,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
