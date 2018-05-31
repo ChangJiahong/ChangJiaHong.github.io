@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://changjiahong.github.io">
-  <title>破小孩的博客</title>
+  <title>人脸识别Demo | 破小孩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在校码农">
+  <meta name="description" content="人脸识别的SDK来自虹软的人脸识别SDK，开源免费虹软的官网  http://www.arcsoft.com.cn/ai/arcface.htmlfaceDemo实现效果：在项目实现过程中遇到的一些问题，记一下。 一、调用系统相机方法这里使用FileProvider.getUriForFile();获取Uri 而不使用Uri.fromFile()android7.0对于系统权限做了一些更爱，为了提">
 <meta name="keywords" content="PTY,java,kotlin,移动开发，程序猿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="破小孩的博客">
-<meta property="og:url" content="https://changjiahong.github.io/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人脸识别Demo">
+<meta property="og:url" content="https://changjiahong.github.io/2018/05/31/人脸识别的SDK来自虹软的人脸识别SDK，开源免费/index.html">
 <meta property="og:site_name" content="破小孩的博客">
-<meta property="og:description" content="在校码农">
+<meta property="og:description" content="人脸识别的SDK来自虹软的人脸识别SDK，开源免费虹软的官网  http://www.arcsoft.com.cn/ai/arcface.htmlfaceDemo实现效果：在项目实现过程中遇到的一些问题，记一下。 一、调用系统相机方法这里使用FileProvider.getUriForFile();获取Uri 而不使用Uri.fromFile()android7.0对于系统权限做了一些更爱，为了提">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img-blog.csdn.net/20180330212104549?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:updated_time" content="2018-05-31T05:22:46.111Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="破小孩的博客">
-<meta name="twitter:description" content="在校码农">
+<meta name="twitter:title" content="人脸识别Demo">
+<meta name="twitter:description" content="人脸识别的SDK来自虹软的人脸识别SDK，开源免费虹软的官网  http://www.arcsoft.com.cn/ai/arcface.htmlfaceDemo实现效果：在项目实现过程中遇到的一些问题，记一下。 一、调用系统相机方法这里使用FileProvider.getUriForFile();获取Uri 而不使用Uri.fromFile()android7.0对于系统权限做了一些更爱，为了提">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20180330212104549?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
   
     <link rel="alternative" href="/atom.xml" title="破小孩的博客" type="application/atom+xml">
   
@@ -150,88 +153,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-安卓设备通过USB接口实现与pc端的简单数据通信" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-人脸识别的SDK来自虹软的人脸识别SDK，开源免费" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/31/安卓设备通过USB接口实现与pc端的简单数据通信/">安卓设备通过USB接口实现与pc端的简单数据通信</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/31/安卓设备通过USB接口实现与pc端的简单数据通信/" class="archive-article-date">
-  	<time datetime="2018-05-31T05:22:26.759Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="安卓设备通过USB接口实现与pc端的简单数据通信"><a href="#安卓设备通过USB接口实现与pc端的简单数据通信" class="headerlink" title="安卓设备通过USB接口实现与pc端的简单数据通信"></a>安卓设备通过USB接口实现与pc端的简单数据通信</h1><h6 id="最近突发奇想，想实现手机和电脑的交互，但考虑到网络限制，想要基于USB数据线实现与pc的通信，查阅很多资料，最终初步实现。以下某些思路来源于网络，大部分是自己写的，自我总结一番。"><a href="#最近突发奇想，想实现手机和电脑的交互，但考虑到网络限制，想要基于USB数据线实现与pc的通信，查阅很多资料，最终初步实现。以下某些思路来源于网络，大部分是自己写的，自我总结一番。" class="headerlink" title="最近突发奇想，想实现手机和电脑的交互，但考虑到网络限制，想要基于USB数据线实现与pc的通信，查阅很多资料，最终初步实现。以下某些思路来源于网络，大部分是自己写的，自我总结一番。"></a>最近突发奇想，想实现手机和电脑的交互，但考虑到网络限制，想要基于USB数据线实现与pc的通信，查阅很多资料，最终初步实现。以下某些思路来源于网络，大部分是自己写的，自我总结一番。</h6><h3 id="实现思路："><a href="#实现思路：" class="headerlink" title="实现思路："></a>实现思路：</h3><ul>
-<li>通过adb命令转接端口</li>
-<li>安卓客户端作为Server，监听socket请求</li>
-<li>pc端为client，请求socket连接</li>
-</ul>
-<h3 id="PC端代码："><a href="#PC端代码：" class="headerlink" title="PC端代码："></a>PC端代码：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.BufferedWriter;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line">import java.io.OutputStreamWriter;</span><br><span class="line">import java.io.PrintWriter;</span><br><span class="line">import java.net.Socket;</span><br><span class="line">import java.net.UnknownHostException;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Test &#123;</span><br><span class="line"></span><br><span class="line">	final static Scanner s = new Scanner(System.in);</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		try &#123;</span><br><span class="line">			// 这句adb命令可以不用.执行下面两句也可以实现转发.只是为了避免重复开启service所以在转发端口前先stop一下	</span><br><span class="line">			Runtime.getRuntime().exec(&quot;adb shell am broadcast -a NotifyServiceStop&quot;);</span><br><span class="line">			//转发的关键代码</span><br><span class="line">			Runtime.getRuntime().exec(&quot;adb forward tcp:8000 tcp:2580&quot;);</span><br><span class="line">			Runtime.getRuntime().exec(&quot;adb shell am broadcast -a NotifyServiceStart&quot;);</span><br><span class="line">			</span><br><span class="line">			new Thread()&#123;</span><br><span class="line">				@Override</span><br><span class="line">				public void run() &#123;</span><br><span class="line">					</span><br><span class="line">					try &#123;</span><br><span class="line">						Socket socket = new Socket(&quot;127.0.0.1&quot;, 8000);</span><br><span class="line">						// 将信息通过这个对象来发送给Server</span><br><span class="line">		                PrintWriter out = new PrintWriter(new BufferedWriter(</span><br><span class="line">		                        new OutputStreamWriter(socket.getOutputStream(),&quot;utf-8&quot;)),</span><br><span class="line">		                        true);</span><br><span class="line"></span><br><span class="line">		                // 接收服务器信息</span><br><span class="line">		                BufferedReader in = new BufferedReader(</span><br><span class="line">		                        new InputStreamReader(socket.getInputStream(),&quot;utf-8&quot;));</span><br><span class="line">		                </span><br><span class="line">		                //首先发送请求类型</span><br><span class="line">		                String msg=&quot;我来自电脑！&quot;;</span><br><span class="line">		                msg = s.nextLine();</span><br><span class="line">		                out.println(msg);</span><br><span class="line">		                out.flush();</span><br><span class="line">		                </span><br><span class="line">		                msg = in.readLine();</span><br><span class="line">		                System.out.println(msg);</span><br><span class="line">		                		              	               </span><br><span class="line">					&#125; catch (UnknownHostException e) &#123;</span><br><span class="line">						// TODO 自动生成的 catch 块</span><br><span class="line">						e.printStackTrace();</span><br><span class="line">					&#125; catch (IOException e) &#123;</span><br><span class="line">						// TODO 自动生成的 catch 块</span><br><span class="line">						e.printStackTrace();</span><br><span class="line">					&#125;</span><br><span class="line">	                </span><br><span class="line">				&#125;</span><br><span class="line">			&#125;.start();</span><br><span class="line">		&#125; catch (IOException e) &#123;</span><br><span class="line">			// TODO 自动生成的 catch 块</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Android端代码："><a href="#Android端代码：" class="headerlink" title="Android端代码："></a>Android端代码：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">package com.example.cjh.news.ADB;</span><br><span class="line"></span><br><span class="line">import android.support.v7.app.AppCompatActivity;</span><br><span class="line">import android.os.Bundle;</span><br><span class="line">import android.util.Log;</span><br><span class="line">import android.widget.TextView;</span><br><span class="line"></span><br><span class="line">import com.example.cjh.news.R;</span><br><span class="line"></span><br><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.BufferedWriter;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line">import java.io.OutputStreamWriter;</span><br><span class="line">import java.io.PrintWriter;</span><br><span class="line">import java.net.ServerSocket;</span><br><span class="line">import java.net.Socket;</span><br><span class="line"></span><br><span class="line">public class Main2Activity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    private static final String TAG = &quot;ServerThread&quot;;</span><br><span class="line"></span><br><span class="line">    private TextView textView ;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main2);</span><br><span class="line"></span><br><span class="line">        textView = (TextView) findViewById(R.id.text1);</span><br><span class="line"></span><br><span class="line">        new ServerThread().start();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class ServerThread extends Thread &#123;</span><br><span class="line"></span><br><span class="line">        boolean isLoop = true;</span><br><span class="line"></span><br><span class="line">        public void setIsLoop(boolean isLoop) &#123;</span><br><span class="line">            this.isLoop = isLoop;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            Log.d(TAG, &quot;running&quot;);</span><br><span class="line"></span><br><span class="line">            ServerSocket serverSocket = null;</span><br><span class="line">            try &#123;</span><br><span class="line">                serverSocket = new ServerSocket(13000);</span><br><span class="line">                Log.d(&quot;fy&quot;, &quot;等待连接&quot;);</span><br><span class="line">                while (isLoop) &#123;</span><br><span class="line">                    Socket client = serverSocket.accept();</span><br><span class="line"></span><br><span class="line">                    // 接受客户端信息</span><br><span class="line">                    BufferedReader in = new BufferedReader(</span><br><span class="line">                            new InputStreamReader(client.getInputStream()));</span><br><span class="line"></span><br><span class="line">                    // 发送给客户端的消息</span><br><span class="line">                    PrintWriter out = new PrintWriter(new BufferedWriter(</span><br><span class="line">                            new OutputStreamWriter(client.getOutputStream())),true);</span><br><span class="line"></span><br><span class="line">                    final String msg = in.readLine();</span><br><span class="line">                    Log.d(TAG,&quot;msg = &quot;+msg);</span><br><span class="line"></span><br><span class="line">                    runOnUiThread(new Runnable() &#123;</span><br><span class="line">                        @Override</span><br><span class="line">                        public void run() &#123;</span><br><span class="line">                            textView.setText(msg);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;);</span><br><span class="line"></span><br><span class="line">                    out.println(&quot;Server say:&quot;+msg);</span><br><span class="line">                    out.flush();</span><br><span class="line">                    Log.d(TAG, &quot;accept&quot;);</span><br><span class="line"></span><br><span class="line">                    client.close();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; finally &#123;</span><br><span class="line">                Log.d(TAG, &quot;destory&quot;);</span><br><span class="line"></span><br><span class="line">                if (serverSocket != null) &#123;</span><br><span class="line">                    try &#123;</span><br><span class="line">                        serverSocket.close();</span><br><span class="line">                    &#125; catch (Exception e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="最终效果图"><a href="#最终效果图" class="headerlink" title="最终效果图"></a>最终效果图</h3><p><img src="../img/安卓设备通过USB接口实现与pc端的简单数据通信/p1.jpg" alt="图1"></p>
-<p><img src="../img/安卓设备通过USB接口实现与pc端的简单数据通信/p2.png" alt="图2"></p>
-<h2 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h2><h4 id="第一次测试的时候出现了乱码，原因是安卓端和pc端的编码方式不同，只要在传输过程中统一编码方式即可。"><a href="#第一次测试的时候出现了乱码，原因是安卓端和pc端的编码方式不同，只要在传输过程中统一编码方式即可。" class="headerlink" title="第一次测试的时候出现了乱码，原因是安卓端和pc端的编码方式不同，只要在传输过程中统一编码方式即可。"></a>第一次测试的时候出现了乱码，原因是安卓端和pc端的编码方式不同，只要在传输过程中统一编码方式即可。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 将信息通过这个对象来发送给Server</span><br><span class="line">PrintWriter out = new PrintWriter(new BufferedWriter(</span><br><span class="line">	new OutputStreamWriter(socket.getOutputStream(),&quot;utf-8&quot;)),true);</span><br><span class="line"></span><br><span class="line">// 接收服务器信息</span><br><span class="line">BufferedReader in = new BufferedReader(</span><br><span class="line">	new InputStreamReader(socket.getInputStream(),&quot;utf-8&quot;));</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/31/安卓设备通过USB接口实现与pc端的简单数据通信/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-人脸识别的SDK来自虹软的人脸识别SDK，开源免费" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/31/人脸识别的SDK来自虹软的人脸识别SDK，开源免费/">人脸识别Demo</a>
+    <h1 class="article-title" itemprop="name">
+      人脸识别Demo
     </h1>
   
 
@@ -346,6 +275,32 @@ FD_error = FD_engine.AFD_FSDK_UninitialFaceEngine();
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -353,16 +308,84 @@ FD_error = FD_engine.AFD_FSDK_UninitialFaceEngine();
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/31/人脸识别的SDK来自虹软的人脸识别SDK，开源免费/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://changjiahong.github.io/2018/05/31/人脸识别的SDK来自虹软的人脸识别SDK，开源免费/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/05/31/安卓设备通过USB接口实现与pc端的简单数据通信/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          安卓设备通过USB接口实现与pc端的简单数据通信
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/31/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -382,79 +405,14 @@ FD_error = FD_engine.AFD_FSDK_UninitialFaceEngine();
 
 
 
-
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/31/hello-world/">Hello World</a>
-    </h1>
   
 
-        
-        <a href="/2018/05/31/hello-world/" class="archive-article-date">
-  	<time datetime="2018-05-30T16:34:09.073Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/31/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
+  
 
   
+
   
 
 
@@ -477,8 +435,8 @@ FD_error = FD_engine.AFD_FSDK_UninitialFaceEngine();
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
