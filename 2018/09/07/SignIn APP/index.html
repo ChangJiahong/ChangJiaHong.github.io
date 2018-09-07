@@ -6,28 +6,34 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://changjiahong.github.io">
-  <title>机器学习入门（开发环境搭建） | 破小孩的博客</title>
+  <title>SignIn APP | 破小孩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="机器学习 python  2018-7-2 机器学习笔记 环境版本我采用的开发环境配置为：  python 2.7numpy-1.14.5scipy-1.1.0matplotlib-2.2.2">
-<meta name="keywords" content="机器学习">
+  <meta name="description" content="一款专注于点名的APP软件特色 支持语音播报功能  智能人脸识别功能  云备份功能  Excel表格导出功能   从此让老师脱离学期末整理出勤记录的烦恼">
+<meta name="keywords" content="安卓开发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="机器学习入门（开发环境搭建）">
-<meta property="og:url" content="https://changjiahong.github.io/2018/07/02/机器学习入门-开发环境搭建/index.html">
+<meta property="og:title" content="SignIn APP">
+<meta property="og:url" content="https://changjiahong.github.io/2018/09/07/SignIn APP/index.html">
 <meta property="og:site_name" content="破小孩的博客">
-<meta property="og:description" content="机器学习 python  2018-7-2 机器学习笔记 环境版本我采用的开发环境配置为：  python 2.7numpy-1.14.5scipy-1.1.0matplotlib-2.2.2">
+<meta property="og:description" content="一款专注于点名的APP软件特色 支持语音播报功能  智能人脸识别功能  云备份功能  Excel表格导出功能   从此让老师脱离学期末整理出勤记录的烦恼">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://changjiahong.github.io/2018/07/02/机器学习入门-开发环境搭建/图1.png">
-<meta property="og:image" content="https://changjiahong.github.io/2018/07/02/机器学习入门-开发环境搭建/图2.png">
-<meta property="og:image" content="https://changjiahong.github.io/2018/07/02/机器学习入门-开发环境搭建/图3.png">
-<meta property="og:image" content="https://changjiahong.github.io/2018/07/02/机器学习入门-开发环境搭建/图4.png">
-<meta property="og:image" content="https://changjiahong.github.io/2018/07/02/机器学习入门-开发环境搭建/图5.png">
-<meta property="og:image" content="https://changjiahong.github.io/2018/07/02/机器学习入门-开发环境搭建/图6.png">
-<meta property="og:image" content="https://changjiahong.github.io/2018/07/02/机器学习入门-开发环境搭建/图7.png">
-<meta property="og:updated_time" content="2018-09-07T05:56:45.716Z">
+<meta property="og:image" content="https://img-blog.csdn.net/20180907110140742?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180907111704955?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180907133152204?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180907133233309?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180907133259688?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180907133326895?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180907133348732?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180907133356564?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180907133411746?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180907133422271?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180907133432929?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180907133454696?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180907133502241?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:updated_time" content="2018-09-07T05:56:57.964Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器学习入门（开发环境搭建）">
-<meta name="twitter:description" content="机器学习 python  2018-7-2 机器学习笔记 环境版本我采用的开发环境配置为：  python 2.7numpy-1.14.5scipy-1.1.0matplotlib-2.2.2">
-<meta name="twitter:image" content="https://changjiahong.github.io/2018/07/02/机器学习入门-开发环境搭建/图1.png">
+<meta name="twitter:title" content="SignIn APP">
+<meta name="twitter:description" content="一款专注于点名的APP软件特色 支持语音播报功能  智能人脸识别功能  云备份功能  Excel表格导出功能   从此让老师脱离学期末整理出勤记录的烦恼">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20180907110140742?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
   
     <link rel="alternative" href="/atom.xml" title="破小孩的博客" type="application/atom+xml">
   
@@ -159,47 +165,41 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-机器学习入门-开发环境搭建" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-SignIn APP" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      机器学习入门（开发环境搭建）
+      SignIn APP
     </h1>
   
 
         
-        <a href="/2018/07/02/机器学习入门-开发环境搭建/" class="archive-article-date">
-  	<time datetime="2018-07-02T15:17:16.799Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-02</time>
+        <a href="/2018/09/07/SignIn APP/" class="archive-article-date">
+  	<time datetime="2018-09-07T05:53:17.470Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> 机器学习 python</p>
-<hr>
-<p>2018-7-2 机器学习笔记</p>
-<h2 id="环境版本"><a href="#环境版本" class="headerlink" title="环境版本"></a>环境版本</h2><p>我采用的开发环境配置为：</p>
-<blockquote>
-<p>python 2.7<br>numpy-1.14.5<br>scipy-1.1.0<br>matplotlib-2.2.2</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="安装Python"><a href="#安装Python" class="headerlink" title="安装Python"></a>安装Python</h1><p>首先在python官网下载python，<a href="https://www.python.org/downloads/source" target="_blank" rel="noopener">下载链接</a> 安装配置完python后可在cmd中输入python，如出现下方样式则安装成功<br><img src="/2018/07/02/机器学习入门-开发环境搭建/图1.png" alt="图片1"></p>
-<h1 id="安装Python算法库"><a href="#安装Python算法库" class="headerlink" title="安装Python算法库"></a>安装Python算法库</h1><ul>
-<li>numpy</li>
-<li>scipy</li>
-<li>matplotlib</li>
+        <h3 id="一款专注于点名的APP"><a href="#一款专注于点名的APP" class="headerlink" title="一款专注于点名的APP"></a>一款专注于点名的APP</h3><h4 id="软件特色"><a href="#软件特色" class="headerlink" title="软件特色"></a>软件特色</h4><ul>
+<li><p>支持语音播报功能</p>
+</li>
+<li><p>智能人脸识别功能</p>
+</li>
+<li><p>云备份功能</p>
+</li>
+<li><p>Excel表格导出功能</p>
+</li>
 </ul>
-<p>首先安装pip，控制台cd进入easy_install.exe的目录执行<br><code>easy_install.exe pip</code><br><img src="/2018/07/02/机器学习入门-开发环境搭建/图2.png" alt="图片2"><br>在cmd中直接输入pip install numpy即可安装numpy库<br>在我安装的时候出现了如下错误：<br><img src="/2018/07/02/机器学习入门-开发环境搭建/图3.png" alt="图片3"><br>这是因为网络连接不稳定，无法在线下载numpy库，所以我采用离线安装<br><a href="https://pypi.org/project" target="_blank" rel="noopener">官方下载地址</a><br><a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank" rel="noopener">非官方下载地址</a><br>下载的文件为.whl的后缀名，将文件移到\Python27\Scripts文件夹下，执行<br><code>pip install 库名</code><br>命令即可<br>注意在安装matplotlib出现了如下许多错误：<br><img src="/2018/07/02/机器学习入门-开发环境搭建/图4.png" alt="图片4"></p>
-<p><img src="/2018/07/02/机器学习入门-开发环境搭建/图5.png" alt="图片5"></p>
-<p><img src="/2018/07/02/机器学习入门-开发环境搭建/图6.png" alt="图片6"></p>
-<p>等等，都是由于网络原因无法在线安装，均采用离线安装，到官网下载相关的库，安装。</p>
-<p>安装成功会有Successfully installed xxx(库名) 的提示信息，表示此库安装成功。</p>
-<h1 id="简单代码测试安装的库"><a href="#简单代码测试安装的库" class="headerlink" title="简单代码测试安装的库"></a>简单代码测试安装的库</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># _*_ coding:utf-8 _*_</span><br><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line">from numpy import *</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">dataSet = [[-0.017,14.053],[-1.39,4.66],[-0.75,6.53]]</span><br><span class="line">dataMat = mat(dataSet).T</span><br><span class="line">plt.scatter(dataMat[0].tolist(),dataMat[1].tolist())</span><br><span class="line"></span><br><span class="line">X = np.linspace(-2,2,100)</span><br><span class="line">Y = 2.8*X+9</span><br><span class="line">plt.plot(X,Y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>运行结果如图则表示库安装成功。<br><img src="/2018/07/02/机器学习入门-开发环境搭建/图7.png" alt="图7"></p>
+<h4 id="从此让老师脱离学期末整理出勤记录的烦恼"><a href="#从此让老师脱离学期末整理出勤记录的烦恼" class="headerlink" title="从此让老师脱离学期末整理出勤记录的烦恼"></a>从此让老师脱离学期末整理出勤记录的烦恼</h4><a id="more"></a>
+<h2 id="软件部分截图"><a href="#软件部分截图" class="headerlink" title="软件部分截图"></a>软件部分截图</h2><center class="half">
+
+<p><img src="https://img-blog.csdn.net/20180907110140742?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="25%" height="25%"><img src="https://img-blog.csdn.net/20180907111704955?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="25%" height="25%"><img src="https://img-blog.csdn.net/20180907133152204?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="25%" height="25%"><img src="https://img-blog.csdn.net/20180907133233309?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="25%" height="25%"><img src="https://img-blog.csdn.net/20180907133259688?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="25%" height="25%"><img src="https://img-blog.csdn.net/20180907133326895?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="25%" height="25%"><img src="https://img-blog.csdn.net/20180907133348732?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="25%" height="25%"><img src="https://img-blog.csdn.net/20180907133356564?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="25%" height="25%"><img src="https://img-blog.csdn.net/20180907133411746?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="25%" height="25%"><img src="https://img-blog.csdn.net/20180907133422271?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="25%" height="25%"><img src="https://img-blog.csdn.net/20180907133432929?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="25%" height="25%"><img src="https://img-blog.csdn.net/20180907133454696?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="25%" height="25%"><img src="https://img-blog.csdn.net/20180907133502241?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="25%" height="25%"><br></p></center><p></p>
+<h1 id="软件下载链接：点击下载"><a href="#软件下载链接：点击下载" class="headerlink" title="软件下载链接：点击下载"></a>软件下载链接：<a href="https://raw.githubusercontent.com/ChangJiahong/SignIn/master/app/release/SignIn1.0.1.apk" target="_blank" rel="noopener">点击下载</a></h1><p>#github：<a href="https://github.com/ChangJiahong/SignIn" target="_blank" rel="noopener">链接</a></p>
 
       
 
@@ -239,7 +239,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">安卓开发</a>
         		</li>
       		
 		</ul>
@@ -295,7 +295,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://changjiahong.github.io/2018/07/02/机器学习入门-开发环境搭建/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://changjiahong.github.io/2018/09/07/SignIn APP/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -309,18 +309,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/03/对象、矩阵与矢量化编程/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          对象、矩阵与矢量化编程
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/05/31/吃鸡第一弹——安卓投影到电脑客户端/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">吃鸡第一弹——安卓投影到电脑客户端</div>
+    <a href="/2018/07/03/对象、矩阵与矢量化编程/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">对象、矩阵与矢量化编程</div>
       <i class="icon-circle-right"></i>
     </a>
   
