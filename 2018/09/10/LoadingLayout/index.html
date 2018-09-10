@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://changjiahong.github.io">
-  <title>Can&#39;t convert value at index 11 to dimension:type=0x10 | 破小孩的博客</title>
+  <title>安卓中一个好用的空白页，错误页，加载页切换插件 | 破小孩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近开发时获取自定义layout_width、layout_height属性时报如下错误： 123Caused by: java.lang.UnsupportedOperationException: Can&amp;apos;t convert value at index 11 to dimension: type=0x10        at android.content.res.TypedArr">
+  <meta name="description" content="最近开发中为了良好的用户体验，需要加入空白页、错误页、加载页等页面，给APP一个缓冲时间。单独开发总是需要创建几个layout，秉着降低代码冗余的态度，自己写了一个小工具，只要添加一个依赖就可以简单的使用，实现随时随地的切换页面。 放效果图：">
 <meta name="keywords" content="安卓开发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Can&#39;t convert value at index 11 to dimension:type=0x10">
-<meta property="og:url" content="https://changjiahong.github.io/2018/09/09/获取自定义属性宽度错误/index.html">
+<meta property="og:title" content="安卓中一个好用的空白页，错误页，加载页切换插件">
+<meta property="og:url" content="https://changjiahong.github.io/2018/09/10/LoadingLayout/index.html">
 <meta property="og:site_name" content="破小孩的博客">
-<meta property="og:description" content="最近开发时获取自定义layout_width、layout_height属性时报如下错误： 123Caused by: java.lang.UnsupportedOperationException: Can&amp;apos;t convert value at index 11 to dimension: type=0x10        at android.content.res.TypedArr">
+<meta property="og:description" content="最近开发中为了良好的用户体验，需要加入空白页、错误页、加载页等页面，给APP一个缓冲时间。单独开发总是需要创建几个layout，秉着降低代码冗余的态度，自己写了一个小工具，只要添加一个依赖就可以简单的使用，实现随时随地的切换页面。 放效果图：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-09T17:10:43.835Z">
+<meta property="og:image" content="https://changjiahong.github.io/2018/09/10/LoadingLayout/GIF.gif">
+<meta property="og:updated_time" content="2018-09-10T07:12:26.671Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Can&#39;t convert value at index 11 to dimension:type=0x10">
-<meta name="twitter:description" content="最近开发时获取自定义layout_width、layout_height属性时报如下错误： 123Caused by: java.lang.UnsupportedOperationException: Can&amp;apos;t convert value at index 11 to dimension: type=0x10        at android.content.res.TypedArr">
+<meta name="twitter:title" content="安卓中一个好用的空白页，错误页，加载页切换插件">
+<meta name="twitter:description" content="最近开发中为了良好的用户体验，需要加入空白页、错误页、加载页等页面，给APP一个缓冲时间。单独开发总是需要创建几个layout，秉着降低代码冗余的态度，自己写了一个小工具，只要添加一个依赖就可以简单的使用，实现随时随地的切换页面。 放效果图：">
+<meta name="twitter:image" content="https://changjiahong.github.io/2018/09/10/LoadingLayout/GIF.gif">
   
     <link rel="alternative" href="/atom.xml" title="破小孩的博客" type="application/atom+xml">
   
@@ -151,42 +153,67 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-获取自定义属性宽度错误" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-LoadingLayout" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Can&#39;t convert value at index 11 to dimension:type=0x10
+      安卓中一个好用的空白页，错误页，加载页切换插件
     </h1>
   
 
         
-        <a href="/2018/09/09/获取自定义属性宽度错误/" class="archive-article-date">
-  	<time datetime="2018-09-09T15:48:44.058Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-09</time>
+        <a href="/2018/09/10/LoadingLayout/" class="archive-article-date">
+  	<time datetime="2018-09-10T07:05:26.183Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近开发时获取自定义layout_width、layout_height属性时报如下错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Caused by: java.lang.UnsupportedOperationException: Can&apos;t convert value at index 11 to dimension: type=0x10</span><br><span class="line">        at android.content.res.TypedArray.getDimension(TypedArray.java:621)</span><br><span class="line">        at com.demo.cjh.myapplication.LoadingLayout.&lt;init&gt;(LoadingLayout.kt:147)</span><br></pre></td></tr></table></figure>
-<p>不能将获取的值转换成dimension类型，</p>
+        <p>最近开发中为了良好的用户体验，需要加入空白页、错误页、加载页等页面，给APP一个缓冲时间。单独开发总是需要创建几个layout，秉着降低代码冗余的态度，自己写了一个小工具，只要添加一个依赖就可以简单的使用，实现随时随地的切换页面。</p>
+<p>放效果图：</p>
 <a id="more"></a>
-<p>打开出错代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">errorImageWidth = a.getDimension(R.styleable.LoadingLayout_errorImage_layout_width,-2f).toInt()</span><br><span class="line">errorImageHight = a.getDimension(R.styleable.LoadingLayout_errorImage_layout_height,-2f).toInt()</span><br></pre></td></tr></table></figure>
-<p>获取控件宽度值的时候出错了，因为xml文件我填的是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app:errorImage_layout_width=&quot;wrap_content&quot;</span><br><span class="line">app:errorImage_layout_height=&quot;wrap_content&quot;</span><br></pre></td></tr></table></figure>
-<p>也就是说不能获取枚举好的值，验证发现固定值如80dp是可以正常获取的，纠结了大半天，查看ImageView源码发现ImageView的宽度属性是ViewGroup.LayoutParams类型中的，打开ViewGroup.LayoutParams看到构造函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public LayoutParams(Context c, AttributeSet attrs) &#123;</span><br><span class="line">    TypedArray a = c.obtainStyledAttributes(attrs, R.styleable.ViewGroup_Layout);</span><br><span class="line">    setBaseAttributes(a,</span><br><span class="line">            R.styleable.ViewGroup_Layout_layout_width,</span><br><span class="line">            R.styleable.ViewGroup_Layout_layout_height);</span><br><span class="line">    a.recycle();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以发现ViewGroup的长宽是setBaseAttributes函数获取的，而setBaseAttributes的内容是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">protected void setBaseAttributes(TypedArray a, int widthAttr, int heightAttr) &#123;</span><br><span class="line">    width = a.getLayoutDimension(widthAttr, &quot;layout_width&quot;);</span><br><span class="line">    height = a.getLayoutDimension(heightAttr, &quot;layout_height&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>由此可知长宽的类型获得是TypedArray中的getLayoutDimension函数，而我使用的是getDimension，该函数只能获取一般固定值，layout有特殊函数获取，将代码改为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">errorImageWidth = a.getLayoutDimension(R.styleable.LoadingLayout_errorImage_layout_width,-2)</span><br><span class="line">errorImageHight = a.getLayoutDimension(R.styleable.LoadingLayout_errorImage_layout_height,-2)</span><br></pre></td></tr></table></figure>
-<p>成功运行。</p>
-
+<p><img src="/2018/09/10/LoadingLayout/GIF.gif" alt="GIF"></p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="1-将其添加到你的项目的build-gradle中："><a href="#1-将其添加到你的项目的build-gradle中：" class="headerlink" title="1. 将其添加到你的项目的build.gradle中："></a>1. 将其添加到你的项目的build.gradle中：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">allprojects &#123;</span><br><span class="line">		repositories &#123;</span><br><span class="line">			...</span><br><span class="line">			maven &#123; url &apos;https://jitpack.io&apos; &#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-在APP-build-gradle中添加依赖"><a href="#2-在APP-build-gradle中添加依赖" class="headerlink" title="2. 在APP build.gradle中添加依赖"></a>2. 在APP build.gradle中添加依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">		 implementation &apos;com.github.ChangJiahong:LoadingLayout:v0.1.2&apos;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-xml代码中可以引用："><a href="#3-xml代码中可以引用：" class="headerlink" title="3. xml代码中可以引用："></a>3. xml代码中可以引用：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;com.demo.cjh.loadinglayoutlib.LoadingLayout</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    app:pageType=&quot;loading_page&quot;&gt;</span><br><span class="line">&lt;/com.demo.cjh.loadinglayoutlib.LoadingLayout&gt;</span><br></pre></td></tr></table></figure>
+<p>其中包括直接定义的属性有：</p>
+<ul>
+<li>pageType : 枚举值（loading_page，error_page，empty_page） 页面类型</li>
+<li>errorImage_layout_height   ： 错误页图片的高</li>
+<li>errorImage_layout_width  ：错误页图片的宽</li>
+<li>errorImageSrc ： 错误页图片id</li>
+<li>errorImageVisible ：错误页图片是否显示</li>
+<li>errorText ：错误页提示字</li>
+<li>errorTextSize ： 错误页提示字大小</li>
+<li>errorTextColor ： 错误页提示字颜色</li>
+<li>errorBtnText ：错误页按钮提示字</li>
+<li>errorBtnTextColor ：错误页按钮字颜色</li>
+<li>errorBtnTextSize ： 错误按钮提示字大小</li>
+</ul>
+<hr>
+<ul>
+<li>emptyImage_layout_width ：空页图片的宽</li>
+<li>emptyImage_layout_height ：空页图片的高</li>
+<li>emptyImageSrc ：空页图片id</li>
+<li>emptyImageVisible ：空页图片是否显示</li>
+<li>emptyText ：空页提示字</li>
+<li>emptyTextColor ：空页提示字颜色</li>
+<li>emptyTextSize ：空页提示字大小</li>
+</ul>
+<hr>
+<ul>
+<li>lodingText ：加载页提示字</li>
+<li>loadingTextColor ：加载页提示字颜色</li>
+<li>loadingTextSize ：加载页提示字大小</li>
+</ul>
+<hr>
+<h4 id="在代码中可以直接设置相关对象："><a href="#在代码中可以直接设置相关对象：" class="headerlink" title="在代码中可以直接设置相关对象："></a>在代码中可以直接设置相关对象：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 切换页面</span><br><span class="line">loadingProgress.state = LoadingLayout.error_page</span><br><span class="line">loadingProgress.show()</span><br><span class="line"></span><br><span class="line">// 加载自定义页面</span><br><span class="line">loadingProgress.state = LoadingLayout.define_Page</span><br><span class="line">loadingProgress.setDefinePage(R.layout.define_layout)</span><br><span class="line">loadingProgress.show()</span><br><span class="line"></span><br><span class="line">// 设置页面gravity</span><br><span class="line">loadingProgress.loadingPage.gravity = Gravity.BOTTOM</span><br></pre></td></tr></table></figure>
+<h4 id="demo的xml"><a href="#demo的xml" class="headerlink" title="demo的xml"></a>demo的xml</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    tools:context=&quot;.MainActivity&quot;&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;match_parent&quot;&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;Button</span><br><span class="line">            android:id=&quot;@+id/btn1&quot;</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:text=&quot;加载&quot; /&gt;</span><br><span class="line">        &lt;Button</span><br><span class="line">            android:id=&quot;@+id/btn2&quot;</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:text=&quot;错误&quot; /&gt;</span><br><span class="line">        &lt;Button</span><br><span class="line">            android:id=&quot;@+id/btn3&quot;</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:text=&quot;空页面&quot; /&gt;</span><br><span class="line">        &lt;Button</span><br><span class="line">            android:id=&quot;@+id/btn5&quot;</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:text=&quot;自定义&quot;/&gt;</span><br><span class="line">        &lt;Button</span><br><span class="line">            android:id=&quot;@+id/btn4&quot;</span><br><span class="line">            android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:text=&quot;全不显示&quot;/&gt;</span><br><span class="line">    &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;com.demo.cjh.loadinglayoutlib.LoadingLayout</span><br><span class="line">        android:id=&quot;@+id/loadingProgress&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;match_parent&quot;</span><br><span class="line">        &gt;</span><br><span class="line"></span><br><span class="line">    &lt;/com.demo.cjh.loadinglayoutlib.LoadingLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;/RelativeLayout&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="kt代码"><a href="#kt代码" class="headerlink" title="kt代码"></a>kt代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">class MainActivity : AppCompatActivity(), View.OnClickListener &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    override fun onCreate(savedInstanceState: Bundle?) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState)</span><br><span class="line">        setContentView(R.layout.activity_main)</span><br><span class="line"></span><br><span class="line">        btn1.setOnClickListener(this)</span><br><span class="line">        btn2.setOnClickListener(this)</span><br><span class="line">        btn3.setOnClickListener(this)</span><br><span class="line">        btn4.setOnClickListener(this)</span><br><span class="line">        btn5.setOnClickListener(this)</span><br><span class="line"></span><br><span class="line">        loadingProgress.setErrorClickListener &#123;</span><br><span class="line">            Toast.makeText(this,&quot;重试了&quot;,Toast.LENGTH_LONG).show()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun onClick(v: View?) &#123;</span><br><span class="line"></span><br><span class="line">        when(v!!.id)&#123;</span><br><span class="line">            R.id.btn1 -&gt;&#123;</span><br><span class="line">                loadingProgress.state = LoadingLayout.loading_page</span><br><span class="line">                loadingProgress.show()</span><br><span class="line">            &#125;</span><br><span class="line">            R.id.btn2 -&gt;&#123;</span><br><span class="line">                loadingProgress.state = LoadingLayout.error_page</span><br><span class="line">                loadingProgress.show()</span><br><span class="line">            &#125;</span><br><span class="line">            R.id.btn3 -&gt;&#123;</span><br><span class="line">                loadingProgress.state = LoadingLayout.empty_page</span><br><span class="line">                loadingProgress.show()</span><br><span class="line">            &#125;</span><br><span class="line">            R.id.btn4 -&gt;&#123;</span><br><span class="line">                loadingProgress.gone()</span><br><span class="line">            &#125;</span><br><span class="line">            R.id.btn5 -&gt;&#123;</span><br><span class="line">                loadingProgress.state = LoadingLayout.define_Page</span><br><span class="line">                loadingProgress.setDefinePage(R.layout.define_layout)</span><br><span class="line">                loadingProgress.show()</span><br><span class="line">                //loadingProgress.show()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -281,7 +308,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://changjiahong.github.io/2018/09/09/获取自定义属性宽度错误/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://changjiahong.github.io/2018/09/10/LoadingLayout/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -295,18 +322,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/10/LoadingLayout/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          安卓中一个好用的空白页，错误页，加载页切换插件
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/09/08/AndroidStudio无线调试手机/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Android Studio无线调试手机</div>
+    <a href="/2018/09/09/获取自定义属性宽度错误/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Can&#39;t convert value at index 11 to dimension:type=0x10</div>
       <i class="icon-circle-right"></i>
     </a>
   
