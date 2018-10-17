@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://changjiahong.github.io">
-  <title>Can&#39;t convert value at index 11 to dimension:type=0x10 | 破小孩的博客</title>
+  <title>Tag: 网络 | 破小孩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近开发时获取自定义layout_width、layout_height属性时报如下错误： 123Caused by: java.lang.UnsupportedOperationException: Can&amp;apos;t convert value at index 11 to dimension: type=0x10        at android.content.res.TypedArr">
-<meta name="keywords" content="安卓开发">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Can&#39;t convert value at index 11 to dimension:type=0x10">
-<meta property="og:url" content="https://changjiahong.github.io/2018/09/09/获取自定义属性宽度错误/index.html">
+  <meta name="description" content="在校码农">
+<meta name="keywords" content="java,kotlin,移动开发,程序猿">
+<meta property="og:type" content="website">
+<meta property="og:title" content="破小孩的博客">
+<meta property="og:url" content="https://changjiahong.github.io/tags/网络/index.html">
 <meta property="og:site_name" content="破小孩的博客">
-<meta property="og:description" content="最近开发时获取自定义layout_width、layout_height属性时报如下错误： 123Caused by: java.lang.UnsupportedOperationException: Can&amp;apos;t convert value at index 11 to dimension: type=0x10        at android.content.res.TypedArr">
+<meta property="og:description" content="在校码农">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-09T17:10:43.835Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Can&#39;t convert value at index 11 to dimension:type=0x10">
-<meta name="twitter:description" content="最近开发时获取自定义layout_width、layout_height属性时报如下错误： 123Caused by: java.lang.UnsupportedOperationException: Can&amp;apos;t convert value at index 11 to dimension: type=0x10        at android.content.res.TypedArr">
+<meta name="twitter:title" content="破小孩的博客">
+<meta name="twitter:description" content="在校码农">
   
     <link rel="alternative" href="/atom.xml" title="破小孩的博客" type="application/atom+xml">
   
@@ -151,195 +150,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-获取自定义属性宽度错误" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Can&#39;t convert value at index 11 to dimension:type=0x10
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/10/17/不用第三方实现内网穿透/" class="archive-article-date">
+  	<time datetime="2018-10-17T07:24:06.023Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-17</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/10/17/不用第三方实现内网穿透/">不用第三方实现内网穿透</a>
     </h1>
   
 
-        
-        <a href="/2018/09/09/获取自定义属性宽度错误/" class="archive-article-date">
-  	<time datetime="2018-09-09T15:48:44.058Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近开发时获取自定义layout_width、layout_height属性时报如下错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Caused by: java.lang.UnsupportedOperationException: Can&apos;t convert value at index 11 to dimension: type=0x10</span><br><span class="line">        at android.content.res.TypedArray.getDimension(TypedArray.java:621)</span><br><span class="line">        at com.demo.cjh.myapplication.LoadingLayout.&lt;init&gt;(LoadingLayout.kt:147)</span><br></pre></td></tr></table></figure>
-<p>不能将获取的值转换成dimension类型，</p>
-<a id="more"></a>
-<p>打开出错代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">errorImageWidth = a.getDimension(R.styleable.LoadingLayout_errorImage_layout_width,-2f).toInt()</span><br><span class="line">errorImageHight = a.getDimension(R.styleable.LoadingLayout_errorImage_layout_height,-2f).toInt()</span><br></pre></td></tr></table></figure>
-<p>获取控件宽度值的时候出错了，因为xml文件我填的是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app:errorImage_layout_width=&quot;wrap_content&quot;</span><br><span class="line">app:errorImage_layout_height=&quot;wrap_content&quot;</span><br></pre></td></tr></table></figure>
-<p>也就是说不能获取枚举好的值，验证发现固定值如80dp是可以正常获取的，纠结了大半天，查看ImageView源码发现ImageView的宽度属性是ViewGroup.LayoutParams类型中的，打开ViewGroup.LayoutParams看到构造函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public LayoutParams(Context c, AttributeSet attrs) &#123;</span><br><span class="line">    TypedArray a = c.obtainStyledAttributes(attrs, R.styleable.ViewGroup_Layout);</span><br><span class="line">    setBaseAttributes(a,</span><br><span class="line">            R.styleable.ViewGroup_Layout_layout_width,</span><br><span class="line">            R.styleable.ViewGroup_Layout_layout_height);</span><br><span class="line">    a.recycle();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以发现ViewGroup的长宽是setBaseAttributes函数获取的，而setBaseAttributes的内容是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">protected void setBaseAttributes(TypedArray a, int widthAttr, int heightAttr) &#123;</span><br><span class="line">    width = a.getLayoutDimension(widthAttr, &quot;layout_width&quot;);</span><br><span class="line">    height = a.getLayoutDimension(heightAttr, &quot;layout_height&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>由此可知长宽的类型获得是TypedArray中的getLayoutDimension函数，而我使用的是getDimension，该函数只能获取一般固定值，layout有特殊函数获取，将代码改为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">errorImageWidth = a.getLayoutDimension(R.styleable.LoadingLayout_errorImage_layout_width,-2)</span><br><span class="line">errorImageHight = a.getLayoutDimension(R.styleable.LoadingLayout_errorImage_layout_height,-2)</span><br></pre></td></tr></table></figure>
-<p>成功运行。</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">安卓开发</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://changjiahong.github.io/2018/09/09/获取自定义属性宽度错误/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/09/10/LoadingLayout/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          安卓中一个好用的空白页，错误页，加载页切换插件
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/09/08/AndroidStudio无线调试手机/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Android Studio无线调试手机</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -362,9 +226,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
