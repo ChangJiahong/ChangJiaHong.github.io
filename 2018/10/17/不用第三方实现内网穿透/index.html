@@ -16,17 +16,17 @@
 <meta property="og:site_name" content="破小孩的博客">
 <meta property="og:description" content="我们都知道想要别人访问自己的计算机，必须要有一个公网ip。而一般服务器所具有的公网ip是固定的，家用个人电脑，或者宽带拨号上网的公网ip是网络运营商随机分配的。所以说并不是个人电脑不能充当服务器，是因为个人电脑的ip是随机分配的，随时变化，所以别人访问你的电脑必须不断的更新你的公网ip才可以。 我猜测，如果知道本机的公网ip，是不是可以直接网络映射到外网去，首先打开控制台执行命令ipconfig">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://changjiahong.github.io/2018/10/17/不用第三方实现内网穿透/笔记/内网穿透/1.png">
-<meta property="og:image" content="https://changjiahong.github.io/2018/10/17/不用第三方实现内网穿透/笔记/内网穿透/2.jpg">
-<meta property="og:image" content="https://changjiahong.github.io/2018/10/17/不用第三方实现内网穿透/笔记/内网穿透/3.png">
-<meta property="og:image" content="https://changjiahong.github.io/2018/10/17/不用第三方实现内网穿透/笔记/内网穿透/4.png">
-<meta property="og:image" content="https://changjiahong.github.io/2018/10/17/不用第三方实现内网穿透/笔记/内网穿透/5.png">
-<meta property="og:image" content="https://changjiahong.github.io/2018/10/17/不用第三方实现内网穿透/笔记/内网穿透/6.png">
-<meta property="og:updated_time" content="2018-10-17T07:26:41.416Z">
+<meta property="og:image" content="https://changjiahong.github.io/2018/10/17/不用第三方实现内网穿透/1.png">
+<meta property="og:image" content="https://changjiahong.github.io/2018/10/17/不用第三方实现内网穿透/2.jpg">
+<meta property="og:image" content="https://changjiahong.github.io/2018/10/17/不用第三方实现内网穿透/3.png">
+<meta property="og:image" content="https://changjiahong.github.io/2018/10/17/不用第三方实现内网穿透/4.png">
+<meta property="og:image" content="https://changjiahong.github.io/2018/10/17/不用第三方实现内网穿透/5.png">
+<meta property="og:image" content="https://changjiahong.github.io/2018/10/17/不用第三方实现内网穿透/6.png">
+<meta property="og:updated_time" content="2018-10-17T07:31:08.197Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="不用第三方实现内网穿透">
 <meta name="twitter:description" content="我们都知道想要别人访问自己的计算机，必须要有一个公网ip。而一般服务器所具有的公网ip是固定的，家用个人电脑，或者宽带拨号上网的公网ip是网络运营商随机分配的。所以说并不是个人电脑不能充当服务器，是因为个人电脑的ip是随机分配的，随时变化，所以别人访问你的电脑必须不断的更新你的公网ip才可以。 我猜测，如果知道本机的公网ip，是不是可以直接网络映射到外网去，首先打开控制台执行命令ipconfig">
-<meta name="twitter:image" content="https://changjiahong.github.io/2018/10/17/不用第三方实现内网穿透/笔记/内网穿透/1.png">
+<meta name="twitter:image" content="https://changjiahong.github.io/2018/10/17/不用第三方实现内网穿透/1.png">
   
     <link rel="alternative" href="/atom.xml" title="破小孩的博客" type="application/atom+xml">
   
@@ -181,22 +181,22 @@
         <p>我们都知道想要别人访问自己的计算机，必须要有一个公网ip。而一般服务器所具有的公网ip是固定的，家用个人电脑，或者宽带拨号上网的公网ip是网络运营商随机分配的。所以说并不是个人电脑不能充当服务器，是因为个人电脑的ip是随机分配的，随时变化，所以别人访问你的电脑必须不断的更新你的公网ip才可以。</p>
 <p>我猜测，如果知道本机的公网ip，是不是可以直接网络映射到外网去，首先打开控制台执行命令ipconfig 查看公网ip，开头除192 或者172的一般都是公网ip </p>
 <a id="more"></a>
-<p><img src="/2018/10/17/不用第三方实现内网穿透/笔记\内网穿透\1.png" alt="1"></p>
-<p>我们可以看到100.115.156.3 即使本机的公网ip，为了验证是否正确，我在本地随手搭建了一个服务器，使用该ip访问<img src="/2018/10/17/不用第三方实现内网穿透/笔记\内网穿透\2.jpg" alt="2"></p>
+<p><img src="/2018/10/17/不用第三方实现内网穿透/1.png" alt="1"></p>
+<p>我们可以看到100.115.156.3 即使本机的公网ip，为了验证是否正确，我在本地随手搭建了一个服务器，使用该ip访问<img src="/2018/10/17/不用第三方实现内网穿透/2.jpg" alt="2"></p>
 <p>成功访问，所以我们现在有一个方案，使用阿里云的域名解析功能，将域名映射到该ip，然后不断获取本地公网ip与阿里云解析得到的ip对比是否相同，如果不相同就更新映射的ip地址，这样就实现了内网映射到外网。</p>
 <p>首先购买阿里域名，便宜的一年就10几块钱</p>
-<p><img src="/2018/10/17/不用第三方实现内网穿透/笔记\内网穿透\3.png" alt="3"></p>
+<p><img src="/2018/10/17/不用第三方实现内网穿透/3.png" alt="3"></p>
 <p>点击域名解析，</p>
-<p><img src="/2018/10/17/不用第三方实现内网穿透/笔记\内网穿透\4.png" alt="4"></p>
+<p><img src="/2018/10/17/不用第三方实现内网穿透/4.png" alt="4"></p>
 <p>添加记录</p>
-<p><img src="/2018/10/17/不用第三方实现内网穿透/笔记\内网穿透\5.png" alt="5"></p>
+<p><img src="/2018/10/17/不用第三方实现内网穿透/5.png" alt="5"></p>
 <p>指向你的ip地址就可以了，下面我们使用代码实现：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* 获取本地公网ip</span><br><span class="line">*/</span><br><span class="line">static String getIP()&#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            //获取所有接口，并放进枚举集合中，然后使用Collections.list()将枚举集合转换为ArrayList集合</span><br><span class="line">            Enumeration&lt;NetworkInterface&gt; enu = NetworkInterface.getNetworkInterfaces();</span><br><span class="line">            ArrayList&lt;NetworkInterface&gt; arr = Collections.list(enu);</span><br><span class="line">            for(Iterator&lt;NetworkInterface&gt; it = arr.iterator(); it.hasNext();) &#123;</span><br><span class="line">                NetworkInterface ni = it.next();</span><br><span class="line">                String intName = ni.getName(); //获取接口名</span><br><span class="line">                String displayName = ni.getDisplayName();</span><br><span class="line">                if(!intName.equals(&quot;ppp2&quot;))&#123;</span><br><span class="line">                    continue;</span><br><span class="line">                &#125;</span><br><span class="line">                //获取每个接口中的所有ip网络接口集合，因为可能有子接口</span><br><span class="line">                ArrayList&lt;InetAddress&gt; inets = Collections.list(ni.getInetAddresses());</span><br><span class="line">                for(Iterator&lt;InetAddress&gt; it1 = inets.iterator();it1.hasNext();) &#123;</span><br><span class="line">                    InetAddress inet = it1.next();</span><br><span class="line">                    //只筛选ipv4地址，否则会同时得到Ipv6地址</span><br><span class="line">                    if(inet instanceof Inet4Address) &#123;</span><br><span class="line">                        String ip = inet.getHostAddress();</span><br><span class="line">                        return ip;</span><br><span class="line"></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (SocketException s) &#123;</span><br><span class="line">            s.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>下载阿里云sdk，对域名解析功能操作，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 添加Gradle 依赖</span><br><span class="line">// https://mvnrepository.com/artifact/com.aliyun/aliyun-java-sdk-core</span><br><span class="line">   compile group: &apos;com.aliyun&apos;, name: &apos;aliyun-java-sdk-core&apos;, version: &apos;4.1.2&apos;</span><br><span class="line">   // https://mvnrepository.com/artifact/com.aliyun/aliyun-java-sdk-domain</span><br><span class="line">   compile group: &apos;com.aliyun&apos;, name: &apos;aliyun-java-sdk-domain&apos;, version: &apos;3.6.0&apos;</span><br><span class="line">   // https://mvnrepository.com/artifact/com.aliyun/aliyun-java-sdk-alidns</span><br><span class="line">   compile group: &apos;com.aliyun&apos;, name: &apos;aliyun-java-sdk-alidns&apos;, version: &apos;2.0.6&apos;</span><br></pre></td></tr></table></figure>
 <p>具体使用可以查看阿里云官方文档</p>
 <p>最终实现效果：</p>
-<p><img src="/2018/10/17/不用第三方实现内网穿透/笔记\内网穿透\6.png" alt="6"></p>
+<p><img src="/2018/10/17/不用第三方实现内网穿透/6.png" alt="6"></p>
 <p>源码见github：</p>
 <p><a href="https://github.com/ChangJiahong/AliyunNat" target="_blank" rel="noopener">https://github.com/ChangJiahong/AliyunNat</a></p>
 
@@ -440,15 +440,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
             
             <div class="clearfix"></div>
