@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://changjiahong.github.io">
-  <title>对象、矩阵与矢量化编程 | 破小孩的博客</title>
+  <title>破小孩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对象是指含有一组特征的行向量 对象的维度就是行向量的列数 表是行向量的集合 矩阵是具有相同特征和维度的对象集合">
-<meta name="keywords" content="机器学习">
-<meta property="og:type" content="article">
-<meta property="og:title" content="对象、矩阵与矢量化编程">
-<meta property="og:url" content="https://changjiahong.github.io/2018/07/03/对象、矩阵与矢量化编程/index.html">
+  <meta name="description" content="在校码农">
+<meta name="keywords" content="java,kotlin,移动开发,程序猿">
+<meta property="og:type" content="website">
+<meta property="og:title" content="破小孩的博客">
+<meta property="og:url" content="https://changjiahong.github.io/page/2/index.html">
 <meta property="og:site_name" content="破小孩的博客">
-<meta property="og:description" content="对象是指含有一组特征的行向量 对象的维度就是行向量的列数 表是行向量的集合 矩阵是具有相同特征和维度的对象集合">
+<meta property="og:description" content="在校码农">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-06T16:40:32.442Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="对象、矩阵与矢量化编程">
-<meta name="twitter:description" content="对象是指含有一组特征的行向量 对象的维度就是行向量的列数 表是行向量的集合 矩阵是具有相同特征和维度的对象集合">
+<meta name="twitter:title" content="破小孩的博客">
+<meta name="twitter:description" content="在校码农">
   
     <link rel="alternative" href="/atom.xml" title="破小孩的博客" type="application/atom+xml">
   
@@ -151,220 +150,52 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-对象、矩阵与矢量化编程" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      对象、矩阵与矢量化编程
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/31/hello-world/">Hello World</a>
     </h1>
   
 
         
-        <a href="/2018/07/03/对象、矩阵与矢量化编程/" class="archive-article-date">
-  	<time datetime="2018-07-03T08:07:58.603Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-03</time>
+        <a href="/2018/05/31/hello-world/" class="archive-article-date">
+  	<time datetime="2018-05-30T16:34:09.073Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>对象是指含有一组特征的行向量</li>
-<li>对象的维度就是行向量的列数</li>
-<li>表是行向量的集合</li>
-<li><p>矩阵是具有相同特征和维度的对象集合</p>
-<a id="more"></a>
-<blockquote>
-<p>矩阵是具有相同特征和维度的对象集合，表现为一张二维数据表</p>
-<p>一个对象表示为矩阵中的一行，一个特征表示为矩阵中的一列，每个特征都有数值型的取值</p>
-<p>特征相同、取值相异的对象集合所构成的矩阵，使对象之间既相互独立，又相互联系</p>
-<p>由特征列的取值范围所构成的矩阵空间应该具有完整性，即使能够反映出事物的空间形式或变化</p>
-</blockquote>
-</li>
-<li><p>预测或回归可以看作根据对象在某种序列上的相关性，表现为特征取值变化的一种趋势</p>
-</li>
-<li>分类、聚类和回归是机器学习最基本的主题</li>
-</ul>
-<h2 id="矢量化编程"><a href="#矢量化编程" class="headerlink" title="矢量化编程"></a>矢量化编程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># coding: utf-8</span><br><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">// 一般矩阵的数乘</span><br><span class="line">mylist =  [1,2,3,4,5]</span><br><span class="line">length = len(mylist)</span><br><span class="line">a = 10</span><br><span class="line">for indx in xrange(length):</span><br><span class="line">    mylist[indx] = a*mylist[indx]</span><br><span class="line">print mylist</span><br><span class="line"></span><br><span class="line">// 优化 使用numpy计算数乘</span><br><span class="line">mymatrix = np.mat(mylist)</span><br><span class="line">print a*mymatrix</span><br></pre></td></tr></table></figure>
-<h3 id="矩阵初始化"><a href="#矩阵初始化" class="headerlink" title="矩阵初始化"></a>矩阵初始化</h3><p> 创建一个3x5的全0矩阵和全1矩阵</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个3x5的全0矩阵和全1矩阵</span></span><br><span class="line">myZero = np.zeros([<span class="number">3</span>,<span class="number">5</span>])</span><br><span class="line"><span class="keyword">print</span> myZero</span><br><span class="line">myOnes = np.ones([<span class="number">3</span>,<span class="number">5</span>])</span><br><span class="line"><span class="keyword">print</span> myOnes</span><br></pre></td></tr></table></figure>
-<p>生成随机矩阵</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">myRand = np.random.rand(<span class="number">3</span>,<span class="number">4</span>) <span class="comment"># 3行4列随机矩阵</span></span><br><span class="line"><span class="keyword">print</span> myRand</span><br></pre></td></tr></table></figure>
-<p>单位阵</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">myEye = np.eye(<span class="number">3</span>) <span class="comment"># 3x3单位阵</span></span><br><span class="line"><span class="keyword">print</span> myEye</span><br></pre></td></tr></table></figure>
-<h3 id="矩阵的运算"><a href="#矩阵的运算" class="headerlink" title="矩阵的运算"></a>矩阵的运算</h3><p>导入包</p>
-<p><code>from numpy import *</code></p>
-<h4 id="元素加减"><a href="#元素加减" class="headerlink" title="元素加减"></a>元素加减</h4><p>条件：矩阵的行数和列数必须相同</p>
-<p> 数学公式：$(A±B)<em>{i,j} = A</em>{i,j} ± B_{i,j}$</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">myOnes = ones([<span class="number">3</span>,<span class="number">3</span>])</span><br><span class="line">myEye = eye(<span class="number">3</span>)</span><br><span class="line"><span class="keyword">print</span> myOnes - myEye</span><br><span class="line"><span class="keyword">print</span> myOnes + myEye</span><br></pre></td></tr></table></figure>
-<h4 id="矩阵数乘"><a href="#矩阵数乘" class="headerlink" title="矩阵数乘"></a>矩阵数乘</h4><p>数学公式：$ (cA)<em>{i,j} = c·A</em>{i,j}$</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mymatrix = mat([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]])</span><br><span class="line">a = <span class="number">10</span></span><br><span class="line"><span class="keyword">print</span> a * mymatrix</span><br></pre></td></tr></table></figure>
-<h4 id="矩阵所有元素求和"><a href="#矩阵所有元素求和" class="headerlink" title="矩阵所有元素求和"></a>矩阵所有元素求和</h4><p>数学公式：$ sum(A) = \sum^m_{i=1}\sum^n_{j=1}A_{i,j}$  其中1&lt;i&lt;m,1&lt;j&lt;n</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mymatrix = mat([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]])</span><br><span class="line"><span class="keyword">print</span> sum(mymatrix)</span><br></pre></td></tr></table></figure>
-<h4 id="矩阵各元素的积"><a href="#矩阵各元素的积" class="headerlink" title="矩阵各元素的积"></a>矩阵各元素的积</h4><p>矩阵的点乘同纬度对应元素的相乘。当矩阵的纬度不同时，会根据一定的广播规则将维数扩充到一致的形式</p>
-<p>数学公式：$ (A<em>B)<em>{i,j} = A</em>{i,j}</em>B_{i,j}$ </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mymatrix = mat([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]])</span><br><span class="line">mymatrix2 = <span class="number">1.5</span>*ones([<span class="number">3</span>,<span class="number">3</span>])</span><br><span class="line"><span class="keyword">print</span> multiply(mymatrix,mymatrix2)</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[ <span class="number">1.5</span>  <span class="number">3.</span>   <span class="number">4.5</span>]</span><br><span class="line"> [ <span class="number">6.</span>   <span class="number">7.5</span>  <span class="number">9.</span> ]</span><br><span class="line"> [<span class="number">10.5</span> <span class="number">12.</span>  <span class="number">13.5</span>]]</span><br></pre></td></tr></table></figure>
-<h4 id="矩阵各元素的n次幂：n-2"><a href="#矩阵各元素的n次幂：n-2" class="headerlink" title="矩阵各元素的n次幂：n=2"></a>矩阵各元素的n次幂：n=2</h4><p>数学公式：$ A_{i,j}^2 = A_{i,j}*A_{i,j}$ </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mylist = mat([[1,2,3],[4,5,6],[7,8,9]])</span><br><span class="line">print power(mylist,2)</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[ 1  4  9]</span><br><span class="line"> [16 25 36]</span><br><span class="line"> [49 64 81]]</span><br></pre></td></tr></table></figure>
-<h4 id="矩阵的乘法：矩阵乘矩阵"><a href="#矩阵的乘法：矩阵乘矩阵" class="headerlink" title="矩阵的乘法：矩阵乘矩阵"></a>矩阵的乘法：矩阵乘矩阵</h4><p>数学公式：$ [A,B]<em>{i,j} = A</em>{i,1}B_{1,j}+A_{i,2}B_{2,j}+···+A_{i,n}B_{n,j} = \sum^n_{r=1}A_{i,r}B_{r,j}$</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 矩阵的乘法：矩阵乘矩阵</span><br><span class="line">from numpy import *</span><br><span class="line"></span><br><span class="line">mymatrix = mat([[1,2,3],[4,5,6],[7,8,9]])</span><br><span class="line">mymatrix2 = mat([[1],[2],[3]])</span><br><span class="line">print mymatrix*mymatrix2</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[14]</span><br><span class="line"> [32]</span><br><span class="line"> [50]]</span><br></pre></td></tr></table></figure>
-<h4 id="矩阵的转置"><a href="#矩阵的转置" class="headerlink" title="矩阵的转置"></a>矩阵的转置</h4><p>数学公式：$ (A^T)<em>{i,j} = A</em>{j,i}$ </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from numpy import *</span><br><span class="line"></span><br><span class="line">mymatrix = mat([[1,2,3],[4,5,6],[7,8,9]])</span><br><span class="line">print mymatrix.T     # 矩阵的转置</span><br><span class="line">mymatrix.transpose() # 矩阵的转置</span><br><span class="line">print mymatrix</span><br></pre></td></tr></table></figure>
-<p>输出结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[[1 4 7]</span><br><span class="line"> [2 5 8]</span><br><span class="line"> [3 6 9]]</span><br><span class="line">[[1 2 3]</span><br><span class="line"> [4 5 6]</span><br><span class="line"> [7 8 9]]</span><br></pre></td></tr></table></figure>
-<h4 id="矩阵的其他操作：行列数、切片、复制、比较"><a href="#矩阵的其他操作：行列数、切片、复制、比较" class="headerlink" title="矩阵的其他操作：行列数、切片、复制、比较"></a>矩阵的其他操作：行列数、切片、复制、比较</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from numpy import *</span><br><span class="line">mymatrix = mat([[1,2,3],[4,5,6],[7,8,9]])</span><br><span class="line">[m,n] = shape(mymatrix) # 矩阵的行列数</span><br><span class="line">print &quot;矩阵的行数和列数：&quot;,m,n</span><br><span class="line"></span><br><span class="line">myscl1 = mymatrix[0]    # 按行切片</span><br><span class="line">print &quot;按行切片：&quot;,myscl1</span><br><span class="line"></span><br><span class="line">myscl2 = mymatrix.T[0]</span><br><span class="line">print &quot;按列切片：&quot;,myscl2</span><br><span class="line"></span><br><span class="line">mycpmat = mymatrix.copy() # 矩阵的复制</span><br><span class="line">print &quot;复制矩阵:\n&quot;,mycpmat</span><br><span class="line"></span><br><span class="line"># 比较</span><br><span class="line">print &quot;矩阵元素的比较：\n&quot;,mymatrix &lt; mymatrix.T</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">矩阵的行数和列数： 3 3</span><br><span class="line">按行切片： [[1 2 3]]</span><br><span class="line">按列切片： [[1 4 7]]</span><br><span class="line">复制矩阵:</span><br><span class="line">[[1 2 3]</span><br><span class="line"> [4 5 6]</span><br><span class="line"> [7 8 9]]</span><br><span class="line">矩阵元素的比较：</span><br><span class="line">[[False  True  True]</span><br><span class="line"> [False False  True]</span><br><span class="line"> [False False False]]</span><br></pre></td></tr></table></figure>
-<h3 id="Linalg线性代数库"><a href="#Linalg线性代数库" class="headerlink" title="Linalg线性代数库"></a>Linalg线性代数库</h3><h4 id="1-矩阵的行列式"><a href="#1-矩阵的行列式" class="headerlink" title="1.  矩阵的行列式"></a>1.  矩阵的行列式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 矩阵的行列式</span><br><span class="line">from numpy import *</span><br><span class="line"></span><br><span class="line"># n阶方阵的行列式运算</span><br><span class="line">A = mat([[1,2,4,5,7,],[9,12,11,8,2,],[6,4,3,2,1,],[9,1,3,4,5],[0,2,3,4,1]])</span><br><span class="line">print &quot;det(A):&quot;,linalg.det(A);  # 方阵的行列式</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">det(A): -811.9999999999993</span><br></pre></td></tr></table></figure>
-<h4 id="2-矩阵的逆"><a href="#2-矩阵的逆" class="headerlink" title="2.  矩阵的逆"></a>2.  矩阵的逆</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from numpy import *</span><br><span class="line"></span><br><span class="line">A = mat([[1,2,4,5,7,],[9,12,11,8,2,],[6,4,3,2,1,],[9,1,3,4,5],[0,2,3,4,1]])</span><br><span class="line">invA = linalg.inv(A) # 矩阵的逆</span><br><span class="line">print &quot;invA:&quot;,invA</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">invA: [[-0.07142857 -0.01231527  0.05295567  0.09605911 -0.00862069]</span><br><span class="line"> [ 0.21428571 -0.37684729  1.22044335 -0.46059113  0.3362069 ]</span><br><span class="line"> [-0.21428571  0.82512315 -2.04802956  0.56403941 -0.92241379]</span><br><span class="line"> [ 0.         -0.4137931   0.87931034 -0.17241379  0.81034483]</span><br><span class="line"> [ 0.21428571 -0.06650246  0.18596059 -0.08128079 -0.14655172]]</span><br></pre></td></tr></table></figure>
-<h4 id="3-矩阵的对称"><a href="#3-矩阵的对称" class="headerlink" title="3.  矩阵的对称"></a>3.  矩阵的对称</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from numpy import *</span><br><span class="line"></span><br><span class="line">A = mat([[1,2,4,5,7,],[9,12,11,8,2,],[6,4,3,2,1,],[9,1,3,4,5],[0,2,3,4,1]])</span><br><span class="line">AT = A.T  # 矩阵的对称</span><br><span class="line">print A*AT</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[[ 95 131  43  78  43]</span><br><span class="line"> [131 414 153 168  91]</span><br><span class="line"> [ 43 153  66  80  26]</span><br><span class="line"> [ 78 168  80 132  32]</span><br><span class="line"> [ 43  91  26  32  30]]</span><br></pre></td></tr></table></figure>
-<h4 id="4-矩阵的秩"><a href="#4-矩阵的秩" class="headerlink" title="4.  矩阵的秩"></a>4.  矩阵的秩</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from numpy import *</span><br><span class="line"></span><br><span class="line">A = mat([[1,2,4,5,7,],[9,12,11,8,2,],[6,4,3,2,1,],[9,1,3,4,5],[0,2,3,4,1]])</span><br><span class="line">print linalg.matrix_rank(A)  # 矩阵的秩</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5</span><br></pre></td></tr></table></figure>
-<h4 id="5-可逆矩阵求解"><a href="#5-可逆矩阵求解" class="headerlink" title="5. 可逆矩阵求解"></a>5. 可逆矩阵求解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from numpy import *</span><br><span class="line"></span><br><span class="line">A = mat([[1,2,4,5,7,],[9,12,11,8,2,],[6,4,3,2,1,],[9,1,3,4,5],[0,2,3,4,1]])</span><br><span class="line">b = [1,0,1,0,1]</span><br><span class="line">s = linalg.solve(A,b)</span><br><span class="line">print s</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[-0.0270936   1.77093596 -3.18472906  1.68965517  0.25369458]</span><br></pre></td></tr></table></figure>
-
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+        
+          <a class="article-more-a" href="/2018/05/31/hello-world/#more">more >></a>
+        
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/31/hello-world/">展开全文 >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://changjiahong.github.io/2018/07/03/对象、矩阵与矢量化编程/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/09/08/AndroidStudio无线调试手机/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Android Studio无线调试手机
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/07/02/机器学习入门-开发环境搭建/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">机器学习入门（开发环境搭建）</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -384,14 +215,12 @@
 
 
 
-  
-  
-  
 
   
-
   
-
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -414,8 +243,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
