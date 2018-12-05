@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://changjiahong.github.io">
-  <title>Archives | 破小孩的博客</title>
+  <title>Service层事务 | 破小孩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在校码农">
-<meta name="keywords" content="java,kotlin,移动开发,程序猿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="破小孩的博客">
-<meta property="og:url" content="https://changjiahong.github.io/archives/index.html">
+  <meta name="description" content="将dao层事务提升到service层​    dao层就是数据库连接层，service层就是业务层，开发中我们通常将表映射成java对象形式，建立起dao层针对表的增删改查，但dao层的对象一般只针对一个表的操作，在实际开发中我们通常需要一次修改好几张表，比如在班级系统中，如果我删除某个班级，对应的应该删除班级对应的所有学生，可是夸表的操作就需要考虑到同步性，如果删除班级成功，删除学生失败，那么删">
+<meta name="keywords" content="安卓开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Service层事务">
+<meta property="og:url" content="https://changjiahong.github.io/2018/12/06/Service层事务/index.html">
 <meta property="og:site_name" content="破小孩的博客">
-<meta property="og:description" content="在校码农">
+<meta property="og:description" content="将dao层事务提升到service层​    dao层就是数据库连接层，service层就是业务层，开发中我们通常将表映射成java对象形式，建立起dao层针对表的增删改查，但dao层的对象一般只针对一个表的操作，在实际开发中我们通常需要一次修改好几张表，比如在班级系统中，如果我删除某个班级，对应的应该删除班级对应的所有学生，可是夸表的操作就需要考虑到同步性，如果删除班级成功，删除学生失败，那么删">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-05T16:19:24.275Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="破小孩的博客">
-<meta name="twitter:description" content="在校码农">
+<meta name="twitter:title" content="Service层事务">
+<meta name="twitter:description" content="将dao层事务提升到service层​    dao层就是数据库连接层，service层就是业务层，开发中我们通常将表映射成java对象形式，建立起dao层针对表的增删改查，但dao层的对象一般只针对一个表的操作，在实际开发中我们通常需要一次修改好几张表，比如在班级系统中，如果我删除某个班级，对应的应该删除班级对应的所有学生，可是夸表的操作就需要考虑到同步性，如果删除班级成功，删除学生失败，那么删">
   
     <link rel="alternative" href="/atom.xml" title="破小孩的博客" type="application/atom+xml">
   
@@ -150,36 +151,73 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Service层事务" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Service层事务
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/06/Service层事务/" class="archive-article-date">
+
+        
+        <a href="/2018/12/06/Service层事务/" class="archive-article-date">
   	<time datetime="2018-12-05T16:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-06</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/06/Service层事务/">Service层事务</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="将dao层事务提升到service层"><a href="#将dao层事务提升到service层" class="headerlink" title="将dao层事务提升到service层"></a>将dao层事务提升到service层</h1><p>​    dao层就是数据库连接层，service层就是业务层，开发中我们通常将表映射成java对象形式，建立起dao层针对表的增删改查，但dao层的对象一般只针对一个表的操作，在实际开发中我们通常需要一次修改好几张表，比如在班级系统中，如果我删除某个班级，对应的应该删除班级对应的所有学生，可是夸表的操作就需要考虑到同步性，如果删除班级成功，删除学生失败，那么删除班级的操作应该也是撤销的，这需要回滚。</p>
+<a id="more"></a>
+<p>​    在网上很多教程中要不就是直接在dao层中添加事务，不然就是使用spring框架自动开启事务。可是安卓中没有spring框架，只好手动实现一个了。</p>
+<p>​    首先考虑到事务是在service层实现的，所以我们的数据库对象应当控制在service层中。为了避免不断创建新的数据库对象，我们使用ThreadLocal类给每一个线程储存一个数据库对象，这样可以有效避免资源浪费，也不会造成如单例模式的数据库连接单一而排队产生的等待。</p>
+<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>创建一个TransactionManager类统一管理事务的开启和关闭，提供回调接口，在service层中创建数据库对象并存入ThreadLocal中，在dao层中从线程中获取数据库对象，这样就可以保证我们在统一线程中获取到的数据库对象是一样的。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TransactionManager</span></span>(<span class="keyword">private</span> <span class="keyword">val</span> context: Context) &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> TAG = TransactionManager::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>.<span class="title">name</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">fun</span> <span class="title">doTransaction</span><span class="params">(doTransactionListener: <span class="type">DoTransactionListener</span> )</span></span>&#123;</span><br><span class="line">        doAsync &#123;</span><br><span class="line">            <span class="comment">// 创建数据库对象</span></span><br><span class="line">            <span class="keyword">val</span> db = MyDatabaseOpenHelper.writeDb(context)</span><br><span class="line">            db.beginTransaction()</span><br><span class="line">            <span class="comment">// 开启事务</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// 数据库操作</span></span><br><span class="line">                doTransactionListener.run()</span><br><span class="line">                <span class="comment">// 设置事务成功</span></span><br><span class="line">                db.setTransactionSuccessful()</span><br><span class="line">                uiThread &#123;</span><br><span class="line">                    <span class="comment">// 成功回调</span></span><br><span class="line">                    doTransactionListener.success()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">catch</span> (e: SQLException)&#123;</span><br><span class="line">                e.printStackTrace()</span><br><span class="line">                uiThread &#123;</span><br><span class="line">                    <span class="comment">// 失败回调</span></span><br><span class="line">                    doTransactionListener.error(e)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">                <span class="comment">// 提交事务</span></span><br><span class="line">                db.endTransaction()</span><br><span class="line">                db.close()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">interface</span> <span class="title">DoTransactionListener</span></span>&#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 数据库操作</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 失败回调</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">error</span><span class="params">(e: <span class="type">SQLException</span>)</span></span></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 成功回调</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">success</span><span class="params">()</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyDatabaseOpenHelper</span></span>(context: Context) : SQLiteOpenHelper(context, DB_NAME,<span class="literal">null</span>,<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">val</span> TAG = <span class="string">"MyDatabaseOpenHelper"</span></span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="comment">// 写 数据库 线程对象</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">val</span> wtol = ThreadLocal&lt;SQLiteDatabase&gt;()</span><br><span class="line">        <span class="comment">// 读 数据库 线程对象</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">val</span> rtol = ThreadLocal&lt;SQLiteDatabase&gt;()</span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">writeDb</span><span class="params">(context: <span class="type">Context</span>)</span></span>: SQLiteDatabase &#123;</span><br><span class="line">            <span class="keyword">var</span> db = wtol.<span class="keyword">get</span>()</span><br><span class="line">            Log.v(<span class="string">"DBDB"</span>,<span class="string">" 获取数据库对象"</span>)</span><br><span class="line">            <span class="keyword">if</span>(db == <span class="literal">null</span>) &#123;</span><br><span class="line">                db = MyDatabaseOpenHelper(context).writableDatabase</span><br><span class="line">                wtol.<span class="keyword">set</span>(db)</span><br><span class="line">                Log.v(<span class="string">"DBDB"</span>,<span class="string">" 创建数据库写对象"</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> db</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">readDb</span><span class="params">(context: <span class="type">Context</span>)</span></span>: SQLiteDatabase &#123;</span><br><span class="line">            <span class="keyword">var</span> db = rtol.<span class="keyword">get</span>()</span><br><span class="line">            <span class="keyword">if</span>(db == <span class="literal">null</span>) &#123;</span><br><span class="line">                db = MyDatabaseOpenHelper(context).readableDatabase</span><br><span class="line">                rtol.<span class="keyword">set</span>(db)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> db</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* dao层</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassesDaoImpl</span></span>(<span class="keyword">private</span> <span class="keyword">val</span> context: Context) : IClassesDao &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 插入</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> obj 班级对象</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">insert</span><span class="params">(obj: <span class="type">Classes</span>)</span></span>: <span class="built_in">Long</span> &#123;</span><br><span class="line">        <span class="keyword">val</span> writeDatabase = MyDatabaseOpenHelper.writeDb(context)</span><br><span class="line">        <span class="keyword">val</span> cv = ContentValues()</span><br><span class="line">        cv.put(<span class="string">"class_id"</span>, obj.classId)</span><br><span class="line">        cv.put(<span class="string">"class_name"</span>, obj.className)</span><br><span class="line">        cv.put(<span class="string">"info"</span>, obj.info)</span><br><span class="line">        cv.put(<span class="string">"institute"</span>, obj.institute)</span><br><span class="line">        cv.put(<span class="string">"speciality"</span>, obj.speciality)</span><br><span class="line">        cv.put(<span class="string">"create_time"</span>, obj.createTime)</span><br><span class="line">        <span class="keyword">return</span> writeDatabase.insert(CLASSES_TABLE, <span class="literal">null</span>, cv)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* service层</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassesServiceImpl</span></span>(<span class="keyword">private</span> <span class="keyword">val</span> context: Context) : IClassesService &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> classesDao: IClassesDao = ClassesDaoImpl(context)</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">saveClasses</span><span class="params">(className: <span class="type">String</span>, info: <span class="type">String</span>, institute: <span class="type">String</span>, speciality: <span class="type">String</span>)</span></span>: Classes? &#123;</span><br><span class="line">        <span class="keyword">val</span> classes = Classes()</span><br><span class="line">        classes.classId = generateRefID()</span><br><span class="line">        classes.className = className</span><br><span class="line">        classes.info = info</span><br><span class="line">        classes.institute = institute</span><br><span class="line">        classes.speciality = speciality</span><br><span class="line">        classes.createTime = getNow()</span><br><span class="line">        <span class="keyword">val</span> re = classesDao.insert(classes)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">if</span> (re &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            classes</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码中使用</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">TransactionManager(<span class="keyword">this</span>).doTransaction(<span class="keyword">object</span> : TransactionManager.DoTransactionListener&#123;</span><br><span class="line">                    <span class="comment">/**</span></span><br><span class="line"><span class="comment">                     * 数据库操作</span></span><br><span class="line"><span class="comment">                     */</span></span><br><span class="line">                    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">run</span><span class="params">()</span></span> &#123;</span><br><span class="line">                        classesService.deleteClassesByClassId(item.classId)</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">/**</span></span><br><span class="line"><span class="comment">                     * 失败回调</span></span><br><span class="line"><span class="comment">                     */</span></span><br><span class="line">                    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">error</span><span class="params">(e: <span class="type">android</span>.<span class="type">database</span>.<span class="type">SQLException</span>)</span></span> &#123;</span><br><span class="line">                       toast(<span class="string">"删除失败"</span>)</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">/**</span></span><br><span class="line"><span class="comment">                     * 成功回调</span></span><br><span class="line"><span class="comment">                     */</span></span><br><span class="line">                    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">success</span><span class="params">()</span></span> &#123;</span><br><span class="line">                        toast(<span class="string">"删除成功"</span>)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br></pre></td></tr></table></figure>
+<p>参考文章：<a href="https://blog.csdn.net/qyy_123456_qyy/article/details/82353257" target="_blank" rel="noopener">https://blog.csdn.net/qyy_123456_qyy/article/details/82353257</a></p>
+<p>​        <a href="https://blog.csdn.net/qq_36115651/article/details/79871813" target="_blank" rel="noopener">https://blog.csdn.net/qq_36115651/article/details/79871813</a></p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,364 +229,105 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://changjiahong.github.io/2018/12/06/Service层事务/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/04/接口隔离原则/" class="archive-article-date">
-  	<time datetime="2018-12-04T09:10:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/12/04/接口隔离原则/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">接口隔离原则</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/04/接口隔离原则/">接口隔离原则</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/04/依赖倒置原则/" class="archive-article-date">
-  	<time datetime="2018-12-04T08:52:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/04/依赖倒置原则/">依赖倒置原则</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/04/里氏替换原则/" class="archive-article-date">
-  	<time datetime="2018-12-04T08:45:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/04/里氏替换原则/">里氏替换原则</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/04/开闭原则/" class="archive-article-date">
-  	<time datetime="2018-12-04T08:29:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/04/开闭原则/">开闭原则</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/04/单一职责原则/" class="archive-article-date">
-  	<time datetime="2018-12-04T08:01:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/04/单一职责原则/">单一职责原则</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/21/重构之路/" class="archive-article-date">
-  	<time datetime="2018-11-21T14:36:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/21/重构之路/">重构之路</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">编程之道</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/09/安卓基本知识/" class="archive-article-date">
-  	<time datetime="2018-11-09T11:56:36.345Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/09/安卓基本知识/">安卓基本知识</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">安卓开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/10/17/内网穿透/" class="archive-article-date">
-  	<time datetime="2018-10-17T07:24:06.023Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/17/内网穿透/">不用第三方实现内网穿透</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/10/LoadingLayout/" class="archive-article-date">
-  	<time datetime="2018-09-10T07:05:26.183Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/10/LoadingLayout/">安卓中一个好用的空白页，错误页，加载页切换插件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">安卓开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -572,8 +351,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
