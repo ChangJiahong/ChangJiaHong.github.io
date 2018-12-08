@@ -16,14 +16,14 @@
 <meta property="og:site_name" content="破小孩的博客">
 <meta property="og:description" content="反编译易班今天我们来试着反编译易班软件">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://changjiahong.github.io/反编译易班/1.png">
-<meta property="og:image" content="https://changjiahong.github.io/反编译易班/2.png">
-<meta property="og:image" content="https://changjiahong.github.io/反编译易班/3.png">
-<meta property="og:updated_time" content="2018-12-08T05:24:36.028Z">
+<meta property="og:image" content="https://changjiahong.github.io/2018/12/08/反编译易班/1.png">
+<meta property="og:image" content="https://changjiahong.github.io/2018/12/08/反编译易班/2.png">
+<meta property="og:image" content="https://changjiahong.github.io/2018/12/08/反编译易班/3.png">
+<meta property="og:updated_time" content="2018-12-08T05:46:03.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="反编译易班">
 <meta name="twitter:description" content="反编译易班今天我们来试着反编译易班软件">
-<meta name="twitter:image" content="https://changjiahong.github.io/反编译易班/1.png">
+<meta name="twitter:image" content="https://changjiahong.github.io/2018/12/08/反编译易班/1.png">
   
     <link rel="alternative" href="/atom.xml" title="破小孩的博客" type="application/atom+xml">
   
@@ -189,10 +189,10 @@
 </ul>
 <h3 id="一、首先下载apktool-工具，得到apktool-bat-和-apktool-jar包"><a href="#一、首先下载apktool-工具，得到apktool-bat-和-apktool-jar包" class="headerlink" title="一、首先下载apktool 工具，得到apktool.bat 和 apktool.jar包"></a>一、首先下载apktool 工具，得到apktool.bat 和 apktool.jar包</h3><p>这个jar包就可以帮助我们解析apk的资源文件</p>
 <p>如下图输入命令<strong>apktool.bat d -f  test.apk </strong> 得到的文件就是apk的图片，xml资源</p>
-<p><img src="/反编译易班/1.png" alt=""></p>
+<p><img src="/2018/12/08/反编译易班/1.png" alt=""></p>
 <h3 id="二、-下载dex2jar文件-，将apk文件解压后会得到classes-dex文件，这就是apk的java源码文件，使用dex2jar可以解析成jar包的形式。"><a href="#二、-下载dex2jar文件-，将apk文件解压后会得到classes-dex文件，这就是apk的java源码文件，使用dex2jar可以解析成jar包的形式。" class="headerlink" title="二、 下载dex2jar文件 ，将apk文件解压后会得到classes.dex文件，这就是apk的java源码文件，使用dex2jar可以解析成jar包的形式。"></a>二、 下载dex2jar文件 ，将apk文件解压后会得到classes.dex文件，这就是apk的java源码文件，使用dex2jar可以解析成jar包的形式。</h3><p>将classes.dex放到之前解压出来的工具dex2jar文件夹内，输入命令：<strong>dex2jar.bat   classes.dex </strong> 会生成classes.jar文件，将此文件拷贝到jd-gui文件夹下，打开jd-gui即可查看到源码。</p>
-<p><img src="/反编译易班/2.png" alt=""></p>
-<p><img src="/反编译易班/3.png" alt=""></p>
+<p><img src="/2018/12/08/反编译易班/2.png" alt=""></p>
+<p><img src="/2018/12/08/反编译易班/3.png" alt=""></p>
 
       
 
