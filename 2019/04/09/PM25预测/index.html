@@ -6,26 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://changjiahong.github.io">
-  <title>Android Studio无线调试手机 | 破小孩的博客</title>
+  <title>PM2.5预测（李宏毅机器学习hw1） | 破小孩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在使用Android studio开发安卓应用时，调试是必不可少的，由于模拟器慢和不真实，我们经常使用真机调试应用，但真机有时也很不方便，需要数据线的连接，完全限制的手机的自由，我就经常在调试时遭遇到手机没电自动关机，但是因为USB插在电脑上，充电非常慢，必须停下调试，去充电。又或者出门在外身边没有 数据线。今天尝试用Android Studio无线调试手机">
-<meta name="keywords" content="安卓开发">
+  <meta name="description" content="通过前8个小时PM2.5的值预测9个小时的PM2.5的值 直到做完我才发现原题是根据前9个小时预测第10个小时的值。不过原理都是一样的。">
+<meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android Studio无线调试手机">
-<meta property="og:url" content="https://changjiahong.github.io/2018/09/08/AndroidStudio无线调试手机/index.html">
+<meta property="og:title" content="PM2.5预测（李宏毅机器学习hw1）">
+<meta property="og:url" content="https://changjiahong.github.io/2019/04/09/PM25预测/index.html">
 <meta property="og:site_name" content="破小孩的博客">
-<meta property="og:description" content="在使用Android studio开发安卓应用时，调试是必不可少的，由于模拟器慢和不真实，我们经常使用真机调试应用，但真机有时也很不方便，需要数据线的连接，完全限制的手机的自由，我就经常在调试时遭遇到手机没电自动关机，但是因为USB插在电脑上，充电非常慢，必须停下调试，去充电。又或者出门在外身边没有 数据线。今天尝试用Android Studio无线调试手机">
+<meta property="og:description" content="通过前8个小时PM2.5的值预测9个小时的PM2.5的值 直到做完我才发现原题是根据前9个小时预测第10个小时的值。不过原理都是一样的。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://changjiahong.github.io/2018/09/08/AndroidStudio无线调试手机/4.png">
-<meta property="og:image" content="https://changjiahong.github.io/2018/09/08/AndroidStudio无线调试手机/3.png">
-<meta property="og:image" content="https://changjiahong.github.io/2018/09/08/AndroidStudio无线调试手机/1.png">
-<meta property="og:image" content="https://changjiahong.github.io/2018/09/08/AndroidStudio无线调试手机/2.png">
-<meta property="og:image" content="https://changjiahong.github.io/2018/09/08/AndroidStudio无线调试手机/5.png">
-<meta property="og:updated_time" content="2018-09-08T11:03:08.213Z">
+<meta property="og:image" content="https://changjiahong.github.io/2019/04/09/PM25预测/trainingData.png">
+<meta property="og:image" content="https://changjiahong.github.io/2019/04/09/PM25预测/testingData.png">
+<meta property="og:image" content="https://changjiahong.github.io/2019/04/09/PM25预测/训练集误差.png">
+<meta property="og:image" content="https://changjiahong.github.io/2019/04/09/PM25预测/训练集误差abs.png">
+<meta property="og:image" content="https://changjiahong.github.io/2019/04/09/PM25预测/avgErrTrain.png">
+<meta property="og:image" content="https://changjiahong.github.io/2019/04/09/PM25预测/测试集误差.png">
+<meta property="og:image" content="https://changjiahong.github.io/2019/04/09/PM25预测/测试集误差abs.png">
+<meta property="og:image" content="https://changjiahong.github.io/2019/04/09/PM25预测/avgErrTest.png">
+<meta property="og:updated_time" content="2019-04-09T15:50:15.453Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android Studio无线调试手机">
-<meta name="twitter:description" content="在使用Android studio开发安卓应用时，调试是必不可少的，由于模拟器慢和不真实，我们经常使用真机调试应用，但真机有时也很不方便，需要数据线的连接，完全限制的手机的自由，我就经常在调试时遭遇到手机没电自动关机，但是因为USB插在电脑上，充电非常慢，必须停下调试，去充电。又或者出门在外身边没有 数据线。今天尝试用Android Studio无线调试手机">
-<meta name="twitter:image" content="https://changjiahong.github.io/2018/09/08/AndroidStudio无线调试手机/4.png">
+<meta name="twitter:title" content="PM2.5预测（李宏毅机器学习hw1）">
+<meta name="twitter:description" content="通过前8个小时PM2.5的值预测9个小时的PM2.5的值 直到做完我才发现原题是根据前9个小时预测第10个小时的值。不过原理都是一样的。">
+<meta name="twitter:image" content="https://changjiahong.github.io/2019/04/09/PM25预测/trainingData.png">
   
     <link rel="alternative" href="/atom.xml" title="破小孩的博客" type="application/atom+xml">
   
@@ -157,34 +160,46 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-AndroidStudio无线调试手机" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-PM25预测" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Android Studio无线调试手机
+      PM2.5预测（李宏毅机器学习hw1）
     </h1>
   
 
         
-        <a href="/2018/09/08/AndroidStudio无线调试手机/" class="archive-article-date">
-  	<time datetime="2018-09-08T10:37:47.500Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-08</time>
+        <a href="/2019/04/09/PM25预测/" class="archive-article-date">
+  	<time datetime="2019-04-09T15:24:07.978Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="在使用Android-studio开发安卓应用时，调试是必不可少的，由于模拟器慢和不真实，我们经常使用真机调试应用，但真机有时也很不方便，需要数据线的连接，完全限制的手机的自由，我就经常在调试时遭遇到手机没电自动关机，但是因为USB插在电脑上，充电非常慢，必须停下调试，去充电。又或者出门在外身边没有-数据线。"><a href="#在使用Android-studio开发安卓应用时，调试是必不可少的，由于模拟器慢和不真实，我们经常使用真机调试应用，但真机有时也很不方便，需要数据线的连接，完全限制的手机的自由，我就经常在调试时遭遇到手机没电自动关机，但是因为USB插在电脑上，充电非常慢，必须停下调试，去充电。又或者出门在外身边没有-数据线。" class="headerlink" title="在使用Android studio开发安卓应用时，调试是必不可少的，由于模拟器慢和不真实，我们经常使用真机调试应用，但真机有时也很不方便，需要数据线的连接，完全限制的手机的自由，我就经常在调试时遭遇到手机没电自动关机，但是因为USB插在电脑上，充电非常慢，必须停下调试，去充电。又或者出门在外身边没有 数据线。"></a>在使用Android studio开发安卓应用时，调试是必不可少的，由于模拟器慢和不真实，我们经常使用真机调试应用，但真机有时也很不方便，需要数据线的连接，完全限制的手机的自由，我就经常在调试时遭遇到手机没电自动关机，但是因为USB插在电脑上，充电非常慢，必须停下调试，去充电。又或者出门在外身边没有 数据线。</h4><h2 id="今天尝试用Android-Studio无线调试手机"><a href="#今天尝试用Android-Studio无线调试手机" class="headerlink" title="今天尝试用Android Studio无线调试手机"></a>今天尝试用Android Studio无线调试手机</h2><a id="more"></a>
-<h3 id="1-首先让电脑和手机置于同一局域网之内，可以手机给电脑开热点，或者电脑给手机开热点。"><a href="#1-首先让电脑和手机置于同一局域网之内，可以手机给电脑开热点，或者电脑给手机开热点。" class="headerlink" title="1. 首先让电脑和手机置于同一局域网之内，可以手机给电脑开热点，或者电脑给手机开热点。"></a>1. 首先让电脑和手机置于同一局域网之内，可以手机给电脑开热点，或者电脑给手机开热点。</h3><h4 id="如果手机开热点可以在电脑的网络设置里查看手机ip"><a href="#如果手机开热点可以在电脑的网络设置里查看手机ip" class="headerlink" title="如果手机开热点可以在电脑的网络设置里查看手机ip"></a>如果手机开热点可以在电脑的网络设置里查看手机ip</h4><p><img src="/2018/09/08/AndroidStudio无线调试手机/4.png" alt="4"></p>
-<p><img src="/2018/09/08/AndroidStudio无线调试手机/3.png" alt="3"></p>
-<h3 id="2-用USB连接电脑，控制台输入命令-adb-devices-，有设备编号为连接成功"><a href="#2-用USB连接电脑，控制台输入命令-adb-devices-，有设备编号为连接成功" class="headerlink" title="2. 用USB连接电脑，控制台输入命令 adb devices ，有设备编号为连接成功"></a>2. 用USB连接电脑，控制台输入命令 adb devices ，有设备编号为连接成功</h3><p>控制台使用cmd或者Android Studio的termianl都可以</p>
-<p><img src="/2018/09/08/AndroidStudio无线调试手机/1.png" alt="1"></p>
-<h3 id="3-输入命令adb-tcpip-“端口号”-端口号可是随意指定，只要没被占用就可以，一般我们使用5555"><a href="#3-输入命令adb-tcpip-“端口号”-端口号可是随意指定，只要没被占用就可以，一般我们使用5555" class="headerlink" title="3. 输入命令adb tcpip + “端口号” 端口号可是随意指定，只要没被占用就可以，一般我们使用5555"></a>3. 输入命令adb tcpip + “端口号” 端口号可是随意指定，只要没被占用就可以，一般我们使用5555</h3><p><img src="/2018/09/08/AndroidStudio无线调试手机/2.png" alt="2"></p>
-<h3 id="4-断开数据线，输入命令adb-connect-”手机IP地址”-“端口号”-有connected-to-输出即为连接成功"><a href="#4-断开数据线，输入命令adb-connect-”手机IP地址”-“端口号”-有connected-to-输出即为连接成功" class="headerlink" title="4. 断开数据线，输入命令adb connect +”手机IP地址”:“端口号” 有connected to 输出即为连接成功"></a>4. 断开数据线，输入命令adb connect +”手机IP地址”:“端口号” 有connected to 输出即为连接成功</h3><p><img src="/2018/09/08/AndroidStudio无线调试手机/5.png" alt="5"></p>
-<h3 id="5-使用的时候直接点run-app就可以了，和数据线并无区别"><a href="#5-使用的时候直接点run-app就可以了，和数据线并无区别" class="headerlink" title="5. 使用的时候直接点run app就可以了，和数据线并无区别"></a>5. 使用的时候直接点run app就可以了，和数据线并无区别</h3>
+        <p>通过前8个小时PM2.5的值预测9个小时的PM2.5的值</p>
+<p>直到做完我才发现原题是根据前9个小时预测第10个小时的值。不过原理都是一样的。</p>
+<a id="more"></a>
+<h2 id="首先，给定的数据有训练集和测试集"><a href="#首先，给定的数据有训练集和测试集" class="headerlink" title="首先，给定的数据有训练集和测试集"></a>首先，给定的数据有训练集和测试集</h2><p>训练集数据：</p>
+<p>格式：</p>
+<p>前三列是时间，测站，所测项目，之后按照序号分别是0时，1时，2时，…，23时的各个项目指标</p>
+<p><img src="/2019/04/09/PM25预测/trainingData.png" alt="1554821518657"></p>
+<p>测试集数据：</p>
+<p>格式：9个小时的项目数据</p>
+<p><img src="/2019/04/09/PM25预测/testingData.png" alt="1554821583754"></p>
+<h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><p>取前8个小时PM2.5数据放到x_data中，第9个小时的数据放到y_data中。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 特征值 pm2.5 前8个小时的pm2.5的值</span></span><br><span class="line">train_x_data = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第9个小时的pm2.5值</span></span><br><span class="line">train_y_data = []</span><br><span class="line"></span><br><span class="line">filename = <span class="string">'trainingData/train.csv'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(filename, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    reader = csv.reader(f)</span><br><span class="line">    ls = list(reader)</span><br><span class="line"></span><br><span class="line">    k = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> tqdm(range(<span class="number">10</span>, len(ls), <span class="number">18</span>)):</span><br><span class="line">        k += <span class="number">1</span></span><br><span class="line">        <span class="comment"># print(str(k) + ' ' + ls[i][2])</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">3</span>, <span class="number">19</span>):</span><br><span class="line">            <span class="comment"># print(ls[i][j:j+8])</span></span><br><span class="line">            train_x_data.append(ls[i][j:j+<span class="number">8</span>])</span><br><span class="line">            <span class="comment"># print(ls[i][j+8])</span></span><br><span class="line">            train_y_data.append(ls[i][j+<span class="number">8</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">train_x_data = np.array(train_x_data, float)</span><br><span class="line">train_y_data = np.array(train_y_data, float)</span><br><span class="line"></span><br><span class="line">np.savetxt(<span class="string">"trainingData/xData_pm25.csv"</span>, train_x_data, fmt=<span class="string">'%.1f'</span>, delimiter=<span class="string">","</span>)</span><br><span class="line">np.savetxt(<span class="string">"trainingData/yData_pm25.csv"</span>, train_y_data, fmt=<span class="string">'%.1f'</span>, delimiter=<span class="string">","</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试数据处理</span></span><br><span class="line"></span><br><span class="line">testData = <span class="string">'testingData/'</span></span><br><span class="line"></span><br><span class="line">test_x_data = []</span><br><span class="line">test_y_data = []</span><br><span class="line"><span class="keyword">with</span> open(testData+<span class="string">'test.csv'</span>, encoding=<span class="string">"GBK"</span>) <span class="keyword">as</span> f:</span><br><span class="line">    reader = csv.reader(f)</span><br><span class="line">    ls = list(reader)</span><br><span class="line">    k = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> tqdm(range(<span class="number">9</span>, len(ls), <span class="number">18</span>)):</span><br><span class="line">        k += <span class="number">1</span></span><br><span class="line">        test_x_data.append(ls[i][<span class="number">2</span>:<span class="number">10</span>])</span><br><span class="line">        test_y_data.append(ls[i][<span class="number">10</span>])</span><br><span class="line"></span><br><span class="line">test_x_data = np.array(test_x_data, float)</span><br><span class="line">test_y_data = np.array(test_y_data, float)</span><br><span class="line"></span><br><span class="line">print(test_x_data.shape)</span><br><span class="line">print(test_y_data.shape)</span><br><span class="line"></span><br><span class="line">np.savetxt(testData+<span class="string">"xData_pm25.csv"</span>, test_x_data, fmt=<span class="string">'%.1f'</span>, delimiter=<span class="string">","</span>)</span><br><span class="line">np.savetxt(testData+<span class="string">"yData_pm25.csv"</span>, test_y_data, fmt=<span class="string">'%.1f'</span>, delimiter=<span class="string">","</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="采用sklearn岭回归拟合"><a href="#采用sklearn岭回归拟合" class="headerlink" title="采用sklearn岭回归拟合"></a>采用sklearn岭回归拟合</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">trainingData = <span class="string">'trainingData/'</span></span><br><span class="line"></span><br><span class="line">x_data = []</span><br><span class="line"></span><br><span class="line">y_data = []</span><br><span class="line"><span class="comment"># 加载训练数据</span></span><br><span class="line">np.loadtxt(open(trainingData+<span class="string">'xData.csv'</span>), delimiter=<span class="string">","</span>,skiprows=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(trainingData+<span class="string">'xData_pm25.csv'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    x_data = np.loadtxt(f, delimiter=<span class="string">","</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(trainingData+<span class="string">'yData_pm25.csv'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    y_data = np.loadtxt(f, delimiter=<span class="string">","</span>)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment"># 使用广义交叉验证 拟合得到最优alpha参数 = 898.21</span></span><br><span class="line"><span class="comment"># regs = linear_model.RidgeCV(np.linspace(1,1000))</span></span><br><span class="line"><span class="comment"># regs.fit(x_data, y_data)</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># alpha = regs.alpha_</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 拟合数据</span></span><br><span class="line">reg = linear_model.Ridge(alpha=<span class="number">898.21</span>)</span><br><span class="line">reg.fit(x_data, y_data)</span><br><span class="line"></span><br><span class="line">test_x_data = []</span><br><span class="line"></span><br><span class="line">test_y_data = []</span><br><span class="line"></span><br><span class="line">testingData = <span class="string">'testingData/'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载测试集</span></span><br><span class="line"><span class="keyword">with</span> open(testingData+<span class="string">'xData_pm25.csv'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    test_x_data = np.loadtxt(f, delimiter=<span class="string">","</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(testingData+<span class="string">'yData_pm25.csv'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    test_y_data = np.loadtxt(f, delimiter=<span class="string">","</span>)</span><br><span class="line"></span><br><span class="line">pre_y_data = reg.predict(x_data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 求得误差</span></span><br><span class="line">err = abs(pre_y_data - y_data)</span><br><span class="line"></span><br><span class="line">plt.plot(np.linspace(<span class="number">1</span>, len(err), len(err)), err)</span><br><span class="line">plt.xlabel(<span class="string">r'$trainingIndex$'</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">plt.ylabel(<span class="string">r'$error$'</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">plt.title(<span class="string">'abs trainingError'</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">print(err.sum(axis=<span class="number">0</span>)/len(err)*<span class="number">1.0</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="训练集误差"><a href="#训练集误差" class="headerlink" title="训练集误差"></a>训练集误差</h2><p><img src="/2019/04/09/PM25预测/训练集误差.png" alt=""></p>
+<h2 id="训练集误差（经取绝对值）"><a href="#训练集误差（经取绝对值）" class="headerlink" title="训练集误差（经取绝对值）"></a>训练集误差（经取绝对值）</h2><p><img src="/2019/04/09/PM25预测/训练集误差abs.png" alt=""></p>
+<h2 id="平均误差"><a href="#平均误差" class="headerlink" title="平均误差"></a>平均误差</h2><p><img src="/2019/04/09/PM25预测/avgErrTrain.png" alt="1554822576714"></p>
+<h2 id="测试集误差"><a href="#测试集误差" class="headerlink" title="测试集误差"></a>测试集误差</h2><p><img src="/2019/04/09/PM25预测/测试集误差.png" alt="测试集误差"></p>
+<h2 id="测试集误差（经取绝对值）"><a href="#测试集误差（经取绝对值）" class="headerlink" title="测试集误差（经取绝对值）"></a>测试集误差（经取绝对值）</h2><p><img src="/2019/04/09/PM25预测/测试集误差abs.png" alt="测试集误差(abs)"></p>
+<h2 id="平均误差-1"><a href="#平均误差-1" class="headerlink" title="平均误差"></a>平均误差</h2><p><img src="/2019/04/09/PM25预测/avgErrTest.png" alt="1554822744129"></p>
+
       
 
       
@@ -223,7 +238,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">安卓开发</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
         		</li>
       		
 		</ul>
@@ -279,7 +294,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://changjiahong.github.io/2018/09/08/AndroidStudio无线调试手机/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://changjiahong.github.io/2019/04/09/PM25预测/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -293,18 +308,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/09/获取自定义属性宽度错误/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Can&#39;t convert value at index 11 to dimension:type=0x10
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/07/03/对象、矩阵与矢量化编程/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">对象、矩阵与矢量化编程</div>
+    <a href="/2019/03/13/CouldnotopenHibernateSessionfortransaction;/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Could not open Hibernate Session for transaction;</div>
       <i class="icon-circle-right"></i>
     </a>
   
