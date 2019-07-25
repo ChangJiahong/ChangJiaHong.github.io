@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://changjiahong.github.io">
-  <title>破小孩的博客</title>
+  <title>DispatcherServlet与ContextLoaderListener | 破小孩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在校码农">
-<meta name="keywords" content="java,kotlin,移动开发,程序猿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="破小孩的博客">
-<meta property="og:url" content="https://changjiahong.github.io/page/3/index.html">
+  <meta name="description" content="DispatcherServlet与ContextLoaderListenerSpring MVC 配置的两种方式：Web.xml 和 java 类配置DispatcherServlet是Spring MVC的核心，在这里请求会第一次接触到框架，它负责将请求路由到其他组件之中。">
+<meta name="keywords" content="Spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DispatcherServlet与ContextLoaderListener">
+<meta property="og:url" content="https://changjiahong.github.io/2019/07/25/DispatcherServlet与ContextLoaderListner/index.html">
 <meta property="og:site_name" content="破小孩的博客">
-<meta property="og:description" content="在校码农">
+<meta property="og:description" content="DispatcherServlet与ContextLoaderListenerSpring MVC 配置的两种方式：Web.xml 和 java 类配置DispatcherServlet是Spring MVC的核心，在这里请求会第一次接触到框架，它负责将请求路由到其他组件之中。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://changjiahong.github.io/2019/07/25/DispatcherServlet与ContextLoaderListner/ContextLoaderListener-vs-DispatcherServlet.png">
+<meta property="og:updated_time" content="2019-07-25T09:16:46.441Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="破小孩的博客">
-<meta name="twitter:description" content="在校码农">
+<meta name="twitter:title" content="DispatcherServlet与ContextLoaderListener">
+<meta name="twitter:description" content="DispatcherServlet与ContextLoaderListenerSpring MVC 配置的两种方式：Web.xml 和 java 类配置DispatcherServlet是Spring MVC的核心，在这里请求会第一次接触到框架，它负责将请求路由到其他组件之中。">
+<meta name="twitter:image" content="https://changjiahong.github.io/2019/07/25/DispatcherServlet与ContextLoaderListner/ContextLoaderListener-vs-DispatcherServlet.png">
   
     <link rel="alternative" href="/atom.xml" title="破小孩的博客" type="application/atom+xml">
   
@@ -154,34 +157,96 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-人脸识别的SDK来自虹软的人脸识别SDK，开源免费" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-DispatcherServlet与ContextLoaderListner" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/31/人脸识别的SDK来自虹软的人脸识别SDK，开源免费/">人脸识别Demo</a>
+    <h1 class="article-title" itemprop="name">
+      DispatcherServlet与ContextLoaderListener
     </h1>
   
 
         
-        <a href="/2018/05/31/人脸识别的SDK来自虹软的人脸识别SDK，开源免费/" class="archive-article-date">
-  	<time datetime="2018-05-31T05:11:06.031Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
+        <a href="/2019/07/25/DispatcherServlet与ContextLoaderListner/" class="archive-article-date">
+  	<time datetime="2019-07-25T09:13:31.137Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>人脸识别的SDK来自虹软的人脸识别SDK，开源免费<br>虹软的官网  <a href="http://www.arcsoft.com.cn/ai/arcface.html" target="_blank" rel="noopener">http://www.arcsoft.com.cn/ai/arcface.html</a><br>faceDemo实现效果：<br><img src="https://img-blog.csdn.net/20180330212104549?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MDYzODYw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt=""><br>在项目实现过程中遇到的一些问题，记一下。</p>
-        
-          <a class="article-more-a" href="/2018/05/31/人脸识别的SDK来自虹软的人脸识别SDK，开源免费/#more">more >></a>
-        
+        <h1 id="DispatcherServlet与ContextLoaderListener"><a href="#DispatcherServlet与ContextLoaderListener" class="headerlink" title="DispatcherServlet与ContextLoaderListener"></a>DispatcherServlet与ContextLoaderListener</h1><h2 id="Spring-MVC-配置的两种方式：Web-xml-和-java-类配置"><a href="#Spring-MVC-配置的两种方式：Web-xml-和-java-类配置" class="headerlink" title="Spring MVC 配置的两种方式：Web.xml 和 java 类配置"></a>Spring MVC 配置的两种方式：Web.xml 和 java 类配置</h2><p>DispatcherServlet是Spring MVC的核心，在这里请求会第一次接触到框架，它负责将请求路由到其他组件之中。</p>
+<a id="more"></a>
+<p>传统配置DispatcherServlet是采用web.xml文件的方式。一般如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">version</span>=<span class="string">"3.0"</span> <span class="attr">xmlns</span>=<span class="string">"http://java.sun.com/xml/ns/javaee"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">     <span class="comment">&lt;!-- 监听器配置 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 上下文参数，在监听器中被使用 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 监听器配置文件路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">param-value</span>&gt;</span></span><br><span class="line">        	classpath:applicationContext.xml</span><br><span class="line">        <span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 前端控制器配置 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--在DispatcherServlet的初始化过程中，框架会在web应用的WEB-INF文件夹下默认寻找名为[servlet-name]-servlet.xml 的配置文件，生成文件中定义的bean。如以下默认寻找dispatcher-servlet.xml--&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>dispatcher<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 前端控制器配置文件路径 --&gt;</span></span><br><span class="line">    		<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    		<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:applicationContext-mvc.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--是启动顺序，让这个Servlet随Servletp容器一起启动。--&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--这个Servlet的名字是dispatcher，可以有多个DispatcherServlet，是通过名字来区分的。每一个DispatcherServlet有自己的WebApplicationContext上下文对象。同时保存的ServletContext中和Request对象中.--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--ApplicationContext是Spring的核心，Context我们通常解释为上下文环境，我想用“容器”来表述它更容易理解一些，ApplicationContext则是“应用的容器”了:P，Spring把Bean放在这个容器中，在需要的时候，用getBean方法取出--&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>dispatcher<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--Servlet拦截匹配规则可以自已定义，当映射为@RequestMapping("/user/add")时，为例,拦截哪种URL合适？--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--1、拦截*.do、*.htm， 例如：/user/add.do,这是最传统的方式，最简单也最实用。不会导致静态文件（jpg,js,css）被拦截。--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--2、拦截/，例如：/user/add,可以实现现在很流行的REST风格。很多互联网类型的应用很喜欢这种风格的URL。弊端：会导致静态文件（jpg,js,css）被拦截后不能正常显示。 --&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在Servlet3规范中，容器会在类路径中查找实现ServletContainerInitializer接口的类，如果能发现的话就用它来配置Servlet容器。</p>
+<p>Spring中提供了这个接口的实现，名为SpringServletContainerInitializer，这个类反过来又会查找实现WebApplicationInitializer的类并将配置任务交给它们继续完成。Spring3.2中，提供了一个便利的WebApplicationInitializer的基础实现，即AbstractAnnotationConfigDispatcherServletInitializer。所以采用java配置DispatcherServlet只需要扩展AbstractAnnotationConfigDispatcherServletInitializer就可以了。</p>
+<p>并且扩展AbstractAnnotationConfigDispatcherServletInitializer的任意类都会自动的配置DispatcherServlet和SpringApplicationContext。</p>
+<p>一般java配置如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebMVCInitializer</span> <span class="keyword">extends</span> <span class="title">AbstractAnnotationConfigDispatcherServletInitializer</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 根应用上下文配置文件</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Class&lt;?&gt;[] getRootConfigClasses() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Class&lt;?&gt;[]&#123;</span><br><span class="line">            RootConfig.class</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * web 应用上下文配置文件</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Class&lt;?&gt;[] getServletConfigClasses() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Class&lt;?&gt;[]&#123;</span><br><span class="line">        	WebConfig.class</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> String[] getServletMappings() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String[]&#123;</span><br><span class="line">                <span class="string">"/"</span></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStartup</span><span class="params">(ServletContext servletContext)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onStartup(servletContext);</span><br><span class="line">        servletContext.addListener(<span class="keyword">new</span> SessionListener());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="两个应用上下文之间的故事"><a href="#两个应用上下文之间的故事" class="headerlink" title="两个应用上下文之间的故事"></a>两个应用上下文之间的故事</h2><p>在java配置文件中，我们发现了两个应用上下文：根应用上下文，web应用上下文。</p>
+<p>首先我们先看 DispatcherServlet 和 ContextLoaderListener。</p>
+<h3 id="DispatcherServlet-，前端控制器"><a href="#DispatcherServlet-，前端控制器" class="headerlink" title="DispatcherServlet ，前端控制器"></a>DispatcherServlet ，前端控制器</h3><p>DispatcherServlet 本质是一个Servlet，它扩展了HTTPServlet，其主要目的是处理与配置URL模式匹配的传入Web的请求。</p>
+<p>每一个DispatcherServlet定义一个Spring的web application，并且都与一个WebApplicationContext相关。当DispatcherServlet启动的时候，它会创建WebApplicationContext，并加载配置文件。</p>
+<p><strong>从Spring 3.x开始，方法DispatcherServlet(WebApplicationContext webApplicationContext)通过给定的web application context创建一个新DispatcherServlet。只有在Servlet 3.x环境中才有可能通过ServletContext.addServlet(java.lang.String, java.lang.String)的API支持。</strong></p>
+<h3 id="ContextLoaderListener，上下文加载监听器"><a href="#ContextLoaderListener，上下文加载监听器" class="headerlink" title="ContextLoaderListener，上下文加载监听器"></a>ContextLoaderListener，上下文加载监听器</h3><p>ContextLoaderListener是spring框架对servlet监听器的一个封装，本质上还是一个servlet监听器，它创建了一个根应用程序上下文（ApplicationContext），并与所有DispatcherServlet上下文创建的子上下文共享。</p>
+<p>ContextLoaderListener 包含全局可见的bean 的上下文，如服务，存储库，基础结构bean等。创建根应用程序上下文后，它将 ServletContext 作为属性存储，名称为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// org/springframework/web/context/ContextLoader.java</span></span><br><span class="line">servletContext.setAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE, <span class="keyword">this</span>.context);</span><br><span class="line"> </span><br><span class="line"><span class="comment">//Where attibute is defined in /org/springframework/web/context/WebApplicationContext.java as</span></span><br><span class="line"> </span><br><span class="line">WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE = WebApplicationContext.class.getName() + <span class="string">".ROOT"</span>;</span><br></pre></td></tr></table></figure>
+<p>要<strong>在Spring控制器中获取根应用程序上下文</strong>，可以使用 WebApplicationContextUtils 类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Controller.java</span></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">ServletContext context;</span><br><span class="line"> </span><br><span class="line">ApplicationContext ac = WebApplicationContextUtils.getWebApplicationContext(context);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span>(ac == <span class="keyword">null</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"root application context is null"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在Spring Web应用程序中，有两种类型的容器，ApplicationContext和WebAppilicationContext.</p>
+<p>ApplicationContext是由ContextLoaderListener创建并配置的或Web.xml。</p>
+<p>而WebApplicationContext是ApplicationContext的子上下文环境。<strong>是由DispatcherServlet 启动时创建配置的</strong>。</p>
+<h3 id="DispatcherServlet-和-ContextLoaderListener之间的关系。"><a href="#DispatcherServlet-和-ContextLoaderListener之间的关系。" class="headerlink" title="DispatcherServlet 和 ContextLoaderListener之间的关系。"></a>DispatcherServlet 和 ContextLoaderListener之间的关系。</h3><p>&emsp;&emsp;所以说如果没有配置listener参数，只配置了dispatcherServlet时，tomcat启动时是不会初始化Spring Web上下文的，因为Spring Web是基于Spring的，你没有配置Spring，所以也不会启动它的子上下文Spring Web。这一点在Spring MVC启动源码中也可以看到。</p>
+<p>下图中详细的描述了整个关系。</p>
+<p><img src="/2019/07/25/DispatcherServlet与ContextLoaderListner/ContextLoaderListener-vs-DispatcherServlet.png" alt="ContextLoaderListener与DispatcherServlet"></p>
+<ol>
+<li><code>ContextLoaderListener</code> 创建根应用程序上下文</li>
+<li><code>DispatcherServlet</code> 条目为每个servlet条目创建一个子应用程序上下文。</li>
+<li>子上下文可以访问根上下文中定义的bean。</li>
+<li>根上下文中的Bean无法直接访问子上下文中的bean。</li>
+<li>所有上下文都被添加到<code>ServletContext</code>。</li>
+<li>你可以使用<code>WebApplicationContextUtils</code>类访问根上下文。</li>
+</ol>
+<p>二者具体关系参考自<a href="https://howtodoinjava.com/spring-mvc/contextloaderlistener-vs-dispatcherservlet/" target="_blank" rel="noopener">ContextLoaderListener vs DispatcherServlet</a></p>
+<h3 id="Spring-MVC启动流程"><a href="#Spring-MVC启动流程" class="headerlink" title="Spring MVC启动流程"></a>Spring MVC启动流程</h3><p>Tomcat启动时会优先加载Servlet监听器组件，并调用ContextInitialized方法。而ContextLoaderListener继承了ServletContextListener实现了ContextInitialized方法。在其中调用initwebApplicationContext方法初始化Spring Web Context。<strong>这就是 Spring MVC 的入口。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ContextLoaderListener</span> <span class="keyword">extends</span> <span class="title">ContextLoader</span> <span class="keyword">implements</span> <span class="title">ServletContextListener</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">ContextLoaderListener</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">ContextLoaderListener</span><span class="params">(WebApplicationContext context)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">super</span>(context);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Initialize the root web application context.</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextInitialized</span><span class="params">(ServletContextEvent event)</span> </span>&#123;</span><br><span class="line">      initWebApplicationContext(event.getServletContext());</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Close the root web application context.</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextDestroyed</span><span class="params">(ServletContextEvent event)</span> </span>&#123;</span><br><span class="line">      closeWebApplicationContext(event.getServletContext());</span><br><span class="line">      ContextCleanupListener.cleanupAttributes(event.getServletContext());</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一般DispatcherServlet加载包含Web组件的bean（控制器，视图解析器，以及处理器映射），根上下文加载应用中的其他bean（安全性，事务，服务，中间层和数据层组件等）。</p>
+<p>参考文献:</p>
+<p><a href="https://howtodoinjava.com/spring-mvc/contextloaderlistener-vs-dispatcherservlet/" target="_blank" rel="noopener">https://howtodoinjava.com/spring-mvc/contextloaderlistener-vs-dispatcherservlet/</a></p>
+<p><a href="https://blog.csdn.net/seagal890/article/details/53838032" target="_blank" rel="noopener">https://blog.csdn.net/seagal890/article/details/53838032</a></p>
+<p><a href="https://juejin.im/post/5b207dc86fb9a01e49294f42" target="_blank" rel="noopener">https://juejin.im/post/5b207dc86fb9a01e49294f42</a></p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -192,7 +257,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人脸识别</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
         		</li>
       		
 		</ul>
@@ -201,16 +266,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/31/人脸识别的SDK来自虹软的人脸识别SDK，开源免费/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://changjiahong.github.io/2019/07/25/DispatcherServlet与ContextLoaderListner/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/09/PM25预测/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PM2.5预测（李宏毅机器学习hw1）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -230,77 +354,14 @@
 
 
 
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/31/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/31/hello-world/" class="archive-article-date">
-  	<time datetime="2018-05-30T16:34:09.073Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-        
-          <a class="article-more-a" href="/2018/05/31/hello-world/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/31/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -323,8 +384,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
