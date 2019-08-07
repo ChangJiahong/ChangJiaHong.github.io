@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://changjiahong.github.io">
-  <title>Archives: 2018/10 | 破小孩的博客</title>
+  <title>mybatis 中&amp;lt;if&amp;gt;标签bool值类型为false判断 | 破小孩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在校码农">
-<meta name="keywords" content="java,kotlin,移动开发,程序猿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="破小孩的博客">
-<meta property="og:url" content="https://changjiahong.github.io/archives/2018/10/index.html">
+  <meta name="description" content="对百度的某些文章深恶痛绝， 只是ctrl+c和ctrl+v。并且还不能解决问题。 昨天实现一个功能，根据文章的id或者别名查找文章。起初采用mybatis的Example进行查询，对参数artName进行判断，如果是纯数字就byId查询，否则就by别名。由于查询文章的同时，需要关联查询文章分类标签，所以选择采用select语句映射的方式查询，但又不想写两个查询方法，就使用了mybatis中动态sq">
+<meta name="keywords" content="mybatis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mybatis 中&amp;lt;if&amp;gt;标签bool值类型为false判断">
+<meta property="og:url" content="https://changjiahong.github.io/2019/08/07/mybatis中if标签bool值类型为false判断/index.html">
 <meta property="og:site_name" content="破小孩的博客">
-<meta property="og:description" content="在校码农">
+<meta property="og:description" content="对百度的某些文章深恶痛绝， 只是ctrl+c和ctrl+v。并且还不能解决问题。 昨天实现一个功能，根据文章的id或者别名查找文章。起初采用mybatis的Example进行查询，对参数artName进行判断，如果是纯数字就byId查询，否则就by别名。由于查询文章的同时，需要关联查询文章分类标签，所以选择采用select语句映射的方式查询，但又不想写两个查询方法，就使用了mybatis中动态sq">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-07T02:01:59.968Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="破小孩的博客">
-<meta name="twitter:description" content="在校码农">
+<meta name="twitter:title" content="mybatis 中&amp;lt;if&amp;gt;标签bool值类型为false判断">
+<meta name="twitter:description" content="对百度的某些文章深恶痛绝， 只是ctrl+c和ctrl+v。并且还不能解决问题。 昨天实现一个功能，根据文章的id或者别名查找文章。起初采用mybatis的Example进行查询，对参数artName进行判断，如果是纯数字就byId查询，否则就by别名。由于查询文章的同时，需要关联查询文章分类标签，所以选择采用select语句映射的方式查询，但又不想写两个查询方法，就使用了mybatis中动态sq">
   
     <link rel="alternative" href="/atom.xml" title="破小孩的博客" type="application/atom+xml">
   
@@ -154,60 +155,183 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-mybatis中if标签bool值类型为false判断" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/10/17/内网穿透/" class="archive-article-date">
-  	<time datetime="2018-10-17T07:24:06.023Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-17</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/17/内网穿透/">不用第三方实现内网穿透</a>
+    <h1 class="article-title" itemprop="name">
+      mybatis 中&amp;lt;if&amp;gt;标签bool值类型为false判断
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/08/07/mybatis中if标签bool值类型为false判断/" class="archive-article-date">
+  	<time datetime="2019-08-07T02:00:23.259Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对百度的某些文章深恶痛绝， 只是ctrl+c和ctrl+v。并且还不能解决问题。</p>
+<h2 id="昨天实现一个功能，根据文章的id或者别名查找文章。"><a href="#昨天实现一个功能，根据文章的id或者别名查找文章。" class="headerlink" title="昨天实现一个功能，根据文章的id或者别名查找文章。"></a>昨天实现一个功能，根据文章的id或者别名查找文章。</h2><p>起初采用mybatis的Example进行查询，对参数artName进行判断，如果是纯数字就byId查询，否则就by别名。由于查询文章的同时，需要关联查询文章分类标签，所以选择采用select语句映射的方式查询，但又不想写两个查询方法，就使用了mybatis中动态sql。</p>
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查询文章</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> artName id 或 别名</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> byId 如果是 true 则按照id查询</span></span><br><span class="line"><span class="comment"> *             否则 按照别名查询</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Article <span class="title">selectByArtName</span><span class="params">(@Param(value = <span class="string">"artName"</span>)</span> String artName,</span></span><br><span class="line"><span class="function">                          @<span class="title">Param</span><span class="params">(value = <span class="string">"byId"</span>)</span> Boolean byId)</span>;</span><br></pre></td></tr></table></figure>
+<p>mapper中定义了一个方法，有artName和byId两个参数，artName 表示id 或 别名，byId表示是否通过id查询。</p>
+<p>对byId Boolean值进行判断时，出现false值无效的情况，在百度了一圈发现，普遍采用</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"byId != null"</span>&gt;</span></span><br><span class="line">    a.id = #&#123;artName&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这种方式，当byId=true时正常执行，但为false时不生效。后采用&lt;choose&gt;标签</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">choose</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">when</span> <span class="attr">test</span>=<span class="string">"byId"</span>&gt;</span></span><br><span class="line">		a.id = #&#123;artName&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">when</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">otherwise</span>&gt;</span></span><br><span class="line">		a.alias = #&#123;artName&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">otherwise</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">choose</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>byId本身是bool值，不用进行判断。</p>
+<p><strong>注意：</strong> byId不用加#{}，不然false也会无效，如果加了#{}， 在与其他值进行比较时，</p>
+<p>如：<code>#{byId} == true</code> 会报空指针错误，如果写成<code>#{byId} == &#39;true&#39;</code>   会报Linkhashmap无法转换成String类型错误。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mybatis</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://changjiahong.github.io/2019/08/07/mybatis中if标签bool值类型为false判断/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/07/25/DispatcherServlet与ContextLoaderListner/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">DispatcherServlet与ContextLoaderListener</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -230,8 +354,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
