@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://changjiahong.github.io">
-  <title>SharedPreferencesHelper工具类 | 破小孩的博客</title>
+  <title>Android 下载任务队列实现-Kotlin | 破小孩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="为安卓SharedPreferences存储提供的工具类，简化SharedPreferences的获取和存储。该类的构造方法参数有两个(context: Context, domain: String = CONFIG)  context: activity上下文 domain: SharedPreferences存储的文件，默认名为“config”">
+  <meta name="description" content="下载队列在Android中可以说是非常常见了，常见的做法是将下载任务放到服务中，创建线程任务队列，对其进行处理，这样子问题也有很多，比如常见的线程安全之类的。并且考虑到线程创建和关闭对资源的消耗，我们还要维护一个线程池。同时实现动态像队列中添加任务，采用生产者-消费者模式。非常复杂。 今天采用kotlin来实现一个可以随时添加下载任务的下载队列。">
 <meta name="keywords" content="安卓开发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SharedPreferencesHelper工具类">
-<meta property="og:url" content="https://changjiahong.github.io/2019/08/22/SharedPreferencesHelper/index.html">
+<meta property="og:title" content="Android 下载任务队列实现-Kotlin">
+<meta property="og:url" content="https://changjiahong.github.io/2019/09/10/Android下载任务队列实现-Kotlin/index.html">
 <meta property="og:site_name" content="破小孩的博客">
-<meta property="og:description" content="为安卓SharedPreferences存储提供的工具类，简化SharedPreferences的获取和存储。该类的构造方法参数有两个(context: Context, domain: String = CONFIG)  context: activity上下文 domain: SharedPreferences存储的文件，默认名为“config”">
+<meta property="og:description" content="下载队列在Android中可以说是非常常见了，常见的做法是将下载任务放到服务中，创建线程任务队列，对其进行处理，这样子问题也有很多，比如常见的线程安全之类的。并且考虑到线程创建和关闭对资源的消耗，我们还要维护一个线程池。同时实现动态像队列中添加任务，采用生产者-消费者模式。非常复杂。 今天采用kotlin来实现一个可以随时添加下载任务的下载队列。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-22T08:45:33.192Z">
+<meta property="og:updated_time" content="2019-09-10T01:16:21.741Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SharedPreferencesHelper工具类">
-<meta name="twitter:description" content="为安卓SharedPreferences存储提供的工具类，简化SharedPreferences的获取和存储。该类的构造方法参数有两个(context: Context, domain: String = CONFIG)  context: activity上下文 domain: SharedPreferences存储的文件，默认名为“config”">
+<meta name="twitter:title" content="Android 下载任务队列实现-Kotlin">
+<meta name="twitter:description" content="下载队列在Android中可以说是非常常见了，常见的做法是将下载任务放到服务中，创建线程任务队列，对其进行处理，这样子问题也有很多，比如常见的线程安全之类的。并且考虑到线程创建和关闭对资源的消耗，我们还要维护一个线程池。同时实现动态像队列中添加任务，采用生产者-消费者模式。非常复杂。 今天采用kotlin来实现一个可以随时添加下载任务的下载队列。">
   
     <link rel="alternative" href="/atom.xml" title="破小孩的博客" type="application/atom+xml">
   
@@ -155,47 +155,53 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-SharedPreferencesHelper" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Android下载任务队列实现-Kotlin" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      SharedPreferencesHelper工具类
+      Android 下载任务队列实现-Kotlin
     </h1>
   
 
         
-        <a href="/2019/08/22/SharedPreferencesHelper/" class="archive-article-date">
-  	<time datetime="2019-08-22T08:44:20.631Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-22</time>
+        <a href="/2019/09/10/Android下载任务队列实现-Kotlin/" class="archive-article-date">
+  	<time datetime="2019-09-10T01:14:06.560Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>为安卓SharedPreferences存储提供的工具类，简化SharedPreferences的获取和存储。<br>该类的构造方法参数有两个(context: Context, domain: String = CONFIG)</p>
-<ul>
-<li>context: activity上下文</li>
-<li>domain: SharedPreferences存储的文件，默认名为“config”</li>
-</ul>
-<a id="more"></a>
-<p><strong>该类所构建的SharedPreferences的模式默认为MODE_PRIVATE</strong></p>
-<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><h3 id="向SharedPreferences中储存内容"><a href="#向SharedPreferences中储存内容" class="headerlink" title="向SharedPreferences中储存内容"></a>向SharedPreferences中储存内容</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在activity中调用</span></span><br><span class="line">putToSharedPreferences &#123; </span><br><span class="line">    put &#123; </span><br><span class="line">        <span class="string">"token"</span> - <span class="string">"123"</span></span><br><span class="line">    &#125;</span><br><span class="line">    put(key, value)</span><br><span class="line">    put(<span class="string">"token"</span>, setOf(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>put{ }</strong> 代码块不支持set&lt;String&gt;类型的参数，针对这种参数只能使用<strong>put(“token”, setOf(1,2,3))</strong> 方法。</p>
-<h4 id="或者传统调用"><a href="#或者传统调用" class="headerlink" title="或者传统调用"></a>或者传统调用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SharedPreferencesHelper(this@IndexActivity).editHelper().put &#123; </span><br><span class="line">	&quot;token&quot; - &quot;123&quot;</span><br><span class="line">&#125;.put(key, value)</span><br><span class="line">.put(&quot;token&quot;, setOf(1,2,3))</span><br><span class="line">.commit()</span><br></pre></td></tr></table></figure>
-<p><strong>put</strong>方法会抛出<strong>ClassNotSupportedException</strong>异常，如果存放的value超出所支持的类型的话。</p>
-<h3 id="从SharedPreferences获取参数"><a href="#从SharedPreferences获取参数" class="headerlink" title="从SharedPreferences获取参数"></a>从SharedPreferences获取参数</h3><p>方法参数( key: String, defValue: String, domain: String)</p>
-<ul>
-<li>key: 获取的键</li>
-<li>defValue: 若没有取到该key的值返回的默认值，可选参数，默认值为“”</li>
-<li>domain: 域，相当于SharedPreferences构造方法的name，表示在哪里取值<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在Activity内调用</span></span><br><span class="line"><span class="comment">// 获取字符串</span></span><br><span class="line"><span class="keyword">val</span> token = getStringFromSharedPreferences(Constant.TOKEN)</span><br><span class="line"><span class="comment">// 相似的还有</span></span><br><span class="line">getStringSetFromSharedPreferences()</span><br><span class="line">getBooleanFromSharedPreferences()</span><br><span class="line">getLongFromSharedPreferences()</span><br><span class="line">getIntFromSharedPreferences()</span><br><span class="line">getFloatFromSharedPreferences()</span><br></pre></td></tr></table></figure>
+        <p>下载队列在Android中可以说是非常常见了，常见的做法是将下载任务放到服务中，创建线程任务队列，对其进行处理，这样子问题也有很多，比如常见的线程安全之类的。并且考虑到线程创建和关闭对资源的消耗，我们还要维护一个线程池。同时实现动态像队列中添加任务，采用生产者-消费者模式。非常复杂。</p>
+<p>今天采用kotlin来实现一个可以随时添加下载任务的下载队列。<br><a id="more"></a></p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li><p>协程</p>
+</li>
+<li><p>通道</p>
+</li>
+<li><p>Android service</p>
 </li>
 </ul>
-<h4 id="对一次获取比较多的参数的对象提供这种调用"><a href="#对一次获取比较多的参数的对象提供这种调用" class="headerlink" title="对一次获取比较多的参数的对象提供这种调用"></a>对一次获取比较多的参数的对象提供这种调用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">getFromSharedPreferences &#123; </span><br><span class="line">	getString()</span><br><span class="line">    getBoolean()</span><br><span class="line">    getFloat()</span><br><span class="line">    getInt()</span><br><span class="line">    getLong()</span><br><span class="line">    getStringSet()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="当然可以采用原始构造方法调用（不推荐）"><a href="#当然可以采用原始构造方法调用（不推荐）" class="headerlink" title="当然可以采用原始构造方法调用（不推荐）"></a>当然可以采用原始构造方法调用（不推荐）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SharedPreferencesHelper(applicationContext).getString()</span><br><span class="line">SharedPreferencesHelper(applicationContext).getBoolean()</span><br><span class="line">SharedPreferencesHelper(applicationContext).getFloat()</span><br><span class="line">SharedPreferencesHelper(applicationContext).getInt()</span><br><span class="line">SharedPreferencesHelper(applicationContext).getLong()</span><br><span class="line">SharedPreferencesHelper(applicationContext).getStringSet()</span><br></pre></td></tr></table></figure>
-<p>源码<strong>看这里</strong><a href="https://gist.github.com/ChangJiahong/8d349b358cb43ae9f3b54317ba44b028" target="_blank" rel="noopener">https://gist.github.com/ChangJiahong/8d349b358cb43ae9f3b54317ba44b028</a></p>
+<p>如果对于协程和通道不明白的可以参考<a href="https://www.kotlincn.net/docs/reference/coroutines/coroutines-guide.html" target="_blank" rel="noopener">kotlin官方文档</a></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>首先创建一个Android Service，onBind返回null，因为不需要绑定任何activity。重写onCreate函数，onStartCommand函数。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DownloadService</span> : <span class="type">Service</span></span>(), CoroutineScope <span class="keyword">by</span> MainScope() &#123;</span><br><span class="line">	<span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onBind</span><span class="params">(intent: <span class="type">Intent</span>)</span></span>: IBinder? &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onStartCommand</span><span class="params">(intent: <span class="type">Intent</span>?, flags: <span class="type">Int</span>, startId: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简单说明onCreate和onStartCommand函数：</p>
+<ul>
+<li>onCreate ： 在服务首次开启时调用一次，之后不再调用</li>
+<li>onStartCommand ：每次调用startService()都会调用一次</li>
+</ul>
+<p>这样就非常清晰了，在onCreate方法中实现下载队列，在onStartCommand 方法中添加下载队列。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 声明下载通道</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">val</span> downLoadChannel = Channel&lt;String&gt;()</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加下载任务</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> suspend <span class="function"><span class="keyword">fun</span> <span class="title">addDownloadTask</span><span class="params">(down: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">    count++</span><br><span class="line">    Log.d(TAG, <span class="string">"增加:<span class="variable">$down</span>，当前任务数:<span class="variable">$count</span>"</span>)</span><br><span class="line">    downLoadChannel.send(down)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们只要在onStartCommand中调用添加下载任务就行了</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onStartCommand</span><span class="params">(intent: <span class="type">Intent</span>?, flags: <span class="type">Int</span>, startId: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">    launch &#123;</span><br><span class="line">        c++</span><br><span class="line">        Log.d(TAG, <span class="string">"准备增加"</span>)</span><br><span class="line">        addDownloadTask(<span class="string">"下载任务<span class="variable">$c</span>"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.onStartCommand(intent, flags, startId)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在onCreate中，我们需要创建一个在IO线程中的协程来处理下载任务。每当任务处理完毕之后调用销毁程序关闭任务，销毁程序需要先等待11s检查是否没有任务添加了，如果是在等待5s中确认真的没有任务添加之后，关闭通道和服务进程。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ExperimentalCoroutinesApi</span></span><br><span class="line">suspend <span class="function"><span class="keyword">fun</span> <span class="title">processingDownloadTasks</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (!downLoadChannel.isEmpty) &#123;</span><br><span class="line">        <span class="keyword">val</span> down = downLoadChannel.receive()</span><br><span class="line">        Log.d(TAG, <span class="string">"正在下载：<span class="variable">$down</span>"</span>)</span><br><span class="line">        <span class="comment">// 模拟下载</span></span><br><span class="line">        delay(<span class="number">1000</span>)</span><br><span class="line">        count--</span><br><span class="line">    &#125;</span><br><span class="line">    waitingToStop()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ExperimentalCoroutinesApi</span></span><br><span class="line">suspend <span class="function"><span class="keyword">fun</span> <span class="title">waitingToStop</span><span class="params">()</span></span> &#123;</span><br><span class="line">    Log.d(TAG, <span class="string">"等待...<span class="subst">$&#123;downLoadChannel.isEmpty&#125;</span>"</span>)</span><br><span class="line">    delay(<span class="number">11000</span>)</span><br><span class="line">    Log.d(TAG, <span class="string">"每11s检查是否有下载任务,当前任务：<span class="subst">$&#123;downLoadChannel.isEmpty&#125;</span>"</span>)</span><br><span class="line">    <span class="keyword">if</span> (downLoadChannel.isEmpty) &#123;</span><br><span class="line">        Log.d(TAG, <span class="string">"没有下载任务，最后5s到底有没有,当前任务：<span class="subst">$&#123;downLoadChannel.isEmpty&#125;</span>"</span>)</span><br><span class="line">        delay(<span class="number">5000</span>)</span><br><span class="line">        Log.d(TAG, <span class="string">"延迟，当前任务：<span class="subst">$&#123;downLoadChannel.isEmpty&#125;</span>"</span>)</span><br><span class="line">        <span class="keyword">if</span> (downLoadChannel.isEmpty) &#123;</span><br><span class="line">            Log.d(TAG, <span class="string">"真的没有下载任务，我要关闭了"</span>)</span><br><span class="line">            downLoadChannel.cancel()</span><br><span class="line">            <span class="comment">// 停止</span></span><br><span class="line">            stopSelf()</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    processingDownloadTasks()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onBind</span><span class="params">(intent: <span class="type">Intent</span>)</span></span>: IBinder? &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ExperimentalCoroutinesApi</span></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate()</span><br><span class="line">    Log.d(TAG, <span class="string">"启动服务"</span>)</span><br><span class="line"></span><br><span class="line">    launch(Dispatchers.IO) &#123;</span><br><span class="line">        processingDownloadTasks()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在activity中随时都可以调用startService来开启下载进程。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startService&lt;DownloadService&gt;()</span><br></pre></td></tr></table></figure>
+<h2 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">启动服务</span><br><span class="line">等待...true</span><br><span class="line">准备增加</span><br><span class="line">增加:下载任务1，当前任务数:1</span><br><span class="line">准备增加</span><br><span class="line">增加:下载任务2，当前任务数:2</span><br><span class="line">准备增加</span><br><span class="line">增加:下载任务3，当前任务数:3</span><br><span class="line">准备增加</span><br><span class="line">增加:下载任务4，当前任务数:4</span><br><span class="line">每11s检查是否有下载任务,当前任务：false</span><br><span class="line">正在下载：下载任务1</span><br><span class="line">准备增加</span><br><span class="line">增加:下载任务5，当前任务数:5</span><br><span class="line">正在下载：下载任务2</span><br><span class="line">正在下载：下载任务3</span><br><span class="line">正在下载：下载任务4</span><br><span class="line">正在下载：下载任务5</span><br><span class="line">等待...true</span><br><span class="line">准备增加</span><br><span class="line">增加:下载任务6，当前任务数:1</span><br><span class="line">每11s检查是否有下载任务,当前任务：false</span><br><span class="line">正在下载：下载任务6</span><br><span class="line">等待...true</span><br><span class="line">每11s检查是否有下载任务,当前任务：true</span><br><span class="line">没有下载任务，最后5s到底有没有,当前任务：true</span><br><span class="line">延迟，当前任务：true</span><br><span class="line">真的没有下载任务，我要关闭了</span><br><span class="line">关闭服务</span><br></pre></td></tr></table></figure>
 
       
 
@@ -291,7 +297,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://changjiahong.github.io/2019/08/22/SharedPreferencesHelper/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://changjiahong.github.io/2019/09/10/Android下载任务队列实现-Kotlin/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -305,18 +311,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/09/10/Android下载任务队列实现-Kotlin/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Android 下载任务队列实现-Kotlin
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/07/mybatis中if标签bool值类型为false判断/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">mybatis 中&amp;lt;if&amp;gt;标签bool值类型为false判断</div>
+    <a href="/2019/08/22/SharedPreferencesHelper/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SharedPreferencesHelper工具类</div>
       <i class="icon-circle-right"></i>
     </a>
   

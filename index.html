@@ -156,6 +156,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Android下载任务队列实现-Kotlin" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/10/Android下载任务队列实现-Kotlin/">Android 下载任务队列实现-Kotlin</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/10/Android下载任务队列实现-Kotlin/" class="archive-article-date">
+  	<time datetime="2019-09-10T01:14:06.560Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>下载队列在Android中可以说是非常常见了，常见的做法是将下载任务放到服务中，创建线程任务队列，对其进行处理，这样子问题也有很多，比如常见的线程安全之类的。并且考虑到线程创建和关闭对资源的消耗，我们还要维护一个线程池。同时实现动态像队列中添加任务，采用生产者-消费者模式。非常复杂。</p>
+<p>今天采用kotlin来实现一个可以随时添加下载任务的下载队列。<br></p>
+        
+          <a class="article-more-a" href="/2019/09/10/Android下载任务队列实现-Kotlin/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">安卓开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/10/Android下载任务队列实现-Kotlin/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-SharedPreferencesHelper" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -817,82 +894,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/12/04/依赖倒置原则/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-里氏替换原则" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/04/里氏替换原则/">里氏替换原则</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/04/里氏替换原则/" class="archive-article-date">
-  	<time datetime="2018-12-04T08:45:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="里氏替换原则"><a href="#里氏替换原则" class="headerlink" title="里氏替换原则"></a>里氏替换原则</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>里氏替换原则（LSP） ，所有引用基类的地方必须能透明的使用其子类对象。即只要父类出现的地方，子类都可以替换，并且替换后不会产生任何错误或异常。但子类出现的地方，父类不一定可以。</p>
-        
-          <a class="article-more-a" href="/2018/12/04/里氏替换原则/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/04/里氏替换原则/">展开全文 >></a>
         </p>
       
 
