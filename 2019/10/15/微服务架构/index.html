@@ -6,19 +6,31 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://changjiahong.github.io">
-  <title>Archives | 破小孩的博客</title>
+  <title>SpringBoot单体服务是如何搭建成SpringCloud微服务 | 破小孩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在校码农">
-<meta name="keywords" content="java,kotlin,移动开发,程序猿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="破小孩的博客">
-<meta property="og:url" content="https://changjiahong.github.io/archives/page/3/index.html">
+  <meta name="description" content="本文是读了《Spring微服务实战》一书后的总结，介绍如何将传统应用程序一步步构建成分布式微服务架构。">
+<meta name="keywords" content="SpringBoot,SpringCloud,微服务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot单体服务是如何搭建成SpringCloud微服务">
+<meta property="og:url" content="https://changjiahong.github.io/2019/10/15/微服务架构/index.html">
 <meta property="og:site_name" content="破小孩的博客">
-<meta property="og:description" content="在校码农">
+<meta property="og:description" content="本文是读了《Spring微服务实战》一书后的总结，介绍如何将传统应用程序一步步构建成分布式微服务架构。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://changjiahong.github.io/2019/10/15/微服务架构/GitHub_Project/Hexo/source/_posts/微服务架构/1.png">
+<meta property="og:image" content="https://changjiahong.github.io/2019/10/15/微服务架构/GitHub_Project/Hexo/source/_posts/微服务架构/2.png">
+<meta property="og:image" content="https://changjiahong.github.io/2019/10/15/微服务架构/GitHub_Project/Hexo/source/_posts/微服务架构/3.png">
+<meta property="og:image" content="https://changjiahong.github.io/2019/10/15/微服务架构/GitHub_Project/Hexo/source/_posts/微服务架构/4.png">
+<meta property="og:image" content="https://changjiahong.github.io/2019/10/15/微服务架构/GitHub_Project/Hexo/source/_posts/微服务架构/5.png">
+<meta property="og:image" content="https://changjiahong.github.io/2019/10/15/微服务架构/GitHub_Project/Hexo/source/_posts/微服务架构/6.png">
+<meta property="og:image" content="https://changjiahong.github.io/2019/10/15/微服务架构/GitHub_Project/Hexo/source/_posts/微服务架构/7.png">
+<meta property="og:image" content="https://changjiahong.github.io/2019/10/15/微服务架构/GitHub_Project/Hexo/source/_posts/微服务架构/8.png">
+<meta property="og:image" content="https://changjiahong.github.io/2019/10/15/微服务架构/GitHub_Project/Hexo/source/_posts/微服务架构/9.png">
+<meta property="og:image" content="https://changjiahong.github.io/2019/10/15/微服务架构/GitHub_Project/Hexo/source/_posts/微服务架构/10.png">
+<meta property="og:updated_time" content="2019-10-15T14:16:08.703Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="破小孩的博客">
-<meta name="twitter:description" content="在校码农">
+<meta name="twitter:title" content="SpringBoot单体服务是如何搭建成SpringCloud微服务">
+<meta name="twitter:description" content="本文是读了《Spring微服务实战》一书后的总结，介绍如何将传统应用程序一步步构建成分布式微服务架构。">
+<meta name="twitter:image" content="https://changjiahong.github.io/2019/10/15/微服务架构/GitHub_Project/Hexo/source/_posts/微服务架构/1.png">
   
     <link rel="alternative" href="/atom.xml" title="破小孩的博客" type="application/atom+xml">
   
@@ -154,242 +166,226 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-微服务架构" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SpringBoot单体服务是如何搭建成SpringCloud微服务
+    </h1>
+  
+
+        
+        <a href="/2019/10/15/微服务架构/" class="archive-article-date">
+  	<time datetime="2019-10-15T09:28:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-15</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文是读了《Spring微服务实战》一书后的总结，介绍如何将传统应用程序一步步构建成分布式微服务架构。</p>
+<a id="more"></a>
+<h2 id="传统应用程序是怎样的呢？"><a href="#传统应用程序是怎样的呢？" class="headerlink" title="传统应用程序是怎样的呢？"></a>传统应用程序是怎样的呢？</h2><p>​        传统应用程序是高度耦合的，开发者将业务逻辑，模块之间的调用硬编码在代码之中，使各个模块之间相互依赖。</p>
+<p>​        在软件规模扩大之后，通常遭遇到这样一种情况：针对某一需求的修改可能会对其他依赖此需求的部分产生影响，从而牵一发而动全身，同时每一修改都需要重新构建、编译和部署。虽然使用Spring框架可以降低耦合，但对于大型，需求复杂的多个开发团队同时开发的软件项目来说，依然捉襟见肘。</p>
+<p>​        不安全的。一般软件都将相同数据模型放在同一数据库中，即使是不同的业务数据。这会造成单个模块的访问权限过大，每个业务模块应当只负责并且只有当前所涉及业务内的数据访问权限。</p>
+<p>​        伸缩性是有限的，不灵活的。传统应用服务在处理高并发，多用户时，一般采用提升机器性能来提升处理速度，这样的解决方案在短期的效果是很显著的，但提升性能和机器的成本比例是不划算的，并且机器的性能是有瓶颈的；另一种解决方案是用多台性能一般的机器搭建服务集群，这种方案对服务程序是有要求的，应用程序必须是无状态的，也就是对于业务，用户等相关的数据不能再本地缓存，服务可以在任何超时时被杀死和替换，而不用担心一个服务实例的丢失会导致数据丢失。</p>
+<p>​        由于不均匀的容量需求，用户对某一快业务的访问量是不同的，在以上搭建集群的时候，水平扩展了所有的业务模块以满足某一部分功能的处理能力提升。在服务器中的任何资源都是十分宝贵的，这造成了对服务资源的浪费。</p>
+<h2 id="面向服务的分布式架构"><a href="#面向服务的分布式架构" class="headerlink" title="面向服务的分布式架构"></a>面向服务的分布式架构</h2><p>​        针对以上问题，软件不得不进行重构，采用面向服务的分布式架构（SOA）。合理拆分软件的不同业务模块，是模块之间协调工作，如图结构：</p>
+<p><img src="/2019/10/15/微服务架构/GitHub_Project\Hexo\source\_posts\微服务架构\1.png" alt="图1"></p>
+<p>​        服务消费者通过DNS解析地址到主负载均衡器，主负载均衡器查询路由表获取服务实例位置，调用服务。辅助负载均衡器会处于空闲状态，仅在主负载均衡器中断的情况下才会切换故障处理负载。</p>
+<h2 id="统一配置"><a href="#统一配置" class="headerlink" title="统一配置"></a>统一配置</h2><p>​        对于系统中的每个服务实例，开发人员必须在服务器上对应用程序进行配置，这可能适用于少量服务，在对包含数百个服务的应用程序配置时，不仅是配置的重复程度，开发人员无法保证每个服务的服务实例的运行环境以及配置属性是完全相同的。</p>
+<p>​        可以采用统一配置服务器控制所有的服务器配置（Spring Cloud Config)。这样在服务启动时就可以都向配置服务器拉取当前服务的配置信息，而配置服务可以统一管理所有服务配置，并对它进行版本化控制。</p>
+<p><img src="/2019/10/15/微服务架构/GitHub_Project\Hexo\source\_posts\微服务架构\2.png" alt="图2"></p>
+<h2 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h2><p>​        由图1结构可以发现一些弊端：</p>
+<blockquote>
+<ul>
+<li>服务消费者会高度依赖主负载均衡器，主负载均衡器是应用程序基础设施中的集中式阻塞点，也是整个基础设施的单点故障，如果它出现故障，那么依赖它的每个应用程序都会出现故障。</li>
+<li>有限的伸缩性依然存在。在服务集中到单个负载均衡器集群的情况下，跨多个服务器水平伸缩的能力有限，一般情况下只能使用单个服务器处理负载，而辅助负载均衡器会处于空闲状态，仅在主负载均衡器中断的情况下，才会切换故障处理负载。</li>
+<li>通过手动配置添加路由信息，不能快速对服务进行注册和注销。手动配置服务消费者的请求和服务路径的映射关系，这可能会造成由于部署或修改时的小失误而导致系统迅速崩溃。</li>
+</ul>
+</blockquote>
+<p>​        针对以上问题，可以引入服务发现引擎。通过服务发现集群实现高可用。服务可以在服务发现服务中进行注册，并且由于集群的特性，如果一个节点变得不可用，集群中的其他节点可以接管工作。</p>
+<p>​        根据服务发现的实现机制不同，集群的工作策略也不同。</p>
+<p>​        例如：</p>
+<p>​        Eureka服务发现引擎侧重于提供高可用的服务发现服务。服务消费者本地储存多个服务发现集群节点，当集群中的某一节点崩溃时，将切换其他节点进行访问。</p>
+<p>​        Zookeeper则侧重于提供统一的可用健康的服务实例，采用主/从模式。集群中有一个leader节点，其他节点从leader节点同步数据，当leader节点崩溃时，其他节点能够进行投票选举出新的leader节点对外提供服务，但在选举期间就会出现服务发现无法提供服务的情况。Zookeeper集群的特点是在保证一半以上的节点存活时能够对完提供服务，并且一般集群的主机数量为奇数。</p>
+<p><img src="/2019/10/15/微服务架构/GitHub_Project\Hexo\source\_posts\微服务架构\3.png" alt="图3"></p>
+<p>​        这样服务的提供者对于服务消费者来说是位置透明的，服务消费者不需要关心服务提供者是谁，也不用管理服务提供者的健康状态，服务发现服务会定期检查所注册服务的健康状态，对于未能返回良好状态的服务都将从服务实例池中删除。</p>
+<p>​        但是使用这种方法依然很脆弱，服务消费者完全依赖于服务发现引擎来查找调用服务。为服务消费者添加客户端负载均衡可以在服务发现代理不可用时，客户端依然能够与服务提供者正常通信，增加了整个系统的健壮性。</p>
+<p><img src="/2019/10/15/微服务架构/GitHub_Project\Hexo\source\_posts\微服务架构\4.png" alt="图4"></p>
+<p>​        当服务消费者调用服务时，首先会检查本地缓存中的服务位置信息，如果没有则会联系服务发现服务，获取它的所有服务实例，并缓存到本地。在获得服务实例列表后，它会使用简单的负载均衡算法，如“轮询”,以确保服务调用分布在多个服务实例之间。并且，客户端会定期与服务发现服务联系刷新服务实例缓存。</p>
+<p>​        当某次调用服务失败，客户端会通知服务发现引擎删除该实例，并从服务发现服务刷新缓存数据。</p>
+<h2 id="客户端弹性模式（Hystrix）"><a href="#客户端弹性模式（Hystrix）" class="headerlink" title="客户端弹性模式（Hystrix）"></a>客户端弹性模式（Hystrix）</h2><p>​        当服务实例彻底崩溃时，很容易检测到服务死亡，应用程序可以绕过它，但当服务运行缓慢时，检测服务性能，健康状态不佳时是非常困难的。</p>
+<p>​        并且潜在的可能会由于它的运行缓慢将耗尽整个服务器的资源，乃至拖垮整个服务系统。比如一个系统有A，B，C三个服务，关系如图：</p>
+<p><img src="/2019/10/15/微服务架构/GitHub_Project\Hexo\source\_posts\微服务架构\5.png" alt="图5"></p>
+<p>​        A 服务依赖B服务，B服务依赖C服务，C服务于数据库连接。</p>
+<p>​        此时，如果由于某些原因导致C服务与数据库通信缓慢，那么C服务的数据库连接将会堵塞，而接下来请求新建的数据库连接依然会堵塞，最终会导致数据库连接池资源耗尽；而调用C服务的B服务的线程也将会堵塞，并且最终服务器容器中的线程池也会迅速的消耗殆尽，最后A服务也将耗尽资源，因为他调用了B服务，而整个起点是因为C服务访问数据库缓慢。</p>
+<h3 id="断路器"><a href="#断路器" class="headerlink" title="断路器"></a>断路器</h3><p>​        我们可以在服务消费者与服务提供者之间加上断路器，可以避免这种情况。</p>
+<p>​        当开启一个请求时，断路器将监视这个调用，如果调用时间太长，断路器就会强制终止此次调用，如果调用失败次数过多，那么断路器会采取快速失败阻止将来调用。</p>
+<h3 id="后备模式"><a href="#后备模式" class="headerlink" title="后备模式"></a>后备模式</h3><p>​        我们还可以添加后备处理，在远程调用失败之后。采用执行替代的代码给用户返回一个友好的结果而不是一个错误警告。有时候旧数据比没有数据好。</p>
+<h3 id="舱壁模式"><a href="#舱壁模式" class="headerlink" title="舱壁模式"></a>舱壁模式</h3><p>​        为了降低一个缓慢的调用拖垮整个应用程序的风险，可以为每个服务调用单独分配线程池，这样即使服务响应缓慢，也只会耗尽当前线程池的资源，而不会影响其他的服务调用。</p>
+<p><img src="/2019/10/15/微服务架构/GitHub_Project\Hexo\source\_posts\微服务架构\6.png" alt="图6"></p>
+<h2 id="服务路由（Zuul）"><a href="#服务路由（Zuul）" class="headerlink" title="服务路由（Zuul）"></a>服务路由（Zuul）</h2><p>​        在分布式架构中某些关键的行为经常要跨多个服务调用，如安全，日志记录，用户跟踪等。为了实现他们。要求开发人员在所有服务中始终如一地强制这些特性，而不需要每个开发团队构建自己的解决方案，尽管可以采用公共库或自定义框架来实现这些功能，但会带来一些影响，比如开发人员可能会忘记和遗漏编写日志或跟踪，并且这会对所有服务造成依赖，在修改公共框架或新增功能时，必须重新编译和部署所有的服务，这是一件非常糟糕的事情。</p>
+<p>​        对于日志记录此类事件，在服务中共同存在的称为横向关注点，还记得Spring中的切面、切点概念吗。我们可以将这些横切关注点抽象成一个独立且作为应用程序中所有微服务调用的过滤器和路由器的服务，称之为“服务网关”。将所有的调用服务放在服务网关的后面，客户端只与服务网关通信，由服务网关代理转发客户端调用。</p>
+<p>​        服务网关如此一来就控制住了微服务的所有流量入口，所有的横切服务都可以在这实现，并且所有服务调用都映射到一个URL后面，在搭建微服务时可以将所有服务都放在内网之中，只暴露服务网关的外网调用端口，极大极高了服务的安全性。</p>
+<p>​        之前的访问：</p>
+<p><img src="/2019/10/15/微服务架构/GitHub_Project\Hexo\source\_posts\微服务架构\7.png" alt="图7"></p>
+<p>​        加入服务网关：</p>
+<p><img src="/2019/10/15/微服务架构/GitHub_Project\Hexo\source\_posts\微服务架构\8.png" alt="图8"></p>
+<p>​        大家可能发现这样服务网关不就成了单点故障和阻塞点了吗？可以构建服务网关集群，在多个服务网关实例前放置负载均衡器。在单个服务组前面，负载均衡器是很有用的，但放置在所有服务实例的前面将会成为瓶颈。部署服务网关时要保证其实无状态的，轻量的，具有多个数据库调用的复杂代码可能是网关中难以跟踪的性能问题来源。</p>
+<h2 id="保护微服务（OAuth2）"><a href="#保护微服务（OAuth2）" class="headerlink" title="保护微服务（OAuth2）"></a>保护微服务（OAuth2）</h2><p>​        系统安全是非常重要的，对用户身份的验证与授权是保证资源不为恶意使用的手段之一，采用OAuth2构建验证服务器，对用户和应用程序进行身份验证和授权。</p>
+<p><img src="/2019/10/15/微服务架构/GitHub_Project\Hexo\source\_posts\微服务架构\9.png" alt="图9"></p>
+<p>​        用户使用客户端向验证服务器提供凭据，验证服务器需要验证客户端和用户，成功后返回一个令牌，客户端使用此令牌访问受保护资源服务，受保护资源服务收到令牌后向验证服务器确认令牌的合法性，并获取用户基本信息，如果受保护资源服务需要调用其他服务依然要提供客户端传来的令牌给被调用服务，被调用服务向验证服务确认。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>​        这里只是本人对《Spring微服务实战》书的阅读总结，其中还有部分没有总结到，比如还可以在微服务中引入消息队列，缓存服务等，利用Zipkin进行分布式跟踪，构建持续集成/持续交付（CI/CD）管道等。该书采用理论是实践结合的方式讲述SpringBoot服务如何一步一步搭建成微服务。作为读者也对微服务的概念有了一个清晰的认识。并且在以后的开发过程中也会注意到书中所讲的一些问题，总之收获很大。</p>
+<p>​        最后一个完整的微服务架构图：</p>
+<p><img src="/2019/10/15/微服务架构/GitHub_Project\Hexo\source\_posts\微服务架构\10.png" alt="图10"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/03/对象、矩阵与矢量化编程/" class="archive-article-date">
-  	<time datetime="2018-07-03T08:07:58.603Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/03/对象、矩阵与矢量化编程/">对象、矩阵与矢量化编程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringBoot,SpringCloud,微服务</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://changjiahong.github.io/2019/10/15/微服务架构/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/02/机器学习入门-开发环境搭建/" class="archive-article-date">
-  	<time datetime="2018-07-02T15:17:16.799Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/10/Android下载任务队列实现-Kotlin/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android 下载任务队列实现-Kotlin</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/02/机器学习入门-开发环境搭建/">机器学习入门（开发环境搭建）</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/31/吃鸡第一弹——安卓投影到电脑客户端/" class="archive-article-date">
-  	<time datetime="2018-05-31T10:58:10.868Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/31/吃鸡第一弹——安卓投影到电脑客户端/">吃鸡第一弹——安卓投影到电脑客户端</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">安卓开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/31/安卓设备通过USB接口实现与pc端的简单数据通信/" class="archive-article-date">
-  	<time datetime="2018-05-31T05:22:26.759Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/31/安卓设备通过USB接口实现与pc端的简单数据通信/">安卓设备通过USB接口实现与pc端的简单数据通信</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">安卓开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/31/人脸识别的SDK来自虹软的人脸识别SDK，开源免费/" class="archive-article-date">
-  	<time datetime="2018-05-31T05:11:06.031Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/31/人脸识别的SDK来自虹软的人脸识别SDK，开源免费/">人脸识别Demo</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人脸识别</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/31/hello-world/" class="archive-article-date">
-  	<time datetime="2018-05-30T16:34:09.073Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/31/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
   
 
 
@@ -413,8 +409,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
