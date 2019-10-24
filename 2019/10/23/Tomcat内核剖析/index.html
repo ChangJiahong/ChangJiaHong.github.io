@@ -6,19 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://changjiahong.github.io">
-  <title>Tag: 人脸识别 | 破小孩的博客</title>
+  <title>Tomcat内核剖析 | 破小孩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在校码农">
-<meta name="keywords" content="java,kotlin,移动开发,程序猿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="破小孩的博客">
-<meta property="og:url" content="https://changjiahong.github.io/tags/人脸识别/index.html">
+  <meta name="description" content="深入理解Tomcat架构&amp;ensp; &amp;ensp;Tomcat对于web开发人员来说再熟悉不过了，它是由Apache开发的一个免费开源的Web应用服务器。在Web开发时，经常用它构建轻量级的Java Web服务。想要简单的使用Tomcat是非常容易的，但是想要深入了解Tomcat体系必须要了解它背后的架构设计。 &amp;ensp; &amp;ensp;本篇文章对《Tomcat内核设计剖析》这本书的阅读总结，大概">
+<meta name="keywords" content="Tomcat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tomcat内核剖析">
+<meta property="og:url" content="https://changjiahong.github.io/2019/10/23/Tomcat内核剖析/index.html">
 <meta property="og:site_name" content="破小孩的博客">
-<meta property="og:description" content="在校码农">
+<meta property="og:description" content="深入理解Tomcat架构&amp;ensp; &amp;ensp;Tomcat对于web开发人员来说再熟悉不过了，它是由Apache开发的一个免费开源的Web应用服务器。在Web开发时，经常用它构建轻量级的Java Web服务。想要简单的使用Tomcat是非常容易的，但是想要深入了解Tomcat体系必须要了解它背后的架构设计。 &amp;ensp; &amp;ensp;本篇文章对《Tomcat内核设计剖析》这本书的阅读总结，大概">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://changjiahong.github.io/2019/10/23/Tomcat内核剖析/1.png">
+<meta property="og:image" content="https://changjiahong.github.io/2019/10/23/Tomcat内核剖析/2.png">
+<meta property="og:image" content="https://changjiahong.github.io/2019/10/23/Tomcat内核剖析/3.png">
+<meta property="og:updated_time" content="2019-10-24T06:42:55.234Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="破小孩的博客">
-<meta name="twitter:description" content="在校码农">
+<meta name="twitter:title" content="Tomcat内核剖析">
+<meta name="twitter:description" content="深入理解Tomcat架构&amp;ensp; &amp;ensp;Tomcat对于web开发人员来说再熟悉不过了，它是由Apache开发的一个免费开源的Web应用服务器。在Web开发时，经常用它构建轻量级的Java Web服务。想要简单的使用Tomcat是非常容易的，但是想要深入了解Tomcat体系必须要了解它背后的架构设计。 &amp;ensp; &amp;ensp;本篇文章对《Tomcat内核设计剖析》这本书的阅读总结，大概">
+<meta name="twitter:image" content="https://changjiahong.github.io/2019/10/23/Tomcat内核剖析/1.png">
   
     <link rel="alternative" href="/atom.xml" title="破小孩的博客" type="application/atom+xml">
   
@@ -154,60 +159,241 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Tomcat内核剖析" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/31/人脸识别的SDK来自虹软的人脸识别SDK，开源免费/" class="archive-article-date">
-  	<time datetime="2018-05-31T05:11:06.031Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/31/人脸识别的SDK来自虹软的人脸识别SDK，开源免费/">人脸识别Demo</a>
+    <h1 class="article-title" itemprop="name">
+      Tomcat内核剖析
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/10/23/Tomcat内核剖析/" class="archive-article-date">
+  	<time datetime="2019-10-23T11:41:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="深入理解Tomcat架构"><a href="#深入理解Tomcat架构" class="headerlink" title="深入理解Tomcat架构"></a>深入理解Tomcat架构</h1><p>&ensp; &ensp;Tomcat对于web开发人员来说再熟悉不过了，它是由Apache开发的一个免费开源的Web应用服务器。在Web开发时，经常用它构建轻量级的Java Web服务。想要简单的使用Tomcat是非常容易的，但是想要深入了解Tomcat体系必须要了解它背后的架构设计。</p>
+<p>&ensp; &ensp;本篇文章对《Tomcat内核设计剖析》这本书的阅读总结，大概的梳理了一下Tomcat的架构设计、模块组成。</p>
+<a id="more"></a>
+<p>&ensp; &ensp;其实从Tomcat配置文件Server.xml的格式就能看出它的结构。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version='1.0' encoding='utf-8'?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">Server</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">Listener</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">GlobalNamingResource</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">Resoource</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">GlobalNamingResource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Service</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">Executor</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Connector</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Engine</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">Cluster</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Realm</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Host</span>&gt;</span></span><br><span class="line">            	<span class="tag">&lt;<span class="name">Context</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">Host</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">Engine</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Service</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Server</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/10/23/Tomcat内核剖析/1.png" alt="1571839057131"></p>
+<h2 id="Server组件"><a href="#Server组件" class="headerlink" title="Server组件"></a>Server组件</h2><p>&ensp; &ensp;Server组件代表整个Tomcat容器，是Tomcat最外层的组件，它包括三个部分：生命周期监听器，全局命名资源，Service组件</p>
+<h3 id="1-生命周期监听器"><a href="#1-生命周期监听器" class="headerlink" title="1.生命周期监听器"></a>1.生命周期监听器</h3><p>&ensp; &ensp;由于Tomcat是庞大而复杂的，并且它拥有很多组件，如果这些组件一个一个单独启动时非常麻烦的，而且容易遗漏，不易扩展其他组件。所以Tomcat提供了监听器方案，在其生命周期的不同阶段调用监听器，如果某个组件对于某事件感兴趣，只需要实现接口即可</p>
+<h3 id="2-全局命名资源"><a href="#2-全局命名资源" class="headerlink" title="2.全局命名资源"></a>2.全局命名资源</h3><p>&ensp; &ensp;对应Server.xml配置文件的节点就是&lt;GlobalNamingResource&gt;,在Tomcat初始化时通过Digester框架将其解析成对象，并以树状结构存储，它提供的命名对象通过ResourceLink给所有Web应用访问使用。如：JNDI中存储数据库连接池对象。</p>
+<h3 id="3-监听关闭命令"><a href="#3-监听关闭命令" class="headerlink" title="3.监听关闭命令"></a>3.监听关闭命令</h3><p>&ensp; &ensp;Server组件会开放一个端口用于监听命令，默认为8005.当Tomcat接口收到“SHUTDOWN”命令时则会关闭程序。</p>
+<h2 id="Service组件"><a href="#Service组件" class="headerlink" title="Service组件"></a>Service组件</h2><p>&ensp; &ensp;Server组件中可以包含多个Service组件，Service组件也是Tomcat最外层的组件之一。包含若干Connector组件和Executor组件组合而成，其中不同的Connector组件可以使用不用的通信协议，如：HTTP，AJP。</p>
+<p>&ensp; &ensp;Executor组件则是Service组件下的线程池，Connector组件可以通过Executor组件实现线程池共享，默认情况下使用自己的私有线程池，其他组件也可以使用。此外，Service组件还包含了一个非常重要的Engine组件，Connector组件负责接收客户端消息，而Engine组件则负责处理客户端消息。</p>
+<h2 id="Connector组件"><a href="#Connector组件" class="headerlink" title="Connector组件"></a>Connector组件</h2><p>&ensp; &ensp;Connector主要职责就是接收客户端连接并接收报文，将其解析后裔送给Engine处理。它的组件包括：Protocol组件，Mapper组件，CoyoteAdaptor组件。</p>
+<p>&ensp; &ensp;Protocol是协议的抽象，它有不同的实现，每一个实现对应一种通信协议，其中包括的Endpoint是接收端的抽象，分为Acceptor专门接收客户端连接的接收器组件和Executor线程池组件，Processor组件是对客户端请求处理的抽象。</p>
+<p>&ensp; &ensp;Mapper是路由组件，它可以将请求分发到对应的Web应用的某个Servlet上。</p>
+<p>&ensp; &ensp;而CoyoteAdaptor组价是一个适配器，它负责将Connector组件和Engine容器适配连接起来。</p>
+<p>以Http协议来说：</p>
+<p>&ensp; &ensp;Protocol组件的HTTP实例则是Http11Protocol和HttpNIOProtocol。由IO模式的不同，可以分为阻塞模式和非阻塞模式</p>
+<h3 id="1-HTTP阻塞模式协议"><a href="#1-HTTP阻塞模式协议" class="headerlink" title="1.HTTP阻塞模式协议"></a>1.HTTP阻塞模式协议</h3><p>&ensp; &ensp;HttpProtocol表示阻塞式的HTTP协议通信，由传统Socket套接字为底层实现，它包含JIoEndpoint和Http11Processor组件</p>
+<ul>
+<li>JIoEndpoint</li>
+</ul>
+<p><img src="/2019/10/23/Tomcat内核剖析/2.png" alt="1571841751016"></p>
+<p>&ensp; &ensp;ServerSocketFactory根据不同的安全层次如HTTP，HTTPS创建ServerSocket对象供Acceptor使用。<br>&ensp; &ensp;连接数控制器（LimitLatch）对连接数进行计数，来一个请求加一，请求结束后减一。请求数过多时就阻塞请求或拒绝处理。<br>&ensp; &ensp;Socket接收器（Acceptor），监听某个端口，当有连接时就将任务丢给任务执行器。<br>&ensp; &ensp;任务定义器（SocketProcessor），定义好任务处理的统一流程抽象，如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	处理套接字输出的响应报文；</span><br><span class="line">	连接数计数器减一；</span><br><span class="line">	关闭套接字；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  &ensp;&ensp;任务执行器（Executor），维护一个任务队列，不断从任务队列中取得任务，执行任务定义器定义好的任务。</p>
+<ul>
+<li>HTTP阻塞处理器（Http11Processor）<br>&ensp;&ensp;Http11Processor提供了对Http协议的通信处理，将接收到的报文解析成我们熟知的请求对象，Request和Response，提供一个门面对象供Web应用使用。</li>
+</ul>
+<h3 id="2-Http非阻塞模式协议"><a href="#2-Http非阻塞模式协议" class="headerlink" title="2.Http非阻塞模式协议"></a>2.Http非阻塞模式协议</h3><p>&ensp;&ensp;Http11NIOProtocol表示非阻塞模式Http协议的通信，它主要包含NioEndpoint组件和Http11NioProcessor组件。一个连接到来时，将被注册到NioChannel队列中，由Poller负责检测通道的读写事件，并在创建任务后扔进线程池中。</p>
+<p><img src="/2019/10/23/Tomcat内核剖析/3.png" alt="1571843053077"></p>
+<p>&ensp;&ensp;BIO模式在接收到一个请求时，将开启一个线程处理该请求，此时一个线程只能处理一个请求，并且请求并不是like发送数据，由于网络或业务的一些原因，服务端并不能立刻接收到数据进行处理，而在等待数据准备的过程中造成了资源浪费。</p>
+<p>&ensp;&ensp;NIO模式克服了这种弊端，它能基于时间在一个线程中同时维护大量连接，它将套接字工作交给一个线程，读写交给其他N个线程，在接收请求后，它将请求放入Channel队列中，用轮询器不断检测通道读写事件，如果数据准备好了，可读后，则将该连接交由连接池读写处理。</p>
+<p>&ensp;&ensp;NIO模式，对数据的操作读写，即调用基础的IO操作API依然是阻塞的，只有对网络IO才是非阻塞的，在等待数据时是非阻塞的。</p>
+<p>&ensp;&ensp;同步非阻塞：同步时对IO来说，非阻塞是处理方式。</p>
+<h2 id="Engine容器"><a href="#Engine容器" class="headerlink" title="Engine容器"></a>Engine容器</h2><p>&ensp;&ensp;Engine即为全局引擎容器，它的标准实现为StandardEngine。其中主要包括组件有Host、AccessLog、Pipeline、Cluster、Realm、LifecycleListener、Log组件。</p>
+<h2 id="AccessLog、Log组件，日志框架"><a href="#AccessLog、Log组件，日志框架" class="headerlink" title="AccessLog、Log组件，日志框架"></a>AccessLog、Log组件，日志框架</h2><p>&ensp;&ensp;Tomcat提供了统一的日志接口Log，并提供了国际化组件，在每个Java包下面都会存在LocalStrings.properties的不同语言版本。并且以Java包为单位划分范围，每个类如果需要查找消息都到对应的java包下的properties文件中查找。</p>
+<p>&ensp;&ensp;还设计了客户端访问日志记录接口，并提供了不同的实现，对持久化方式的不同有FileAccessLog，JDBCAccessLog等，还可以自己实现访问日志组件。</p>
+<h2 id="Pipeline（管道与阀门）"><a href="#Pipeline（管道与阀门）" class="headerlink" title="Pipeline（管道与阀门）"></a>Pipeline（管道与阀门）</h2><p>&ensp;&ensp;在复杂的大型系统中，存在某个对象或数据流需要进行繁杂的逻辑处理，可以采用管道模式，划分出每个小模块互相独立且各自负责一段逻辑处理。</p>
+<p>&ensp;&ensp;如Request、Response就是这种需要进行繁复加工处理的对象，采用管道在其中设置阀门处理逻辑。在Tomcat中有4个级别的容器分别是 Engine、Host、Context、Wrapper。请求对象将分别由这4个容器处理，在4个容器之间通过管道机制进行传递，请求对象先通过Engine管道，经由若干个阀门处理，最后由基础阀门处理流转到下一级通道，每一级管道都有一个基础阀门。</p>
+<h2 id="Cluster（集群）组件"><a href="#Cluster（集群）组件" class="headerlink" title="Cluster（集群）组件"></a>Cluster（集群）组件</h2><p>&ensp;&ensp;Tomcat提供了集群功能，可以快速的布置Web集群应用，而集群之间的一些通信则由Cluster组件完成。Cluster组件主要功能是提供会话复制，上下文属性复制和在集群下的web应用部署，并且Cluster组件可分为两个级别Engine和Host。</p>
+<p>&ensp;&ensp;在Cluster组件内部真正负责集群间通信的是Tribes组件，它维护着一个集群内存活主机列表，当Cluster调用发送消息接口时，由Tribes组件将消息发送到集群中的其他主机上。</p>
+<h2 id="Realm组件"><a href="#Realm组件" class="headerlink" title="Realm组件"></a>Realm组件</h2><p>&ensp;&ensp;Realm域其实可以看成一个包含了用户及密码的数据库，根据用户角色的不同，限制用户访问应用的url或资源信息。Realm域是为了统一web容器资源安全、管理，统一抽象重复认证工作方便web应用资源权限管理开发而提供的一个概念，它支持Engine、Host、Context级别容器的共享。</p>
+<h2 id="LifecycleListener"><a href="#LifecycleListener" class="headerlink" title="LifecycleListener"></a>LifecycleListener</h2><p>&ensp;&ensp;LifecycleListener即是容器生命周期状态监听器。</p>
+<h2 id="Host组件"><a href="#Host组件" class="headerlink" title="Host组件"></a>Host组件</h2><p>&ensp;&ensp;Host组件是Servlet引擎中虚拟主机的抽象，Engine中可以包含多个Host容器，而一个Host容器也可以包含若干个Context容器，Host容器包括的组件有Context容器、AccessLog、Pipeline、Cluster、Realm、HostConfig、Log组件</p>
+<h3 id="1-HostConfig"><a href="#1-HostConfig" class="headerlink" title="1.HostConfig"></a>1.HostConfig</h3><p>&ensp;&ensp;Host作为虚拟主机容器，用于放置Context级别容器，而Context其实对应的就是web应用，每个Tomcat应用都有自己的配置，当Tomcat启动时，必须把对应web属性加载进Context中，如果在Tomcat启动时加载配置，这样对Context的配置修改不会立刻生效，必须重启Tomcat。所以Tomcat采用监听器的方式，当Tomcat启动时触发“START_EVENT”事件时执行web应用部署动作。</p>
+<h2 id="Context容器"><a href="#Context容器" class="headerlink" title="Context容器"></a>Context容器</h2><p>&ensp;&ensp;Context容器对应一个Web应用程序，它包含若干个Wrapper组件、Realm、AccessLog、ErrorPage、Manager、DirContext、安全认证组件、JarScanner、过滤器、NamingResource、Mapper、Pipeline、WebAppLoader、ApplicationContext、InstanceManager、ServletContainerInitializer和Listeners组件。</p>
+<ul>
+<li>AccessLog、Pipeline、Cluster、Realm，已经介绍过。</li>
+<li>ErrorPage（错误页面）：每个Context容器都拥有各自的错误页面对象，它可以在Context标签下进行配置。</li>
+<li>Manager（会话管理器）：用于Context容器下的会话管理，提供不同的实现，有基于内存的，基于文件的持久化，基于JDBC等实现方案，此外针对集群，还提供了集群会话管理器，可以在集群中同步共享会话。</li>
+<li>DirContext（目录上下文）：属于JNDI的标准接口，目的是采用一种简单的方式访问整个Web应用包含的文件，由于web应用文件格式不同提供了WARDirContext、FileDirContext两种实现。</li>
+<li>JarScanner：顾名思义，它是专门用于扫描Context对于的Web应用的jar包。</li>
+<li>过滤器：在web开发中，过滤器是经常使用的组件之一，它提供了为某个web应用的所有请求和响应做统一处理的功能。</li>
+</ul>
+<h2 id="Wrapper容器"><a href="#Wrapper容器" class="headerlink" title="Wrapper容器"></a>Wrapper容器</h2><p>&ensp;&ensp;Wrapper容器对应的就是Servlet，它内部维持了一个Servlet对象或者一个Servlet对象池。一般来说一个Wrapper只有一个Servlet对象，所以所有处理线程都调用同一个Servlet对象，但某个Servlet实现了SingleThreadModel接口也允许多个对象存在。</p>
+<p>&ensp;&ensp;request，response对象由Context基础阀门流转到Wrapper容器管道后，经过Wrapper管道的多个阀门，最后进入基础阀门，基础阀门调用过滤链，最后调用Servlet接口的service方法,对于HttpServlet实现来说，在调用service方法后，HttpServlet在service方法内部对Method进行判断，分别调用doGet、doPost等不同方法。</p>
+<h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2><p>&ensp;&ensp;容器最重要的是对于资源的隔离，Tomcat采用自定义的类加载器完成了资源的隔离解决了以下四个问题：</p>
+<blockquote>
+<ul>
+<li>同一个Web服务器内，各web项目之间的java类库相互隔离</li>
+<li>同一个web服务器内，各web项目可以共享java类库</li>
+<li>服务器不能收web项目影响，所以服务器类库应该与应用程序隔离</li>
+<li>支持热重载</li>
+</ul>
+</blockquote>
+<p>&ensp;&ensp;使用java类加载器可以动态加载需要的类，没有使用到的类不需要加载，可以节省程序运行内存。在java中我们用完全匹配类名来标识一个类，而在JVM中由完全匹配类名和一个类加载器的实例Id作为唯一标识。也就是说，同一个虚拟机可以有两个包名、类名都相同的类，只要它们由两个不同的类加载器加载。这种特征为我们提供了隔离机制，只要对不同的web项目用不同的类加载器加载jar包就可以隔离开资源类库。而在热重载的时候，只需要重新创建一个类加载器替换旧的类加载器，而原来的类加载器会被gc回收，就可以不用重启Tomcat而重新加载了web应用程序。</p>
+<h2 id="Jasper"><a href="#Jasper" class="headerlink" title="Jasper"></a>Jasper</h2><p>&ensp;&ensp;Jasper就是JSP解析引擎，Tomcat使用Jasper解析Jsp文件，将之转化成继承HttpJspBase的类文件，然后用Eclipse JDT java编译器或Ant编译器将java文件编译成字节码文件，最后采用类加载器加载字节码文件。这也是为什么Tomcat第一次访问jsp文件比较慢的原因，它需要将jsp编译成字节码文件加载运行，在第一次加载完成后，Tomcat将它缓存下来下次就可以直接使用，并且Tomcat会在后台线程不断检测Jsp文件与编译后的字节码文件的最后修改时间是否相同，如果不相同，则表示jsp文件有改动，则需要重新编译。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>&ensp;&ensp;Tomcat是一个十分庞大的项目，其中涉及到方方面面的知识，我根据《Tomcat内核设计剖析》这本书的介绍从宏观上了解了Tomcat的总体设计，依然某些方面理解起来十分吃力，对于Tomcat架构的细节方面依然需要时间慢慢体会，深入挖掘。本文也是比较浅显的做了一下读书笔记，如果其中有些地方我理解错误，欢迎评论指出。</p>
+<p>&ensp;&ensp;大概回想了一下，关于Tomcat架构主要就是围绕Connector和Container组件，一个是接收器，一个是处理容器，而Container组件在Tomcat中没有显示标明，它其实就是Engine容器。通过接收器监听端口连接，当有请求到来时，接收器将获取请求读取请求报文解析成Request、Response对象，之后交给Engine引擎进行处理，经过一层层处理后，接收器再将Response对象解析成响应报文返回给客户端。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">人脸识别</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Tomcat</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://changjiahong.github.io/2019/10/23/Tomcat内核剖析/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/10/15/微服务架构/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringBoot单体服务是如何搭建成SpringCloud微服务</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -230,9 +416,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
