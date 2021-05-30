@@ -12,40 +12,10 @@
 		<script src="js/flipclock.js"></script>
 	</head>
 	<body>
-		<div class="htmleaf-content">
-			<div class="clock" style="margin:2em;"></div>
-			
-			<div>Start: 2020/06/01 23:58:00</div>
-			
-		</div>
+		
 		
 		
 	</body>
 	
-	<script type="text/javascript">
-			var clock;
-			
-			$(document).ready(function() {
-			var clock;
-
-			clock = $('.clock').FlipClock({
-		        clockFace: 'DailyCounter',
-		        autoStart: false,
-		        callbacks: {
-		        	stop: function() {
-		        		$('.message').html('The clock has stopped!')
-		        	}
-		        }
-		    });
-				    
-			var t1="2020/06/01 23:58:00"; //数据
-    		var loveBegin = new Date(t1); //转化为Date对象的形式
-			var now = new Date();//当前时间数据
-    		var len = (now.getTime() - loveBegin.getTime())/1000; 
-		    clock.setTime(len);
-		    clock.start();
-			
-			console.log("被你发现了！！NO END!!");
-		});
-	</script>
+	
 </html>
